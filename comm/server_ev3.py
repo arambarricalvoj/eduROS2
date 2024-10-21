@@ -10,7 +10,7 @@ from ev3dev2.motor import LargeMotor, OUTPUT_A, OUTPUT_B, OUTPUT_C, OUTPUT_D, Sp
 #from ev3dev2.sensor.lego import TouchSensor, UltrasonicSensor, GyroSensor, ColorSensor
 #from ev3dev2.led import Leds
 
-#tank_drive = MoveTank(OUTPUT_A, OUTPUT_D)
+tank_drive = MoveTank(OUTPUT_A, OUTPUT_D)
 #ultrasonic = UltrasonicSensor(INPUT_2)
 #gyro = GyroSensor(INPUT_3)
 #csIZQ = ColorSensor(INPUT_1)
