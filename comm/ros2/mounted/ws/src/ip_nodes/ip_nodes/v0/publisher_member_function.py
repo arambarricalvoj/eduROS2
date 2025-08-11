@@ -16,23 +16,31 @@ import rclpy
 from rclpy.node import Node
 from std_msgs.msg import String
 from pynput import keyboard
+import socket
 
 class KeyboardPublisher(Node):
     def __init__(self):
         super().__init__('keyboard_publisher')
         self.publisher_ = self.create_publisher(String, 'key_press', 10)
+        self.client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        self.client_socket.connect(("192.168.1.140", 12345))
+        self.client_socket.setblocking(False) # Mandar paquete sin esperar respuesta
         self.key_pressed = False
 
     def on_press(self, key):
         msg = String()
         if key == keyboard.Key.up:
             msg.data = 'Tecla flecha arriba presionada'
+            self.client_socket.send('tank_drive.on(SpeedPercent(25*(-1)),SpeedPercent(25*(-1)))'.encode())
         elif key == keyboard.Key.down:
             msg.data = 'Tecla flecha abajo presionada'
+            self.client_socket.send('tank_drive.on(SpeedPercent(25*(1)),SpeedPercent(25*(1)))'.encode())
         elif key == keyboard.Key.left:
             msg.data = 'Tecla flecha izquierda presionada'
+            self.client_socket.send('tank_drive.on(SpeedPercent(25*(1)),SpeedPercent(25*(-1)))'.encode())
         elif key == keyboard.Key.right:
             msg.data = 'Tecla flecha derecha presionada'
+            self.client_socket.send('tank_drive.on(SpeedPercent(25*(-1)),SpeedPercent(25*(1)))'.encode())
 
         self.publisher_.publish(msg)
         self.get_logger().info('Publishing: "%s"' % msg.data)
@@ -41,6 +49,7 @@ class KeyboardPublisher(Node):
         if key == keyboard.Key.up or key == keyboard.Key.down or key == keyboard.Key.left or key == keyboard.Key.right:
             msg = String()
             msg.data = 'Tecla flecha liberada'
+            self.client_socket.send('tank_drive.off()'.encode())
             self.publisher_.publish(msg)
             self.get_logger().info('Publishing: "%s"' % msg.data)
 

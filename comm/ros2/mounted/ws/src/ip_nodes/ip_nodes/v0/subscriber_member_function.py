@@ -15,7 +15,6 @@
 import rclpy
 from rclpy.node import Node
 from std_msgs.msg import String
-import socket
 
 class MinimalSubscriber(Node):
     def __init__(self):
@@ -27,23 +26,8 @@ class MinimalSubscriber(Node):
             10)
         self.subscription  # prevent unused variable warning
 
-        self.client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        self.client_socket.connect(("192.168.1.140", 12345))
-        self.client_socket.setblocking(False) # Mandar paquete sin esperar respuesta
-
     def listener_callback(self, msg):
         self.get_logger().info('I heard: "%s"' % msg.data)
-
-        if msg.data == 'Tecla flecha arriba presionada':
-            self.client_socket.send('tank_drive.on(SpeedPercent(25*(-1)),SpeedPercent(25*(-1)))'.encode())
-        elif msg.data == 'Tecla flecha abajo presionada':
-            self.client_socket.send('tank_drive.on(SpeedPercent(25*(1)),SpeedPercent(25*(1)))'.encode())
-        elif msg.data == 'Tecla flecha izquierda presionada':
-            self.client_socket.send('tank_drive.on(SpeedPercent(25*(1)),SpeedPercent(25*(-1)))'.encode())
-        elif msg.data == 'Tecla flecha derecha presionada':
-            self.client_socket.send('tank_drive.on(SpeedPercent(25*(-1)),SpeedPercent(25*(1)))'.encode())
-        elif msg.data == 'Tecla flecha liberada':
-            self.client_socket.send('tank_drive.off()'.encode())
 
 def main(args=None):
     rclpy.init(args=args)

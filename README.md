@@ -24,7 +24,7 @@ IMAGEN PANTALLA CON DIRECCIÓN IP
 
 ## 3. Arrancar ROS2 en Docker
 
-Se utiliza ROS2 Jazzy en un contenedor Docker. Es posible trabajar con ROS2 instalado en el propio sistema, y en este caso se debe omitir este paso.
+Se utiliza ROS2 Jazzy en un contenedor Docker. Es posible trabajar con ROS2 instalado en el propio sistema, y en este caso se debe omitir este paso. Se utiliza una imagen generada a partir de la oficial, que ya incluye las librerías de Python necesarias.
 
 Para facilitar este arranque se ha configurado el fichero ``run.sh`` para desplegar el contenedor de Docker con el directorio del paquete de ROS2 compartido. 
 Ejecutar el fichero:
@@ -71,6 +71,9 @@ echo $ROS_DISTRO
 ```
 
 ## 5. Instalar las librerías de Python necesarias
+```bash
+sudo apt install python3-pynput
+```
 
 ## 6. Compilar y activar el paquete ``ip_nodes``
 
@@ -86,7 +89,7 @@ colcon build --symlink-install
 
 Activar el workspace como overlay de ROS2:
 ```bash
-cd cd /home/$USER/mounted/ws
+cd /home/$USER/mounted/ws
 source install/setup.bash
 ```
 
