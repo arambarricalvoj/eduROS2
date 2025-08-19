@@ -39,6 +39,7 @@ xhost +local:*
 docker run -e DISPLAY=$DISPLAY \
            -v /tmp/.X11-unix/:/tmp/.X11-unix/ \
            -v /home/$USER/Documents/tfg/tfg_ev3/comm/ros2/mounted:/home/$USER/mounted/ \
+           --device /dev/dri:/dev/dri \
            -it \
            --gpus all \
            --name ros_jazzy_instance ros2_mvsim:latest
@@ -48,6 +49,8 @@ docker run -e DISPLAY=$DISPLAY \
 pasar como parámetro la variable de entorno ``$DISPLAY``: ``-e DISPLAY=$DISPLAY`` y compartir su fichero con el contenedor: ``-v /tmp/.X11-unix/:/tmp/.X11-unix/``.
 
 - ``-v /home/$USER/Documents/tfg/tfg_ev3/comm/ros2/mounted:/home/$USER/mounted/`` para compartir la carpeta ``/home/$USER/Documents/tfg/tfg_ev3/comm/ros2/mounted`` de nuestro ordenador con el contenedor en el directorio /home/$USER/mounted/.
+
+- ``--device /dev/dri:/dev/dri`` para pasar al contenedor la aceleración gráfica necesaria para RVIZ2 (OpenGL, MESA, glx, iris)
 
 - ``-it`` para abrir una terminal interactiva del contenedor.
 
@@ -71,6 +74,11 @@ echo $ROS_DISTRO
 ```
 
 ## 5. Instalar las librerías de Python necesarias
+```bash
+sudo apt update
+sudo apt upgrade
+```
+
 ```bash
 sudo apt install python3-pynput
 ```
