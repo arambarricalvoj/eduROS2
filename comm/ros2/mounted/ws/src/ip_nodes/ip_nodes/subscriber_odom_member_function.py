@@ -10,8 +10,8 @@ class UDPListener(Node):
 
         # Crear socket UDP
         self.udp_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        self.udp_socket.bind(("0.0.0.0", 54321))  # Escuchar en todas las interfaces, puerto 54321
-        self.get_logger().info("Esperando datos UDP en el puerto 54321...")
+        self.udp_socket.bind(("0.0.0.0", 5000))  # Escuchar en todas las interfaces, puerto 54321
+        self.get_logger().info("Esperando datos UDP en el puerto 5000...")
 
         # Iniciar un hilo para recibir los paquetes UDP
         self.udp_thread = threading.Thread(target=self.receive_data)
