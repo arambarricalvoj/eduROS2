@@ -4,3 +4,6 @@ source;share/ip_nodes/hook/pythonpath.sh
 source;share/ip_nodes/hook/ament_prefix_path.ps1
 source;share/ip_nodes/hook/ament_prefix_path.dsv
 source;share/ip_nodes/hook/ament_prefix_path.sh
+source;../../build/ip_nodes/share/ip_nodes/hook/pythonpath_develop.ps1
+source;../../build/ip_nodes/share/ip_nodes/hook/pythonpath_develop.dsv
+source;../../build/ip_nodes/share/ip_nodes/hook/pythonpath_develop.sh

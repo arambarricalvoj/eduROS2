@@ -22,6 +22,7 @@ setup(
         'console_scripts': [
                 'talker = ip_nodes.publisher_member_function:main',
                 'listener = ip_nodes.subscriber_member_function:main',
+                'odom = ip_nodes.subscriber_odom_member_function:main',
        ],
     },
 )

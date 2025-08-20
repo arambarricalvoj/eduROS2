@@ -1,0 +1,19 @@
+[1.165s] Invoking command in '/home/javierac/mounted/ws/build/ip_nodes': PYTHONPATH=/home/javierac/mounted/ws/build/ip_nodes/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/javierac/mounted/ws/install/ip_nodes/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/javierac/mounted/ws/build/ip_nodes/build --no-deps symlink_data
+[1.812s] running develop
+[2.080s] running egg_info
+[2.099s] writing ip_nodes.egg-info/PKG-INFO
+[2.100s] writing dependency_links to ip_nodes.egg-info/dependency_links.txt
+[2.100s] writing entry points to ip_nodes.egg-info/entry_points.txt
+[2.100s] writing requirements to ip_nodes.egg-info/requires.txt
+[2.100s] writing top-level names to ip_nodes.egg-info/top_level.txt
+[2.151s] reading manifest file 'ip_nodes.egg-info/SOURCES.txt'
+[2.152s] writing manifest file 'ip_nodes.egg-info/SOURCES.txt'
+[2.178s] running build_ext
+[2.178s] Creating /home/javierac/mounted/ws/install/ip_nodes/lib/python3.12/site-packages/ip-nodes.egg-link (link to .)
+[2.180s] Installing listener script to /home/javierac/mounted/ws/install/ip_nodes/lib/ip_nodes
+[2.180s] Installing odom script to /home/javierac/mounted/ws/install/ip_nodes/lib/ip_nodes
+[2.181s] Installing talker script to /home/javierac/mounted/ws/install/ip_nodes/lib/ip_nodes
+[2.181s] 
+[2.181s] Installed /home/javierac/mounted/ws/build/ip_nodes
+[2.182s] running symlink_data
+[2.236s] Invoked command in '/home/javierac/mounted/ws/build/ip_nodes' returned '0': PYTHONPATH=/home/javierac/mounted/ws/build/ip_nodes/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/javierac/mounted/ws/install/ip_nodes/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/javierac/mounted/ws/build/ip_nodes/build --no-deps symlink_data
