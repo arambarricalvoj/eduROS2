@@ -155,3 +155,31 @@ ros2 run ip_nodes talker
 ```
 Estamdo sobre la terminal del talker presionamos las flechas del teclado para mover remotamente el robot a través de la red wifi.
 
+## 8. Ejecutar RVIZ2 
+```bash
+ros2 launch urdf_tutorial display.launch.py model:=/home/javierac/mounted/ws/src/sim/robot.urdf
+ 
+```
+
+
+ros2 run robot_state_publisher robot_state_publisher /home/javierac/mounted/ws/src/sim/robot.urdf
+
+rviz2
+
+ros2 topic pub --rate 10 /joint_states sensor_msgs/JointState "
+header:
+  stamp:
+    sec: $(date +%s)
+    nanosec: 0
+  frame_id: ''
+name: ['base_left_wheel_joint','base_right_wheel_joint']
+position: [1.0, 0.0]
+"
+
+ros2 launch ip_nodes display.launch.py 
+
+Ese error inicial de “No transform from [left_wheel] to [base_footprint]” no lo provoca tu .rviz, sino la propia cadena de TF en ROS 2: cuando arrancas, robot_state_publisher publica solo las transformaciones fijas (/tf_static), y las ruedas —al ser juntas continuous— necesitan un valor en /joint_states para generar sus TF dinámicas.
+
+Hasta que entra al menos un mensaje con el nombre exacto de esas juntas (base_left_wheel_joint y base_right_wheel_joint) y un timestamp válido, esas transformaciones no existen y RViz se queja.
+
+

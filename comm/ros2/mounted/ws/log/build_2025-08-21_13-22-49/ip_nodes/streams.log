@@ -1,0 +1,39 @@
+[0.902s] Invoking command in '/home/javierac/mounted/ws/build/ip_nodes': PYTHONPATH=/home/javierac/mounted/ws/build/ip_nodes/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/javierac/mounted/ws/install/ip_nodes/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --uninstall --editable --build-directory /home/javierac/mounted/ws/build/ip_nodes/build
+[1.223s] running develop
+[1.401s] Removing /home/javierac/mounted/ws/install/ip_nodes/lib/python3.12/site-packages/ip-nodes.egg-link (link to .)
+[1.440s] Invoked command in '/home/javierac/mounted/ws/build/ip_nodes' returned '0': PYTHONPATH=/home/javierac/mounted/ws/build/ip_nodes/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/javierac/mounted/ws/install/ip_nodes/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --uninstall --editable --build-directory /home/javierac/mounted/ws/build/ip_nodes/build
+[1.442s] Invoking command in '/home/javierac/mounted/ws/src/ip_nodes': PYTHONPATH=/home/javierac/mounted/ws/build/ip_nodes/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/javierac/mounted/ws/install/ip_nodes/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/ip_nodes build --build-base /home/javierac/mounted/ws/build/ip_nodes/build install --record /home/javierac/mounted/ws/build/ip_nodes/install.log --single-version-externally-managed install_data --force
+[1.693s] running egg_info
+[1.707s] writing ../../build/ip_nodes/ip_nodes.egg-info/PKG-INFO
+[1.708s] writing dependency_links to ../../build/ip_nodes/ip_nodes.egg-info/dependency_links.txt
+[1.708s] writing entry points to ../../build/ip_nodes/ip_nodes.egg-info/entry_points.txt
+[1.708s] writing requirements to ../../build/ip_nodes/ip_nodes.egg-info/requires.txt
+[1.708s] writing top-level names to ../../build/ip_nodes/ip_nodes.egg-info/top_level.txt
+[1.741s] reading manifest file '../../build/ip_nodes/ip_nodes.egg-info/SOURCES.txt'
+[1.741s] adding license file 'LICENSE'
+[1.742s] writing manifest file '../../build/ip_nodes/ip_nodes.egg-info/SOURCES.txt'
+[1.742s] running build
+[1.743s] running build_py
+[1.743s] running install
+[1.751s] running install_lib
+[1.768s] creating /home/javierac/mounted/ws/install/ip_nodes/lib/python3.12/site-packages/ip_nodes
+[1.768s] copying /home/javierac/mounted/ws/build/ip_nodes/build/lib/ip_nodes/__init__.py -> /home/javierac/mounted/ws/install/ip_nodes/lib/python3.12/site-packages/ip_nodes
+[1.768s] copying /home/javierac/mounted/ws/build/ip_nodes/build/lib/ip_nodes/subscriber_member_function.py -> /home/javierac/mounted/ws/install/ip_nodes/lib/python3.12/site-packages/ip_nodes
+[1.769s] copying /home/javierac/mounted/ws/build/ip_nodes/build/lib/ip_nodes/publisher_member_function.py -> /home/javierac/mounted/ws/install/ip_nodes/lib/python3.12/site-packages/ip_nodes
+[1.769s] copying /home/javierac/mounted/ws/build/ip_nodes/build/lib/ip_nodes/subscriber_odom_member_function.py -> /home/javierac/mounted/ws/install/ip_nodes/lib/python3.12/site-packages/ip_nodes
+[1.769s] byte-compiling /home/javierac/mounted/ws/install/ip_nodes/lib/python3.12/site-packages/ip_nodes/__init__.py to __init__.cpython-312.pyc
+[1.769s] byte-compiling /home/javierac/mounted/ws/install/ip_nodes/lib/python3.12/site-packages/ip_nodes/subscriber_member_function.py to subscriber_member_function.cpython-312.pyc
+[1.770s] byte-compiling /home/javierac/mounted/ws/install/ip_nodes/lib/python3.12/site-packages/ip_nodes/publisher_member_function.py to publisher_member_function.cpython-312.pyc
+[1.771s] byte-compiling /home/javierac/mounted/ws/install/ip_nodes/lib/python3.12/site-packages/ip_nodes/subscriber_odom_member_function.py to subscriber_odom_member_function.cpython-312.pyc
+[1.771s] running install_data
+[1.771s] copying resource/ip_nodes -> /home/javierac/mounted/ws/install/ip_nodes/share/ament_index/resource_index/packages
+[1.772s] copying package.xml -> /home/javierac/mounted/ws/install/ip_nodes/share/ip_nodes
+[1.772s] copying ip_nodes/launch/display.launch.py -> /home/javierac/mounted/ws/install/ip_nodes/share/ip_nodes/launch
+[1.772s] running install_egg_info
+[1.791s] Copying ../../build/ip_nodes/ip_nodes.egg-info to /home/javierac/mounted/ws/install/ip_nodes/lib/python3.12/site-packages/ip_nodes-0.0.0-py3.12.egg-info
+[1.792s] running install_scripts
+[1.934s] Installing listener script to /home/javierac/mounted/ws/install/ip_nodes/lib/ip_nodes
+[1.934s] Installing odom script to /home/javierac/mounted/ws/install/ip_nodes/lib/ip_nodes
+[1.934s] Installing talker script to /home/javierac/mounted/ws/install/ip_nodes/lib/ip_nodes
+[1.934s] writing list of installed files to '/home/javierac/mounted/ws/build/ip_nodes/install.log'
+[1.976s] Invoked command in '/home/javierac/mounted/ws/src/ip_nodes' returned '0': PYTHONPATH=/home/javierac/mounted/ws/build/ip_nodes/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/javierac/mounted/ws/install/ip_nodes/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/ip_nodes build --build-base /home/javierac/mounted/ws/build/ip_nodes/build install --record /home/javierac/mounted/ws/build/ip_nodes/install.log --single-version-externally-managed install_data --force
