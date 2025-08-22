@@ -3,10 +3,15 @@ import rclpy
 from rclpy.node import Node
 import socket
 import threading
+import math
+from sensor_msgs.msg import JointState
+from builtin_interfaces.msg import Time as TimeMsg
 
 class UDPListener(Node):
     def __init__(self):
         super().__init__('udp_listener')
+
+        self.joint_pub = self.create_publisher(JointState, 'joint_states', 10)
 
         # Crear socket UDP
         self.udp_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -18,12 +23,49 @@ class UDPListener(Node):
         self.udp_thread.daemon = True  # El hilo se cerrará cuando el programa termine
         self.udp_thread.start()
 
+    def degrees_to_radians_clamped(self, degrees):
+        """Convierte grados a radianes y limita a [-pi, pi]."""
+        radians = math.radians(degrees)
+        # Limitar al rango [-pi, pi]
+        if radians > math.pi:
+            radians = math.pi
+        elif radians < -math.pi:
+            radians = -math.pi
+        return radians
+    
     def receive_data(self):
         while rclpy.ok():  # Asegura que el hilo se ejecute mientras ROS2 esté activo
             try:
                 data, addr = self.udp_socket.recvfrom(1024)  # Recibe hasta 1024 bytes
                 mensaje = data.decode(errors='ignore')
                 self.get_logger().info(f"Recibido desde {addr}: {mensaje}")
+
+                # Procesar el mensaje
+                partes = mensaje.split(',')
+                if len(partes) != 2:
+                    self.get_logger().warn("Formato inválido, se esperaban dos valores separados por coma")
+                    continue
+
+                try:
+                    left_deg = float(partes[0])
+                    right_deg = float(partes[1])
+                except ValueError:
+                    self.get_logger().warn("No se pudieron convertir los valores a float")
+                    continue
+
+                left_rad = self.degrees_to_radians_clamped(left_deg)
+                right_rad = self.degrees_to_radians_clamped(right_deg)
+
+                # Publicar en joint_states
+                js = JointState()
+                now = self.get_clock().now().to_msg()
+                js.header.stamp = now
+                js.name = ['base_left_wheel_joint', 'base_right_wheel_joint']
+                js.position = [left_rad, right_rad]
+
+                self.joint_pub.publish(js)
+                self.get_logger().info("Publicado en /joint_states!")
+
             except Exception as e:
                 self.get_logger().error(f"Error al recibir datos: {e}")
 

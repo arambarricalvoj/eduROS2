@@ -35,15 +35,15 @@ class MinimalSubscriber(Node):
         self.get_logger().info('I heard: "%s"' % msg.data)
 
         if msg.data == 'Tecla flecha arriba presionada':
-            self.client_socket.send('tank_drive.on(SpeedPercent(25*(-1)),SpeedPercent(25*(-1)))'.encode())
+            self.client_socket.send('tank_drive.on(SpeedPercent(25*(-1)),SpeedPercent(25*(-1)))\n'.encode())
         elif msg.data == 'Tecla flecha abajo presionada':
-            self.client_socket.send('tank_drive.on(SpeedPercent(25*(1)),SpeedPercent(25*(1)))'.encode())
+            self.client_socket.send('tank_drive.on(SpeedPercent(25*(1)),SpeedPercent(25*(1)))\n'.encode())
         elif msg.data == 'Tecla flecha izquierda presionada':
-            self.client_socket.send('tank_drive.on(SpeedPercent(25*(1)),SpeedPercent(25*(-1)))'.encode())
+            self.client_socket.send('tank_drive.on(SpeedPercent(25*(1)),SpeedPercent(25*(-1)))\n'.encode())
         elif msg.data == 'Tecla flecha derecha presionada':
-            self.client_socket.send('tank_drive.on(SpeedPercent(25*(-1)),SpeedPercent(25*(1)))'.encode())
+            self.client_socket.send('tank_drive.on(SpeedPercent(25*(-1)),SpeedPercent(25*(1)))\n'.encode())
         elif msg.data == 'Tecla flecha liberada':
-            self.client_socket.send('tank_drive.off()'.encode())
+            self.client_socket.send('tank_drive.off()\n'.encode())
 
 def main(args=None):
     rclpy.init(args=args)

@@ -46,5 +46,26 @@ def generate_launch_description():
         output='screen'
     )
 
-    return LaunchDescription([urdf_path_arg, rviz_config_arg, use_gui_arg, rsp, jsp_gui, rviz])
+    publisher_node = Node(
+        package='ip_nodes',         
+        executable='talker',      
+        name='publisher_node',
+        output='screen'
+    )
+
+    subscriber_node = Node(
+        package='ip_nodes',      
+        executable='listener',  
+        name='subscriber_node',
+        output='screen'
+    )
+
+    subscriber_odom_node = Node(
+    package='ip_nodes',     
+    executable='odom',    
+    name='subscriber_odom_node',
+    output='screen'
+    )
+
+    return LaunchDescription([urdf_path_arg, rviz_config_arg, use_gui_arg, rsp, jsp_gui, rviz, publisher_node, subscriber_node, subscriber_odom_node])
 

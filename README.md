@@ -178,6 +178,8 @@ position: [1.0, 0.0]
 
 ros2 launch ip_nodes display.launch.py 
 
+ros2 launch ip_nodes display.launch.py use_gui:=false
+
 Ese error inicial de “No transform from [left_wheel] to [base_footprint]” no lo provoca tu .rviz, sino la propia cadena de TF en ROS 2: cuando arrancas, robot_state_publisher publica solo las transformaciones fijas (/tf_static), y las ruedas —al ser juntas continuous— necesitan un valor en /joint_states para generar sus TF dinámicas.
 
 Hasta que entra al menos un mensaje con el nombre exacto de esas juntas (base_left_wheel_joint y base_right_wheel_joint) y un timestamp válido, esas transformaciones no existen y RViz se queja.
