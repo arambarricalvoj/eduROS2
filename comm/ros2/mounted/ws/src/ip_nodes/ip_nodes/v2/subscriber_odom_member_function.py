@@ -23,15 +23,11 @@ class UDPListener(Node):
         self.udp_thread.daemon = True  # El hilo se cerrará cuando el programa termine
         self.udp_thread.start()
 
-    def degrees_to_radians_clamped(self, degrees):
-        """Convierte grados a radianes y limita a [-pi, pi]."""
-        radians = math.radians(degrees)
-        # Limitar al rango [-pi, pi]
-        if radians > math.pi:
-            radians = math.pi
-        elif radians < -math.pi:
-            radians = -math.pi
-        return radians
+
+    def degrees_to_radians_wrapped(self, degrees):
+        r = math.radians(degrees)
+        return math.remainder(r, 2 * math.pi)  # Devuelve en [-pi, pi]
+
     
     def receive_data(self):
         while rclpy.ok():  # Asegura que el hilo se ejecute mientras ROS2 esté activo
@@ -53,8 +49,8 @@ class UDPListener(Node):
                     self.get_logger().warn("No se pudieron convertir los valores a float")
                     continue
 
-                left_rad = self.degrees_to_radians_clamped(left_deg)
-                right_rad = self.degrees_to_radians_clamped(right_deg)
+                left_rad = self.degrees_to_radians_wrapped(left_deg)
+                right_rad = self.degrees_to_radians_wrapped(right_deg)
 
                 # Publicar en joint_states
                 js = JointState()

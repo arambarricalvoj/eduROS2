@@ -46,26 +46,22 @@ def generate_launch_description():
         output='screen'
     )
 
-    publisher_node = Node(
+    teklatua = Node(
         package='ip_nodes',         
-        executable='talker',      
-        name='publisher_node',
-        output='screen'
+        executable='teklatua',      
+        name='teklatua',
+        output='screen',
+        parameters=[{
+            'abiadura': 25.0
+        }]
     )
 
-    subscriber_node = Node(
+    mugimendu_motorrak = Node(
         package='ip_nodes',      
-        executable='listener',  
-        name='subscriber_node',
+        executable='mugimendu_motorrak',  
+        name='mugimendu_motorrak',
         output='screen'
     )
 
-    subscriber_odom_node = Node(
-    package='ip_nodes',     
-    executable='odom',    
-    name='subscriber_odom_node',
-    output='screen'
-    )
-
-    return LaunchDescription([urdf_path_arg, rviz_config_arg, use_gui_arg, rsp, jsp_gui, rviz, publisher_node, subscriber_node, subscriber_odom_node])
+    return LaunchDescription([urdf_path_arg, rviz_config_arg, use_gui_arg, rsp, jsp_gui, rviz, teklatua, mugimendu_motorrak])
 

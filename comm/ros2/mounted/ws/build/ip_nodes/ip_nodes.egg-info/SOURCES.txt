@@ -10,9 +10,8 @@ setup.py
 ../../build/ip_nodes/ip_nodes.egg-info/top_level.txt
 ../../build/ip_nodes/ip_nodes.egg-info/zip-safe
 ip_nodes/__init__.py
-ip_nodes/publisher_member_function.py
-ip_nodes/subscriber_member_function.py
-ip_nodes/subscriber_odom_member_function.py
+ip_nodes/mugimendu_motorrak.py
+ip_nodes/teklatua.py
 ip_nodes/launch/display.launch.py
 resource/ip_nodes
 test/test_copyright.py

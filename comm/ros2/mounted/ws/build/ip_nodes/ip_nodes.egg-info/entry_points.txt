@@ -1,4 +1,3 @@
 [console_scripts]
-listener = ip_nodes.subscriber_member_function:main
-odom = ip_nodes.subscriber_odom_member_function:main
-talker = ip_nodes.publisher_member_function:main
+mugimendu_motorrak = ip_nodes.mugimendu_motorrak:main
+teklatua = ip_nodes.teklatua:main

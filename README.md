@@ -184,4 +184,13 @@ Ese error inicial de “No transform from [left_wheel] to [base_footprint]” no
 
 Hasta que entra al menos un mensaje con el nombre exacto de esas juntas (base_left_wheel_joint y base_right_wheel_joint) y un timestamp válido, esas transformaciones no existen y RViz se queja.
 
+## 9. ARRANCAR PROYECTO
+En el contenedor Docker
+```bash
+ros2 launch ip_nodes display.launch.py use_gui:=false
+```
 
+En la terminal SSH del EV3
+```bash
+python3 server_ev3.py
+```

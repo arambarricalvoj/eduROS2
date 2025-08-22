@@ -21,9 +21,10 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'talker = ip_nodes.publisher_member_function:main',
-            'listener = ip_nodes.subscriber_member_function:main',
-            'odom = ip_nodes.subscriber_odom_member_function:main',
+            'teklatua = ip_nodes.teklatua:main',
+            #'motorrak = ip_nodes.motorrak:main',
+            #'odom = ip_nodes.subscriber_odom_member_function:main',
+            'mugimendu_motorrak = ip_nodes.mugimendu_motorrak:main',
         ],
     },
 )
