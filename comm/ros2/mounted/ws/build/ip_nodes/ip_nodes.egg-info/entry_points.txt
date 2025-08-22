@@ -1,0 +1,3 @@
+[console_scripts]
+mugimendu_motorrak = ip_nodes.mugimendu_motorrak:main
+teklatua = ip_nodes.teklatua:main

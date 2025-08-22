@@ -1,83 +1,104 @@
 #!/usr/bin/env python3
-# An EV3 Python (library v2) solution to Exercise 3
-# of the official Lego Robot Educator lessons that
-# are part of the EV3 education software
-
-
+import os
 import socket
-from ev3dev2.motor import LargeMotor, OUTPUT_A, OUTPUT_B, OUTPUT_C, OUTPUT_D, SpeedPercent, MoveTank, MotorSet
-#from ev3dev2.sensor import INPUT_1, INPUT_2, INPUT_3, INPUT_4
-#from ev3dev2.sensor.lego import TouchSensor, UltrasonicSensor, GyroSensor, ColorSensor
-#from ev3dev2.led import Leds
+import threading
+import time
+from ev3dev2.motor import LargeMotor, OUTPUT_A, OUTPUT_D, MoveTank, SpeedPercent
 
+# ---------- Puertos EV3 --------------------------------
 tank_drive = MoveTank(OUTPUT_A, OUTPUT_D)
-#ultrasonic = UltrasonicSensor(INPUT_2)
-#gyro = GyroSensor(INPUT_3)
-#csIZQ = ColorSensor(INPUT_1)
-#csDER = ColorSensor(INPUT_4)
-mot1 = LargeMotor(OUTPUT_A)
-#mot2 = LargeMotor(OUTPUT_D)
+motIzq = LargeMotor(OUTPUT_A)
+motDer = LargeMotor(OUTPUT_D)
 
-"""def sinCalibrate(lightLine, pwEmbestir): 
-    while csIZQ.reflected_light_intensity>lightLine and csDER.reflected_light_intensity>lightLine:
-        tank_drive.on(SpeedPercent(pwEmbestir*(-1)),SpeedPercent(pwEmbestir*(-1)))
-    
-    tank_drive.off()
-    #time.sleep(0.3)
-    tank_drive.on_for_degrees(SpeedPercent(35),SpeedPercent(35),135)
-    gyro.reset()
+# ---------- Dirección IP --------------------------------
+ip = os.popen("hostname -I").read().strip()
+ip = ip.split()[0] if ip else None
 
-def conCalibrate(lightLine, pwEmbestir): 
-    while csIZQ.reflected_light_intensity>lightLine and csDER.reflected_light_intensity>lightLine:
-        tank_drive.on(SpeedPercent(pwEmbestir*(-1)),SpeedPercent(pwEmbestir*(-1)))
-    
-    tank_drive.off()
-    time.sleep(0.3)
-
-    if csIZQ.reflected_light_intensity<=lightLine:
-        tank_drive.on_for_degrees(SpeedPercent(35),SpeedPercent(35),45)
-        #arrancar derecho hasta línea
-        while csDER.reflected_light_intensity>lightLine:
-            mot1.off()
-            mot2.on(-25)
-        mot2.off()
-    else:
-        tank_drive.on_for_degrees(SpeedPercent(35),SpeedPercent(35),45)
-        #arrancar izquierdo hasta línea
-        while csIZQ.reflected_light_intensity>lightLine:
-            mot2.off()
-            mot1.on(-25)
-        mot1.off()
-
-    tank_drive.on_for_degrees(SpeedPercent(35),SpeedPercent(35),45)
-    gyro.reset()"""
-
+# ---------- Control movimientos: servidor TCP ----------
 def start_server():
     server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     server_socket.bind(("0.0.0.0", 12345))
     server_socket.listen(5)
-    print("Servidor escuchando en el puerto 12345")
+    print("Control movimientos: servidor TCP escuchando en el puerto 12345")
 
     while True:
         client_socket, addr = server_socket.accept()
-        print("Conexión establecida con {}".format(addr))
+        print("Conexión TCP establecida con {}".format(addr))
+        buffer = ""
         while True:
             data = client_socket.recv(1024)
             if not data:
                 break
-            comando = data.decode()
-            print("Recibido: {}".format(comando))
-            try:
-                exec(comando)
-                #exec(mot1.on(-25))
-            except Exception as e:
-                print("Error ejecutando comando: {}".format(e))
-            #respuesta = input("Introduce respuesta para enviar: ")
-            #client_socket.send(respuesta.encode())
-            #client_socket.send("Finished".encode())
+            buffer += data.decode()
+
+            # Procesar todas las líneas completas que haya en el buffer
+            while "\n" in buffer:
+                comando, buffer = buffer.split("\n", 1)
+                comando = comando.strip()
+                if comando:
+                    #print("Recibido:", comando)
+                    try:
+                        exec(comando)
+                    except Exception as e:
+                        print("Error ejecutando comando:", e)
 
         client_socket.close()
         print("Conexión con {} cerrada".format(addr))
 
+
+# ---------- Publicación encoders: cliente UDP ----------
+def udp_sender():
+    udp_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    destino = ("192.168.1.138", 5000)  # Cambia IP y puerto
+    print("Control encoders: cliente UDP en el puerto 5000")
+    while True:
+        # Aquí iría la lectura real de encoders:
+        encoder_a = motIzq.position
+        encoder_d = motDer.position
+        mensaje = "{},{}".format(encoder_a, encoder_d) #"test"  # Sustituye por f"{encoder_a},{encoder_d}" cuando lo implementes
+        udp_socket.sendto(mensaje.encode(), destino)
+        #print("Enviado por UDP: {}".format(mensaje))
+        time.sleep(0.02)
+
+"""# ---------- Hilo TCP (envío) ----------
+def tcp_sender():
+    tcp_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    destino = ("192.168.1.138", 54321)  # Cambia IP y puerto
+    try:
+        tcp_socket.connect(destino)
+        print("Conectado a {}:{}".format(destino[0], destino[1]))
+        while True:
+            # Aquí iría la lectura real de encoders:
+            # encoder_a = motIzq.position
+            # encoder_d = motDer.position
+            mensaje = "test"  # Sustituye por f"{encoder_a},{encoder_d}" cuando lo implementes
+            tcp_socket.sendall(mensaje.encode())
+            print("Enviado por TCP: {}".format(mensaje))
+            time.sleep(1)
+    except Exception as e:
+        print("Error en conexión TCP: {}".format(e))
+    finally:
+        tcp_socket.close()"""
+
+
+"""if __name__ == "__main__":
+    # Lanzamos hilo UDP
+    hilo_udp = threading.Thread(target=udp_sender, daemon=True)
+    hilo_udp.start()
+
+    # Lanzamos servidor TCP (bloqueante)
+    start_server()"""
+
 if __name__ == "__main__":
-    start_server()
+    print("Lego Mindstorms EV3 - IP direction: {}".format(ip))
+    print("Connect to IP: 192.168.1.138\n")
+    
+    hilo_udp = threading.Thread(target=udp_sender, daemon=True)
+    hilo_udp.start()
+
+    hilo_tcp = threading.Thread(target=start_server, daemon=True)
+    hilo_tcp.start()
+
+    # Mantener el programa vivo
+    hilo_tcp.join()
+
