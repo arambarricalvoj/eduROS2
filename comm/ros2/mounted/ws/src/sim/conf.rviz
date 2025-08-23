@@ -48,6 +48,21 @@ Visualization Manager:
       Reference Frame: <Fixed Frame>
       Value: true
 
+    - Alpha: 0.5
+      Buffer Length: 1
+      Class: rviz_default_plugins/Range
+      Color: 173; 216; 230
+      Enabled: true
+      Name: Ultrasonic Range
+      Queue Size: 10
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /distantzia
+      Value: true
+
     - Alpha: 0.8
       Class: rviz_default_plugins/RobotModel
       Collision Enabled: false

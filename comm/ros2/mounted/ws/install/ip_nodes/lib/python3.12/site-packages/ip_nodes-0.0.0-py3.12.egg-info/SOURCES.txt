@@ -12,6 +12,7 @@ setup.py
 ip_nodes/__init__.py
 ip_nodes/mugimendu_motorrak.py
 ip_nodes/teklatua.py
+ip_nodes/ultrasoinu_sentsorea.py
 ip_nodes/launch/display.launch.py
 resource/ip_nodes
 test/test_copyright.py

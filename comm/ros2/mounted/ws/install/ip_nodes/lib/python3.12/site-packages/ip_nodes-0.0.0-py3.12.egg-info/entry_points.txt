@@ -1,3 +1,4 @@
 [console_scripts]
 mugimendu_motorrak = ip_nodes.mugimendu_motorrak:main
 teklatua = ip_nodes.teklatua:main
+ultrasoinu_sentsorea = ip_nodes.ultrasoinu_sentsorea:main

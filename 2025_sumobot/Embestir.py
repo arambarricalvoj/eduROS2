@@ -1,0 +1,54 @@
+#!/usr/bin/env python3
+# An EV3 Python (library v2) solution to Exercise 3
+# of the official Lego Robot Educator lessons that
+# are part of the EV3 education software
+
+#from time import sleep
+import time
+from ev3dev2.motor import LargeMotor, OUTPUT_A, OUTPUT_B, OUTPUT_C, OUTPUT_D, SpeedPercent, MoveTank, MotorSet
+from ev3dev2.sensor import INPUT_1, INPUT_2, INPUT_3, INPUT_4
+from ev3dev2.sensor.lego import TouchSensor, UltrasonicSensor, GyroSensor, ColorSensor
+from ev3dev2.led import Leds
+
+tank_drive = MoveTank(OUTPUT_A, OUTPUT_D)
+ultrasonic = UltrasonicSensor(INPUT_2)
+gyro = GyroSensor(INPUT_3)
+csIZQ = ColorSensor(INPUT_1)
+csDER = ColorSensor(INPUT_4)
+mot1 = LargeMotor(OUTPUT_A)
+mot2 = LargeMotor(OUTPUT_D)
+
+def sinCalibrate(lightLine, pwEmbestir): 
+    while csIZQ.reflected_light_intensity>lightLine and csDER.reflected_light_intensity>lightLine:
+        tank_drive.on(SpeedPercent(pwEmbestir*(-1)),SpeedPercent(pwEmbestir*(-1)))
+    
+    tank_drive.off()
+    #time.sleep(0.3)
+    tank_drive.on_for_degrees(SpeedPercent(35),SpeedPercent(35),135)
+    gyro.reset()
+
+def conCalibrate(lightLine, pwEmbestir): 
+    while csIZQ.reflected_light_intensity>lightLine and csDER.reflected_light_intensity>lightLine:
+        tank_drive.on(SpeedPercent(pwEmbestir*(-1)),SpeedPercent(pwEmbestir*(-1)))
+    
+    tank_drive.off()
+    time.sleep(0.3)
+
+    if csIZQ.reflected_light_intensity<=lightLine:
+        tank_drive.on_for_degrees(SpeedPercent(35),SpeedPercent(35),45)
+        #arrancar derecho hasta línea
+        while csDER.reflected_light_intensity>lightLine:
+            mot1.off()
+            mot2.on(-25)
+        mot2.off()
+    else:
+        tank_drive.on_for_degrees(SpeedPercent(35),SpeedPercent(35),45)
+        #arrancar izquierdo hasta línea
+        while csIZQ.reflected_light_intensity>lightLine:
+            mot2.off()
+            mot1.on(-25)
+        mot1.off()
+
+    tank_drive.on_for_degrees(SpeedPercent(35),SpeedPercent(35),45)
+    gyro.reset()
+

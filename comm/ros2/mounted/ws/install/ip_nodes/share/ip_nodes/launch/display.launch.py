@@ -63,5 +63,12 @@ def generate_launch_description():
         output='screen'
     )
 
-    return LaunchDescription([urdf_path_arg, rviz_config_arg, use_gui_arg, rsp, jsp_gui, rviz, teklatua, mugimendu_motorrak])
+    ultrasoinu_sentsorea = Node(
+        package='ip_nodes',      
+        executable='ultrasoinu_sentsorea',  
+        name='ultrasoinu_sentsorea',
+        output='screen'
+    )
+
+    return LaunchDescription([urdf_path_arg, rviz_config_arg, use_gui_arg, rsp, jsp_gui, rviz, teklatua, mugimendu_motorrak, ultrasoinu_sentsorea])
 

@@ -1,10 +1,6 @@
-tópico para publicar los encoders (sin la transformación de joint states)
+tópico para publicar los encoders (solo se publica en joint states)
 
 limpiar mugimendu_motorrak.py y server_ev3
-
-ultrasónico
-
-recuperar ramas main y develop en github
 
 generalizar con parámetros para ajustar puertos y etc...
 
