@@ -1,0 +1,22 @@
+file(REMOVE_RECURSE
+  "CMakeFiles/mezuak__rosidl_generator_c.dir/rosidl_generator_c/mezuak/msg/detail/mugimendu_kodetzaileak__description.c.o"
+  "CMakeFiles/mezuak__rosidl_generator_c.dir/rosidl_generator_c/mezuak/msg/detail/mugimendu_kodetzaileak__description.c.o.d"
+  "CMakeFiles/mezuak__rosidl_generator_c.dir/rosidl_generator_c/mezuak/msg/detail/mugimendu_kodetzaileak__functions.c.o"
+  "CMakeFiles/mezuak__rosidl_generator_c.dir/rosidl_generator_c/mezuak/msg/detail/mugimendu_kodetzaileak__functions.c.o.d"
+  "CMakeFiles/mezuak__rosidl_generator_c.dir/rosidl_generator_c/mezuak/msg/detail/mugimendu_kodetzaileak__type_support.c.o"
+  "CMakeFiles/mezuak__rosidl_generator_c.dir/rosidl_generator_c/mezuak/msg/detail/mugimendu_kodetzaileak__type_support.c.o.d"
+  "libmezuak__rosidl_generator_c.pdb"
+  "libmezuak__rosidl_generator_c.so"
+  "rosidl_generator_c/mezuak/msg/detail/mugimendu_kodetzaileak__description.c"
+  "rosidl_generator_c/mezuak/msg/detail/mugimendu_kodetzaileak__functions.c"
+  "rosidl_generator_c/mezuak/msg/detail/mugimendu_kodetzaileak__functions.h"
+  "rosidl_generator_c/mezuak/msg/detail/mugimendu_kodetzaileak__struct.h"
+  "rosidl_generator_c/mezuak/msg/detail/mugimendu_kodetzaileak__type_support.c"
+  "rosidl_generator_c/mezuak/msg/detail/mugimendu_kodetzaileak__type_support.h"
+  "rosidl_generator_c/mezuak/msg/mugimendu_kodetzaileak.h"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang C)
+  include(CMakeFiles/mezuak__rosidl_generator_c.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()

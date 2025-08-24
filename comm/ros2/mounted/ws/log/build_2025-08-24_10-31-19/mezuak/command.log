@@ -1,0 +1,2 @@
+Invoking command in '/home/javierac/mounted/ws/build/mezuak': /usr/bin/cmake /home/javierac/mounted/ws/src/mezuak -DCMAKE_INSTALL_PREFIX=/home/javierac/mounted/ws/install/mezuak
+Invoked command in '/home/javierac/mounted/ws/build/mezuak' returned '1': /usr/bin/cmake /home/javierac/mounted/ws/src/mezuak -DCMAKE_INSTALL_PREFIX=/home/javierac/mounted/ws/install/mezuak

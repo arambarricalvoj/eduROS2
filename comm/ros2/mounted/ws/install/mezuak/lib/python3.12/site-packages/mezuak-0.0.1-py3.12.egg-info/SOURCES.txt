@@ -1,0 +1,8 @@
+setup.py
+mezuak/__init__.py
+mezuak.egg-info/PKG-INFO
+mezuak.egg-info/SOURCES.txt
+mezuak.egg-info/dependency_links.txt
+mezuak.egg-info/top_level.txt
+mezuak/msg/__init__.py
+mezuak/msg/_mugimendu_kodetzaileak.py

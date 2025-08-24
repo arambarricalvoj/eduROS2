@@ -1,0 +1,334 @@
+[0.000000] (-) TimerEvent: {}
+[0.000432] (ip_nodes) JobQueued: {'identifier': 'ip_nodes', 'dependencies': OrderedDict()}
+[0.000524] (mezuak) JobQueued: {'identifier': 'mezuak', 'dependencies': OrderedDict()}
+[0.000643] (ip_nodes) JobStarted: {'identifier': 'ip_nodes'}
+[0.012081] (mezuak) JobStarted: {'identifier': 'mezuak'}
+[0.099061] (-) TimerEvent: {}
+[0.199611] (-) TimerEvent: {}
+[0.278153] (mezuak) JobProgress: {'identifier': 'mezuak', 'progress': 'cmake'}
+[0.279069] (mezuak) Command: {'cmd': ['/usr/bin/cmake', '/home/javierac/mounted/ws/src/mezuak', '-DCMAKE_INSTALL_PREFIX=/home/javierac/mounted/ws/install/mezuak'], 'cwd': '/home/javierac/mounted/ws/build/mezuak', 'env': OrderedDict({'GZ_CONFIG_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/share/gz:/opt/ros/jazzy/opt/sdformat_vendor/share/gz:/opt/ros/jazzy/opt/gz_gui_vendor/share/gz:/opt/ros/jazzy/opt/gz_transport_vendor/share/gz:/opt/ros/jazzy/opt/gz_rendering_vendor/share/gz:/opt/ros/jazzy/opt/gz_plugin_vendor/share/gz:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/share/gz:/opt/ros/jazzy/opt/gz_msgs_vendor/share/gz:/opt/ros/jazzy/opt/gz_common_vendor/share/gz', 'HOSTNAME': 'd8e6980ffd94', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/lib:/opt/ros/jazzy/opt/gz_sensors_vendor/lib:/opt/ros/jazzy/opt/gz_physics_vendor/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_gui_vendor/lib:/opt/ros/jazzy/opt/gz_transport_vendor/lib:/opt/ros/jazzy/opt/gz_rendering_vendor/lib:/opt/ros/jazzy/opt/gz_plugin_vendor/lib:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/lib:/opt/ros/jazzy/opt/gz_msgs_vendor/lib:/opt/ros/jazzy/opt/gz_common_vendor/lib:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_ogre_next_vendor/lib:/opt/ros/jazzy/opt/gz_dartsim_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/root', 'OLDPWD': '/', 'ROS_PYTHON_VERSION': '3', 'ROS_DISTRO': 'jazzy', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'TERM': 'xterm', 'PATH': '/opt/ros/jazzy/opt/gz_msgs_vendor/bin:/opt/ros/jazzy/opt/gz_tools_vendor/bin:/opt/ros/jazzy/opt/gz_ogre_next_vendor/bin:/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin', 'DISPLAY': ':0', 'LANG': 'C.UTF-8', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'AMENT_PREFIX_PATH': '/opt/ros/jazzy', 'IGN_GAZEBO_RESOURCE_PATH': '/opt/ros/jazzy/share', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'PWD': '/home/javierac/mounted/ws/build/mezuak', 'LC_ALL': 'C.UTF-8', 'PYTHONPATH': '/opt/ros/jazzy/lib/python3.12/site-packages', 'NVIDIA_VISIBLE_DEVICES': 'all', 'COLCON': '1', 'CMAKE_PREFIX_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy'}), 'shell': False}
+[0.299730] (-) TimerEvent: {}
+[0.304663] (mezuak) StdoutLine: {'line': b'-- Found ament_cmake: 2.5.4 (/opt/ros/jazzy/share/ament_cmake/cmake)\n'}
+[0.399914] (-) TimerEvent: {}
+[0.500306] (-) TimerEvent: {}
+[0.600684] (-) TimerEvent: {}
+[0.701227] (-) TimerEvent: {}
+[0.711982] (mezuak) StdoutLine: {'line': b'-- Found geometry_msgs: 5.3.6 (/opt/ros/jazzy/share/geometry_msgs/cmake)\n'}
+[0.756956] (mezuak) StdoutLine: {'line': b'-- Found rosidl_generator_c: 4.6.5 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)\n'}
+[0.770096] (mezuak) StdoutLine: {'line': b'-- Found rosidl_generator_cpp: 4.6.5 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)\n'}
+[0.786166] (mezuak) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[0.801405] (-) TimerEvent: {}
+[0.804920] (mezuak) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[0.874086] (mezuak) StdoutLine: {'line': b'-- Found rosidl_default_generators: 1.6.0 (/opt/ros/jazzy/share/rosidl_default_generators/cmake)\n'}
+[0.884327] (mezuak) StdoutLine: {'line': b'-- Found rosidl_adapter: 4.6.5 (/opt/ros/jazzy/share/rosidl_adapter/cmake)\n'}
+[0.886762] (mezuak) StdoutLine: {'line': b'-- Found action_msgs: 2.0.2 (/opt/ros/jazzy/share/action_msgs/cmake)\n'}
+[0.901616] (-) TimerEvent: {}
+[0.951505] (mezuak) StdoutLine: {'line': b'-- Found sensor_msgs: 5.3.6 (/opt/ros/jazzy/share/sensor_msgs/cmake)\n'}
+[1.001769] (-) TimerEvent: {}
+[1.026886] (ip_nodes) Command: {'cmd': ['/usr/bin/python3', '-W', 'ignore:setup.py install is deprecated', '-W', 'ignore:easy_install command is deprecated', 'setup.py', 'egg_info', '--egg-base', '../../build/ip_nodes', 'build', '--build-base', '/home/javierac/mounted/ws/build/ip_nodes/build', 'install', '--record', '/home/javierac/mounted/ws/build/ip_nodes/install.log', '--single-version-externally-managed', 'install_data'], 'cwd': '/home/javierac/mounted/ws/src/ip_nodes', 'env': {'GZ_CONFIG_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/share/gz:/opt/ros/jazzy/opt/sdformat_vendor/share/gz:/opt/ros/jazzy/opt/gz_gui_vendor/share/gz:/opt/ros/jazzy/opt/gz_transport_vendor/share/gz:/opt/ros/jazzy/opt/gz_rendering_vendor/share/gz:/opt/ros/jazzy/opt/gz_plugin_vendor/share/gz:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/share/gz:/opt/ros/jazzy/opt/gz_msgs_vendor/share/gz:/opt/ros/jazzy/opt/gz_common_vendor/share/gz', 'HOSTNAME': 'd8e6980ffd94', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/lib:/opt/ros/jazzy/opt/gz_sensors_vendor/lib:/opt/ros/jazzy/opt/gz_physics_vendor/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_gui_vendor/lib:/opt/ros/jazzy/opt/gz_transport_vendor/lib:/opt/ros/jazzy/opt/gz_rendering_vendor/lib:/opt/ros/jazzy/opt/gz_plugin_vendor/lib:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/lib:/opt/ros/jazzy/opt/gz_msgs_vendor/lib:/opt/ros/jazzy/opt/gz_common_vendor/lib:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_ogre_next_vendor/lib:/opt/ros/jazzy/opt/gz_dartsim_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/root', 'OLDPWD': '/', 'ROS_PYTHON_VERSION': '3', 'ROS_DISTRO': 'jazzy', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'TERM': 'xterm', 'PATH': '/opt/ros/jazzy/opt/gz_msgs_vendor/bin:/opt/ros/jazzy/opt/gz_tools_vendor/bin:/opt/ros/jazzy/opt/gz_ogre_next_vendor/bin:/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin', 'DISPLAY': ':0', 'LANG': 'C.UTF-8', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'AMENT_PREFIX_PATH': '/opt/ros/jazzy', 'IGN_GAZEBO_RESOURCE_PATH': '/opt/ros/jazzy/share', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'PWD': '/home/javierac/mounted/ws/build/ip_nodes', 'LC_ALL': 'C.UTF-8', 'PYTHONPATH': '/home/javierac/mounted/ws/build/ip_nodes/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/javierac/mounted/ws/install/ip_nodes/lib/python3.12/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages', 'NVIDIA_VISIBLE_DEVICES': 'all', 'COLCON': '1', 'CMAKE_PREFIX_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor'}, 'shell': False}
+[1.101983] (-) TimerEvent: {}
+[1.202423] (-) TimerEvent: {}
+[1.302905] (-) TimerEvent: {}
+[1.342259] (ip_nodes) StdoutLine: {'line': b'running egg_info\n'}
+[1.362077] (ip_nodes) StdoutLine: {'line': b'writing ../../build/ip_nodes/ip_nodes.egg-info/PKG-INFO\n'}
+[1.362591] (ip_nodes) StdoutLine: {'line': b'writing dependency_links to ../../build/ip_nodes/ip_nodes.egg-info/dependency_links.txt\n'}
+[1.362863] (ip_nodes) StdoutLine: {'line': b'writing entry points to ../../build/ip_nodes/ip_nodes.egg-info/entry_points.txt\n'}
+[1.363046] (ip_nodes) StdoutLine: {'line': b'writing requirements to ../../build/ip_nodes/ip_nodes.egg-info/requires.txt\n'}
+[1.363213] (ip_nodes) StdoutLine: {'line': b'writing top-level names to ../../build/ip_nodes/ip_nodes.egg-info/top_level.txt\n'}
+[1.403113] (-) TimerEvent: {}
+[1.404906] (ip_nodes) StdoutLine: {'line': b"reading manifest file '../../build/ip_nodes/ip_nodes.egg-info/SOURCES.txt'\n"}
+[1.405408] (ip_nodes) StdoutLine: {'line': b"adding license file 'LICENSE'\n"}
+[1.405995] (ip_nodes) StdoutLine: {'line': b"writing manifest file '../../build/ip_nodes/ip_nodes.egg-info/SOURCES.txt'\n"}
+[1.406373] (ip_nodes) StdoutLine: {'line': b'running build\n'}
+[1.406552] (ip_nodes) StdoutLine: {'line': b'running build_py\n'}
+[1.406811] (ip_nodes) StdoutLine: {'line': b'running install\n'}
+[1.416000] (ip_nodes) StdoutLine: {'line': b'running install_lib\n'}
+[1.437178] (ip_nodes) StdoutLine: {'line': b'running install_data\n'}
+[1.437613] (ip_nodes) StdoutLine: {'line': b'running install_egg_info\n'}
+[1.459203] (ip_nodes) StdoutLine: {'line': b"removing '/home/javierac/mounted/ws/install/ip_nodes/lib/python3.12/site-packages/ip_nodes-0.0.0-py3.12.egg-info' (and everything under it)\n"}
+[1.459692] (ip_nodes) StdoutLine: {'line': b'Copying ../../build/ip_nodes/ip_nodes.egg-info to /home/javierac/mounted/ws/install/ip_nodes/lib/python3.12/site-packages/ip_nodes-0.0.0-py3.12.egg-info\n'}
+[1.460586] (ip_nodes) StdoutLine: {'line': b'running install_scripts\n'}
+[1.503341] (-) TimerEvent: {}
+[1.603744] (-) TimerEvent: {}
+[1.608815] (ip_nodes) StdoutLine: {'line': b'Installing mugimendu_motorrak script to /home/javierac/mounted/ws/install/ip_nodes/lib/ip_nodes\n'}
+[1.609156] (ip_nodes) StdoutLine: {'line': b'Installing teklatua script to /home/javierac/mounted/ws/install/ip_nodes/lib/ip_nodes\n'}
+[1.609334] (ip_nodes) StdoutLine: {'line': b'Installing ultrasoinu_sentsorea script to /home/javierac/mounted/ws/install/ip_nodes/lib/ip_nodes\n'}
+[1.609687] (ip_nodes) StdoutLine: {'line': b"writing list of installed files to '/home/javierac/mounted/ws/build/ip_nodes/install.log'\n"}
+[1.648790] (ip_nodes) CommandEnded: {'returncode': 0}
+[1.662422] (ip_nodes) JobEnded: {'identifier': 'ip_nodes', 'rc': 0}
+[1.704103] (-) TimerEvent: {}
+[1.804430] (-) TimerEvent: {}
+[1.904761] (-) TimerEvent: {}
+[1.929793] (mezuak) StdoutLine: {'line': b'-- Found ament_cmake_ros: 0.12.0 (/opt/ros/jazzy/share/ament_cmake_ros/cmake)\n'}
+[2.004964] (-) TimerEvent: {}
+[2.105326] (-) TimerEvent: {}
+[2.205729] (-) TimerEvent: {}
+[2.306174] (-) TimerEvent: {}
+[2.406545] (-) TimerEvent: {}
+[2.506968] (-) TimerEvent: {}
+[2.607338] (-) TimerEvent: {}
+[2.707667] (-) TimerEvent: {}
+[2.808062] (-) TimerEvent: {}
+[2.908481] (-) TimerEvent: {}
+[3.008880] (-) TimerEvent: {}
+[3.109292] (-) TimerEvent: {}
+[3.118622] (mezuak) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[3.209489] (-) TimerEvent: {}
+[3.309878] (-) TimerEvent: {}
+[3.410327] (-) TimerEvent: {}
+[3.510726] (-) TimerEvent: {}
+[3.565562] (mezuak) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[3.574632] (mezuak) StdoutLine: {'line': b'-- Found python_cmake_module: 0.11.1 (/opt/ros/jazzy/share/python_cmake_module/cmake)\n'}
+[3.610923] (-) TimerEvent: {}
+[3.711268] (-) TimerEvent: {}
+[3.752401] (mezuak) StdoutLine: {'line': b'-- Found PythonExtra: /usr/bin/python3  \n'}
+[3.811366] (-) TimerEvent: {}
+[3.911716] (-) TimerEvent: {}
+[4.012101] (-) TimerEvent: {}
+[4.112560] (-) TimerEvent: {}
+[4.213018] (-) TimerEvent: {}
+[4.313433] (-) TimerEvent: {}
+[4.413825] (-) TimerEvent: {}
+[4.432553] (mezuak) StdoutLine: {'line': b'-- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter Development NumPy Development.Module Development.Embed \n'}
+[4.514027] (-) TimerEvent: {}
+[4.535607] (mezuak) StdoutLine: {'line': b'-- Found ament_lint_auto: 0.17.2 (/opt/ros/jazzy/share/ament_lint_auto/cmake)\n'}
+[4.611731] (mezuak) StdoutLine: {'line': b"-- Added test 'lint_cmake' to check CMake code style\n"}
+[4.614328] (-) TimerEvent: {}
+[4.615443] (mezuak) StdoutLine: {'line': b"-- Added test 'xmllint' to check XML markup files\n"}
+[4.620829] (mezuak) StdoutLine: {'line': b'-- Configuring done (4.3s)\n'}
+[4.684700] (mezuak) StdoutLine: {'line': b'-- Generating done (0.0s)\n'}
+[4.703413] (mezuak) StdoutLine: {'line': b'-- Build files have been written to: /home/javierac/mounted/ws/build/mezuak\n'}
+[4.712993] (mezuak) CommandEnded: {'returncode': 0}
+[4.713800] (mezuak) JobProgress: {'identifier': 'mezuak', 'progress': 'build'}
+[4.715058] (mezuak) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/javierac/mounted/ws/build/mezuak', '--', '-j20', '-l20'], 'cwd': '/home/javierac/mounted/ws/build/mezuak', 'env': OrderedDict({'GZ_CONFIG_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/share/gz:/opt/ros/jazzy/opt/sdformat_vendor/share/gz:/opt/ros/jazzy/opt/gz_gui_vendor/share/gz:/opt/ros/jazzy/opt/gz_transport_vendor/share/gz:/opt/ros/jazzy/opt/gz_rendering_vendor/share/gz:/opt/ros/jazzy/opt/gz_plugin_vendor/share/gz:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/share/gz:/opt/ros/jazzy/opt/gz_msgs_vendor/share/gz:/opt/ros/jazzy/opt/gz_common_vendor/share/gz', 'HOSTNAME': 'd8e6980ffd94', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/lib:/opt/ros/jazzy/opt/gz_sensors_vendor/lib:/opt/ros/jazzy/opt/gz_physics_vendor/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_gui_vendor/lib:/opt/ros/jazzy/opt/gz_transport_vendor/lib:/opt/ros/jazzy/opt/gz_rendering_vendor/lib:/opt/ros/jazzy/opt/gz_plugin_vendor/lib:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/lib:/opt/ros/jazzy/opt/gz_msgs_vendor/lib:/opt/ros/jazzy/opt/gz_common_vendor/lib:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_ogre_next_vendor/lib:/opt/ros/jazzy/opt/gz_dartsim_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/root', 'OLDPWD': '/', 'ROS_PYTHON_VERSION': '3', 'ROS_DISTRO': 'jazzy', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'TERM': 'xterm', 'PATH': '/opt/ros/jazzy/opt/gz_msgs_vendor/bin:/opt/ros/jazzy/opt/gz_tools_vendor/bin:/opt/ros/jazzy/opt/gz_ogre_next_vendor/bin:/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin', 'DISPLAY': ':0', 'LANG': 'C.UTF-8', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'AMENT_PREFIX_PATH': '/opt/ros/jazzy', 'IGN_GAZEBO_RESOURCE_PATH': '/opt/ros/jazzy/share', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'PWD': '/home/javierac/mounted/ws/build/mezuak', 'LC_ALL': 'C.UTF-8', 'PYTHONPATH': '/opt/ros/jazzy/lib/python3.12/site-packages', 'NVIDIA_VISIBLE_DEVICES': 'all', 'COLCON': '1', 'CMAKE_PREFIX_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy'}), 'shell': False}
+[4.715552] (-) TimerEvent: {}
+[4.792522] (mezuak) StdoutLine: {'line': b'[  2%] \x1b[34m\x1b[1mGenerating type hashes for ROS interfaces\x1b[0m\n'}
+[4.806883] (mezuak) StdoutLine: {'line': b'[  2%] Built target ament_cmake_python_copy_mezuak\n'}
+[4.815683] (-) TimerEvent: {}
+[4.916046] (-) TimerEvent: {}
+[5.016427] (-) TimerEvent: {}
+[5.079287] (mezuak) StdoutLine: {'line': b'running egg_info\n'}
+[5.080624] (mezuak) StdoutLine: {'line': b'creating mezuak.egg-info\n'}
+[5.088697] (mezuak) StdoutLine: {'line': b'[  2%] Built target mezuak__rosidl_generator_type_description\n'}
+[5.101042] (mezuak) StdoutLine: {'line': b'writing mezuak.egg-info/PKG-INFO\n'}
+[5.101420] (mezuak) StdoutLine: {'line': b'writing dependency_links to mezuak.egg-info/dependency_links.txt\n'}
+[5.101812] (mezuak) StdoutLine: {'line': b'writing top-level names to mezuak.egg-info/top_level.txt\n'}
+[5.102030] (mezuak) StdoutLine: {'line': b"writing manifest file 'mezuak.egg-info/SOURCES.txt'\n"}
+[5.109670] (mezuak) StdoutLine: {'line': b'[  5%] \x1b[34m\x1b[1mGenerating C code for ROS interfaces\x1b[0m\n'}
+[5.116523] (-) TimerEvent: {}
+[5.123234] (mezuak) StdoutLine: {'line': b'[  8%] \x1b[34m\x1b[1mGenerating C++ code for ROS interfaces\x1b[0m\n'}
+[5.164536] (mezuak) StdoutLine: {'line': b"reading manifest file 'mezuak.egg-info/SOURCES.txt'\n"}
+[5.165279] (mezuak) StdoutLine: {'line': b"writing manifest file 'mezuak.egg-info/SOURCES.txt'\n"}
+[5.209958] (mezuak) StdoutLine: {'line': b'[  8%] Built target ament_cmake_python_build_mezuak_egg\n'}
+[5.216738] (-) TimerEvent: {}
+[5.317221] (-) TimerEvent: {}
+[5.417594] (-) TimerEvent: {}
+[5.458777] (mezuak) StdoutLine: {'line': b'[  8%] Built target mezuak__cpp\n'}
+[5.487295] (mezuak) StdoutLine: {'line': b'[ 11%] \x1b[32mBuilding C object CMakeFiles/mezuak__rosidl_generator_c.dir/rosidl_generator_c/mezuak/msg/detail/mugimendu_kodetzaileak__description.c.o\x1b[0m\n'}
+[5.487656] (mezuak) StdoutLine: {'line': b'[ 14%] \x1b[32mBuilding C object CMakeFiles/mezuak__rosidl_generator_c.dir/rosidl_generator_c/mezuak/msg/detail/mugimendu_kodetzaileak__functions.c.o\x1b[0m\n'}
+[5.487906] (mezuak) StdoutLine: {'line': b'[ 17%] \x1b[32mBuilding C object CMakeFiles/mezuak__rosidl_generator_c.dir/rosidl_generator_c/mezuak/msg/detail/mugimendu_kodetzaileak__type_support.c.o\x1b[0m\n'}
+[5.517824] (-) TimerEvent: {}
+[5.587111] (mezuak) StdoutLine: {'line': b'[ 20%] \x1b[32m\x1b[1mLinking C shared library libmezuak__rosidl_generator_c.so\x1b[0m\n'}
+[5.618076] (-) TimerEvent: {}
+[5.649894] (mezuak) StdoutLine: {'line': b'[ 20%] Built target mezuak__rosidl_generator_c\n'}
+[5.667832] (mezuak) StdoutLine: {'line': b'[ 26%] \x1b[34m\x1b[1mGenerating C type support dispatch for ROS interfaces\x1b[0m\n'}
+[5.668255] (mezuak) StdoutLine: {'line': b'[ 26%] \x1b[34m\x1b[1mGenerating C++ introspection for ROS interfaces\x1b[0m\n'}
+[5.669934] (mezuak) StdoutLine: {'line': b'[ 29%] \x1b[34m\x1b[1mGenerating C introspection for ROS interfaces\x1b[0m\n'}
+[5.670247] (mezuak) StdoutLine: {'line': b'[ 32%] \x1b[34m\x1b[1mGenerating C++ type support dispatch for ROS interfaces\x1b[0m\n'}
+[5.671576] (mezuak) StdoutLine: {'line': b'[ 38%] \x1b[34m\x1b[1mGenerating C++ type support for eProsima Fast-RTPS\x1b[0m\n'}
+[5.671888] (mezuak) StdoutLine: {'line': b'[ 38%] \x1b[34m\x1b[1mGenerating C type support for eProsima Fast-RTPS\x1b[0m\n'}
+[5.718305] (-) TimerEvent: {}
+[5.818828] (-) TimerEvent: {}
+[5.919361] (-) TimerEvent: {}
+[6.008299] (mezuak) StdoutLine: {'line': b'[ 41%] \x1b[32mBuilding CXX object CMakeFiles/mezuak__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/mezuak/msg/mugimendu_kodetzaileak__type_support.cpp.o\x1b[0m\n'}
+[6.019529] (-) TimerEvent: {}
+[6.030961] (mezuak) StdoutLine: {'line': b'[ 44%] \x1b[32mBuilding C object CMakeFiles/mezuak__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/mezuak/msg/detail/mugimendu_kodetzaileak__type_support.c.o\x1b[0m\n'}
+[6.038280] (mezuak) StdoutLine: {'line': b'[ 47%] \x1b[32mBuilding CXX object CMakeFiles/mezuak__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/mezuak/msg/detail/mugimendu_kodetzaileak__type_support.cpp.o\x1b[0m\n'}
+[6.049638] (mezuak) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/mezuak__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/mezuak/msg/detail/dds_fastrtps/mugimendu_kodetzaileak__type_support.cpp.o\x1b[0m\n'}
+[6.053822] (mezuak) StdoutLine: {'line': b'[ 52%] \x1b[32mBuilding CXX object CMakeFiles/mezuak__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/mezuak/msg/detail/mugimendu_kodetzaileak__type_support_c.cpp.o\x1b[0m\n'}
+[6.072803] (mezuak) StdoutLine: {'line': b'[ 55%] \x1b[32mBuilding CXX object CMakeFiles/mezuak__rosidl_typesupport_c.dir/rosidl_typesupport_c/mezuak/msg/mugimendu_kodetzaileak__type_support.cpp.o\x1b[0m\n'}
+[6.096717] (mezuak) StdoutLine: {'line': b'[ 58%] \x1b[32m\x1b[1mLinking C shared library libmezuak__rosidl_typesupport_introspection_c.so\x1b[0m\n'}
+[6.119646] (-) TimerEvent: {}
+[6.144536] (mezuak) StdoutLine: {'line': b'[ 61%] \x1b[32m\x1b[1mLinking CXX shared library libmezuak__rosidl_typesupport_c.so\x1b[0m\n'}
+[6.160631] (mezuak) StdoutLine: {'line': b'[ 61%] Built target mezuak__rosidl_typesupport_introspection_c\n'}
+[6.219878] (-) TimerEvent: {}
+[6.222683] (mezuak) StdoutLine: {'line': b'[ 61%] Built target mezuak__rosidl_typesupport_c\n'}
+[6.320109] (-) TimerEvent: {}
+[6.420657] (-) TimerEvent: {}
+[6.494001] (mezuak) StdoutLine: {'line': b'[ 64%] \x1b[32m\x1b[1mLinking CXX shared library libmezuak__rosidl_typesupport_cpp.so\x1b[0m\n'}
+[6.520886] (-) TimerEvent: {}
+[6.570438] (mezuak) StdoutLine: {'line': b'[ 64%] Built target mezuak__rosidl_typesupport_cpp\n'}
+[6.601452] (mezuak) StdoutLine: {'line': b'[ 67%] \x1b[32m\x1b[1mLinking CXX shared library libmezuak__rosidl_typesupport_introspection_cpp.so\x1b[0m\n'}
+[6.621065] (-) TimerEvent: {}
+[6.686615] (mezuak) StdoutLine: {'line': b'[ 70%] \x1b[32m\x1b[1mLinking CXX shared library libmezuak__rosidl_typesupport_fastrtps_c.so\x1b[0m\n'}
+[6.690427] (mezuak) StdoutLine: {'line': b'[ 73%] \x1b[32m\x1b[1mLinking CXX shared library libmezuak__rosidl_typesupport_fastrtps_cpp.so\x1b[0m\n'}
+[6.719279] (mezuak) StdoutLine: {'line': b'[ 73%] Built target mezuak__rosidl_typesupport_introspection_cpp\n'}
+[6.721222] (-) TimerEvent: {}
+[6.774152] (mezuak) StdoutLine: {'line': b'[ 73%] Built target mezuak__rosidl_typesupport_fastrtps_c\n'}
+[6.808288] (mezuak) StdoutLine: {'line': b'[ 73%] Built target mezuak__rosidl_typesupport_fastrtps_cpp\n'}
+[6.821376] (-) TimerEvent: {}
+[6.839608] (mezuak) StdoutLine: {'line': b'[ 73%] Built target mezuak\n'}
+[6.869876] (mezuak) StdoutLine: {'line': b'[ 76%] \x1b[34m\x1b[1mGenerating Python code for ROS interfaces\x1b[0m\n'}
+[6.921474] (-) TimerEvent: {}
+[7.021866] (-) TimerEvent: {}
+[7.122344] (-) TimerEvent: {}
+[7.172970] (mezuak) StdoutLine: {'line': b'[ 76%] Built target mezuak__py\n'}
+[7.201182] (mezuak) StdoutLine: {'line': b'[ 79%] \x1b[32mBuilding C object CMakeFiles/mezuak__rosidl_generator_py.dir/rosidl_generator_py/mezuak/msg/_mugimendu_kodetzaileak_s.c.o\x1b[0m\n'}
+[7.222511] (-) TimerEvent: {}
+[7.322974] (-) TimerEvent: {}
+[7.421310] (mezuak) StdoutLine: {'line': b'[ 82%] \x1b[32m\x1b[1mLinking C shared library libmezuak__rosidl_generator_py.so\x1b[0m\n'}
+[7.423143] (-) TimerEvent: {}
+[7.502306] (mezuak) StdoutLine: {'line': b'[ 82%] Built target mezuak__rosidl_generator_py\n'}
+[7.523279] (-) TimerEvent: {}
+[7.531726] (mezuak) StdoutLine: {'line': b'[ 85%] \x1b[32mBuilding C object CMakeFiles/mezuak_s__rosidl_typesupport_fastrtps_c.dir/rosidl_generator_py/mezuak/_mezuak_s.ep.rosidl_typesupport_fastrtps_c.c.o\x1b[0m\n'}
+[7.536870] (mezuak) StdoutLine: {'line': b'[ 88%] \x1b[32mBuilding C object CMakeFiles/mezuak_s__rosidl_typesupport_c.dir/rosidl_generator_py/mezuak/_mezuak_s.ep.rosidl_typesupport_c.c.o\x1b[0m\n'}
+[7.539410] (mezuak) StdoutLine: {'line': b'[ 91%] \x1b[32mBuilding C object CMakeFiles/mezuak_s__rosidl_typesupport_introspection_c.dir/rosidl_generator_py/mezuak/_mezuak_s.ep.rosidl_typesupport_introspection_c.c.o\x1b[0m\n'}
+[7.623469] (-) TimerEvent: {}
+[7.681123] (mezuak) StdoutLine: {'line': b'[ 94%] \x1b[32m\x1b[1mLinking C shared module rosidl_generator_py/mezuak/mezuak_s__rosidl_typesupport_introspection_c.so\x1b[0m\n'}
+[7.681668] (mezuak) StdoutLine: {'line': b'[ 97%] \x1b[32m\x1b[1mLinking C shared module rosidl_generator_py/mezuak/mezuak_s__rosidl_typesupport_c.so\x1b[0m\n'}
+[7.682279] (mezuak) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking C shared module rosidl_generator_py/mezuak/mezuak_s__rosidl_typesupport_fastrtps_c.so\x1b[0m\n'}
+[7.723598] (-) TimerEvent: {}
+[7.732580] (mezuak) StdoutLine: {'line': b'[100%] Built target mezuak_s__rosidl_typesupport_c\n'}
+[7.732935] (mezuak) StdoutLine: {'line': b'[100%] Built target mezuak_s__rosidl_typesupport_introspection_c\n'}
+[7.733963] (mezuak) StdoutLine: {'line': b'[100%] Built target mezuak_s__rosidl_typesupport_fastrtps_c\n'}
+[7.751064] (mezuak) CommandEnded: {'returncode': 0}
+[7.752359] (mezuak) JobProgress: {'identifier': 'mezuak', 'progress': 'install'}
+[7.766355] (mezuak) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/javierac/mounted/ws/build/mezuak'], 'cwd': '/home/javierac/mounted/ws/build/mezuak', 'env': OrderedDict({'GZ_CONFIG_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/share/gz:/opt/ros/jazzy/opt/sdformat_vendor/share/gz:/opt/ros/jazzy/opt/gz_gui_vendor/share/gz:/opt/ros/jazzy/opt/gz_transport_vendor/share/gz:/opt/ros/jazzy/opt/gz_rendering_vendor/share/gz:/opt/ros/jazzy/opt/gz_plugin_vendor/share/gz:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/share/gz:/opt/ros/jazzy/opt/gz_msgs_vendor/share/gz:/opt/ros/jazzy/opt/gz_common_vendor/share/gz', 'HOSTNAME': 'd8e6980ffd94', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/lib:/opt/ros/jazzy/opt/gz_sensors_vendor/lib:/opt/ros/jazzy/opt/gz_physics_vendor/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_gui_vendor/lib:/opt/ros/jazzy/opt/gz_transport_vendor/lib:/opt/ros/jazzy/opt/gz_rendering_vendor/lib:/opt/ros/jazzy/opt/gz_plugin_vendor/lib:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/lib:/opt/ros/jazzy/opt/gz_msgs_vendor/lib:/opt/ros/jazzy/opt/gz_common_vendor/lib:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_ogre_next_vendor/lib:/opt/ros/jazzy/opt/gz_dartsim_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/root', 'OLDPWD': '/', 'ROS_PYTHON_VERSION': '3', 'ROS_DISTRO': 'jazzy', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'TERM': 'xterm', 'PATH': '/opt/ros/jazzy/opt/gz_msgs_vendor/bin:/opt/ros/jazzy/opt/gz_tools_vendor/bin:/opt/ros/jazzy/opt/gz_ogre_next_vendor/bin:/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin', 'DISPLAY': ':0', 'LANG': 'C.UTF-8', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'AMENT_PREFIX_PATH': '/opt/ros/jazzy', 'IGN_GAZEBO_RESOURCE_PATH': '/opt/ros/jazzy/share', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'PWD': '/home/javierac/mounted/ws/build/mezuak', 'LC_ALL': 'C.UTF-8', 'PYTHONPATH': '/opt/ros/jazzy/lib/python3.12/site-packages', 'NVIDIA_VISIBLE_DEVICES': 'all', 'COLCON': '1', 'CMAKE_PREFIX_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy'}), 'shell': False}
+[7.779655] (mezuak) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[7.779950] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/share/ament_index/resource_index/rosidl_interfaces/mezuak\n'}
+[7.780194] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/share/mezuak/msg/MugimenduKodetzaileak.json\n'}
+[7.780349] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/include/mezuak/mezuak\n'}
+[7.780616] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/include/mezuak/mezuak/msg\n'}
+[7.781005] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/include/mezuak/mezuak/msg/rosidl_generator_c__visibility_control.h\n'}
+[7.781216] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/include/mezuak/mezuak/msg/mugimendu_kodetzaileak.h\n'}
+[7.781396] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/include/mezuak/mezuak/msg/detail\n'}
+[7.781550] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/include/mezuak/mezuak/msg/detail/mugimendu_kodetzaileak__struct.h\n'}
+[7.781766] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/include/mezuak/mezuak/msg/detail/mugimendu_kodetzaileak__description.c\n'}
+[7.781961] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/include/mezuak/mezuak/msg/detail/mugimendu_kodetzaileak__type_support.h\n'}
+[7.782154] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/include/mezuak/mezuak/msg/detail/mugimendu_kodetzaileak__functions.c\n'}
+[7.782357] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/include/mezuak/mezuak/msg/detail/mugimendu_kodetzaileak__functions.h\n'}
+[7.782524] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/include/mezuak/mezuak/msg/detail/mugimendu_kodetzaileak__type_support.c\n'}
+[7.782679] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/share/mezuak/environment/library_path.sh\n'}
+[7.782893] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/share/mezuak/environment/library_path.dsv\n'}
+[7.783081] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/lib/libmezuak__rosidl_generator_c.so\n'}
+[7.783269] (mezuak) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/javierac/mounted/ws/install/mezuak/lib/libmezuak__rosidl_generator_c.so" to ""\n'}
+[7.783434] (mezuak) StdoutLine: {'line': b'-- Up-to-date: /home/javierac/mounted/ws/install/mezuak/include/mezuak/mezuak\n'}
+[7.783625] (mezuak) StdoutLine: {'line': b'-- Up-to-date: /home/javierac/mounted/ws/install/mezuak/include/mezuak/mezuak/msg\n'}
+[7.783818] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/include/mezuak/mezuak/msg/rosidl_typesupport_fastrtps_c__visibility_control.h\n'}
+[7.783991] (mezuak) StdoutLine: {'line': b'-- Up-to-date: /home/javierac/mounted/ws/install/mezuak/include/mezuak/mezuak/msg/detail\n'}
+[7.784171] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/include/mezuak/mezuak/msg/detail/mugimendu_kodetzaileak__rosidl_typesupport_fastrtps_c.h\n'}
+[7.784436] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/lib/libmezuak__rosidl_typesupport_fastrtps_c.so\n'}
+[7.784560] (mezuak) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/javierac/mounted/ws/install/mezuak/lib/libmezuak__rosidl_typesupport_fastrtps_c.so" to ""\n'}
+[7.784709] (mezuak) StdoutLine: {'line': b'-- Up-to-date: /home/javierac/mounted/ws/install/mezuak/include/mezuak/mezuak\n'}
+[7.784800] (mezuak) StdoutLine: {'line': b'-- Up-to-date: /home/javierac/mounted/ws/install/mezuak/include/mezuak/mezuak/msg\n'}
+[7.784904] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/include/mezuak/mezuak/msg/rosidl_generator_cpp__visibility_control.hpp\n'}
+[7.785006] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/include/mezuak/mezuak/msg/mugimendu_kodetzaileak.hpp\n'}
+[7.785087] (mezuak) StdoutLine: {'line': b'-- Up-to-date: /home/javierac/mounted/ws/install/mezuak/include/mezuak/mezuak/msg/detail\n'}
+[7.785177] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/include/mezuak/mezuak/msg/detail/mugimendu_kodetzaileak__traits.hpp\n'}
+[7.785261] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/include/mezuak/mezuak/msg/detail/mugimendu_kodetzaileak__struct.hpp\n'}
+[7.785395] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/include/mezuak/mezuak/msg/detail/mugimendu_kodetzaileak__builder.hpp\n'}
+[7.785473] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/include/mezuak/mezuak/msg/detail/mugimendu_kodetzaileak__type_support.hpp\n'}
+[7.785558] (mezuak) StdoutLine: {'line': b'-- Up-to-date: /home/javierac/mounted/ws/install/mezuak/include/mezuak/mezuak\n'}
+[7.785658] (mezuak) StdoutLine: {'line': b'-- Up-to-date: /home/javierac/mounted/ws/install/mezuak/include/mezuak/mezuak/msg\n'}
+[7.785745] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/include/mezuak/mezuak/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h\n'}
+[7.785870] (mezuak) StdoutLine: {'line': b'-- Up-to-date: /home/javierac/mounted/ws/install/mezuak/include/mezuak/mezuak/msg/detail\n'}
+[7.785958] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/include/mezuak/mezuak/msg/detail/mugimendu_kodetzaileak__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[7.786045] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/include/mezuak/mezuak/msg/detail/dds_fastrtps\n'}
+[7.786175] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/lib/libmezuak__rosidl_typesupport_fastrtps_cpp.so\n'}
+[7.786257] (mezuak) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/javierac/mounted/ws/install/mezuak/lib/libmezuak__rosidl_typesupport_fastrtps_cpp.so" to ""\n'}
+[7.786335] (mezuak) StdoutLine: {'line': b'-- Up-to-date: /home/javierac/mounted/ws/install/mezuak/include/mezuak/mezuak\n'}
+[7.786415] (mezuak) StdoutLine: {'line': b'-- Up-to-date: /home/javierac/mounted/ws/install/mezuak/include/mezuak/mezuak/msg\n'}
+[7.786497] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/include/mezuak/mezuak/msg/rosidl_typesupport_introspection_c__visibility_control.h\n'}
+[7.786617] (mezuak) StdoutLine: {'line': b'-- Up-to-date: /home/javierac/mounted/ws/install/mezuak/include/mezuak/mezuak/msg/detail\n'}
+[7.786699] (mezuak) StdoutLine: {'line': b'-- Up-to-date: /home/javierac/mounted/ws/install/mezuak/include/mezuak/mezuak/msg/detail/mugimendu_kodetzaileak__type_support.c\n'}
+[7.786776] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/include/mezuak/mezuak/msg/detail/mugimendu_kodetzaileak__rosidl_typesupport_introspection_c.h\n'}
+[7.786857] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/lib/libmezuak__rosidl_typesupport_introspection_c.so\n'}
+[7.786938] (mezuak) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/javierac/mounted/ws/install/mezuak/lib/libmezuak__rosidl_typesupport_introspection_c.so" to ""\n'}
+[7.787057] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/lib/libmezuak__rosidl_typesupport_c.so\n'}
+[7.787151] (mezuak) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/javierac/mounted/ws/install/mezuak/lib/libmezuak__rosidl_typesupport_c.so" to ""\n'}
+[7.787291] (mezuak) StdoutLine: {'line': b'-- Up-to-date: /home/javierac/mounted/ws/install/mezuak/include/mezuak/mezuak\n'}
+[7.787377] (mezuak) StdoutLine: {'line': b'-- Up-to-date: /home/javierac/mounted/ws/install/mezuak/include/mezuak/mezuak/msg\n'}
+[7.787493] (mezuak) StdoutLine: {'line': b'-- Up-to-date: /home/javierac/mounted/ws/install/mezuak/include/mezuak/mezuak/msg/detail\n'}
+[7.787573] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/include/mezuak/mezuak/msg/detail/mugimendu_kodetzaileak__rosidl_typesupport_introspection_cpp.hpp\n'}
+[7.787659] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/include/mezuak/mezuak/msg/detail/mugimendu_kodetzaileak__type_support.cpp\n'}
+[7.787772] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/lib/libmezuak__rosidl_typesupport_introspection_cpp.so\n'}
+[7.787859] (mezuak) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/javierac/mounted/ws/install/mezuak/lib/libmezuak__rosidl_typesupport_introspection_cpp.so" to ""\n'}
+[7.787991] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/lib/libmezuak__rosidl_typesupport_cpp.so\n'}
+[7.788073] (mezuak) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/javierac/mounted/ws/install/mezuak/lib/libmezuak__rosidl_typesupport_cpp.so" to ""\n'}
+[7.788184] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/share/mezuak/environment/pythonpath.sh\n'}
+[7.788284] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/share/mezuak/environment/pythonpath.dsv\n'}
+[7.788363] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/lib/python3.12/site-packages/mezuak-0.0.1-py3.12.egg-info\n'}
+[7.788462] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/lib/python3.12/site-packages/mezuak-0.0.1-py3.12.egg-info/dependency_links.txt\n'}
+[7.788578] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/lib/python3.12/site-packages/mezuak-0.0.1-py3.12.egg-info/PKG-INFO\n'}
+[7.788662] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/lib/python3.12/site-packages/mezuak-0.0.1-py3.12.egg-info/SOURCES.txt\n'}
+[7.788744] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/lib/python3.12/site-packages/mezuak-0.0.1-py3.12.egg-info/top_level.txt\n'}
+[7.788828] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/lib/python3.12/site-packages/mezuak\n'}
+[7.788950] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/lib/python3.12/site-packages/mezuak/__init__.py\n'}
+[7.789031] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/lib/python3.12/site-packages/mezuak/mezuak_s__rosidl_typesupport_fastrtps_c.so\n'}
+[7.789116] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/lib/python3.12/site-packages/mezuak/_mezuak_s.ep.rosidl_typesupport_c.c\n'}
+[7.789203] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/lib/python3.12/site-packages/mezuak/mezuak_s__rosidl_typesupport_c.so\n'}
+[7.789285] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/lib/python3.12/site-packages/mezuak/_mezuak_s.ep.rosidl_typesupport_fastrtps_c.c\n'}
+[7.789392] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/lib/python3.12/site-packages/mezuak/_mezuak_s.ep.rosidl_typesupport_introspection_c.c\n'}
+[7.789469] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/lib/python3.12/site-packages/mezuak/mezuak_s__rosidl_typesupport_introspection_c.so\n'}
+[7.789545] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/lib/python3.12/site-packages/mezuak/msg\n'}
+[7.789620] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/lib/python3.12/site-packages/mezuak/msg/__init__.py\n'}
+[7.789698] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/lib/python3.12/site-packages/mezuak/msg/_mugimendu_kodetzaileak.py\n'}
+[7.789778] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/lib/python3.12/site-packages/mezuak/msg/_mugimendu_kodetzaileak_s.c\n'}
+[7.823759] (-) TimerEvent: {}
+[7.844703] (mezuak) StdoutLine: {'line': b"Listing '/home/javierac/mounted/ws/install/mezuak/lib/python3.12/site-packages/mezuak'...\n"}
+[7.844903] (mezuak) StdoutLine: {'line': b"Compiling '/home/javierac/mounted/ws/install/mezuak/lib/python3.12/site-packages/mezuak/__init__.py'...\n"}
+[7.844981] (mezuak) StdoutLine: {'line': b"Listing '/home/javierac/mounted/ws/install/mezuak/lib/python3.12/site-packages/mezuak/msg'...\n"}
+[7.845051] (mezuak) StdoutLine: {'line': b"Compiling '/home/javierac/mounted/ws/install/mezuak/lib/python3.12/site-packages/mezuak/msg/__init__.py'...\n"}
+[7.845118] (mezuak) StdoutLine: {'line': b"Compiling '/home/javierac/mounted/ws/install/mezuak/lib/python3.12/site-packages/mezuak/msg/_mugimendu_kodetzaileak.py'...\n"}
+[7.852345] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/lib/python3.12/site-packages/mezuak/mezuak_s__rosidl_typesupport_fastrtps_c.so\n'}
+[7.852773] (mezuak) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/javierac/mounted/ws/install/mezuak/lib/python3.12/site-packages/mezuak/mezuak_s__rosidl_typesupport_fastrtps_c.so" to ""\n'}
+[7.852916] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/lib/python3.12/site-packages/mezuak/mezuak_s__rosidl_typesupport_introspection_c.so\n'}
+[7.852999] (mezuak) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/javierac/mounted/ws/install/mezuak/lib/python3.12/site-packages/mezuak/mezuak_s__rosidl_typesupport_introspection_c.so" to ""\n'}
+[7.853178] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/lib/python3.12/site-packages/mezuak/mezuak_s__rosidl_typesupport_c.so\n'}
+[7.853417] (mezuak) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/javierac/mounted/ws/install/mezuak/lib/python3.12/site-packages/mezuak/mezuak_s__rosidl_typesupport_c.so" to ""\n'}
+[7.853599] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/lib/libmezuak__rosidl_generator_py.so\n'}
+[7.853706] (mezuak) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/javierac/mounted/ws/install/mezuak/lib/libmezuak__rosidl_generator_py.so" to ""\n'}
+[7.853840] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/share/mezuak/msg/MugimenduKodetzaileak.idl\n'}
+[7.853960] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/share/mezuak/msg/MugimenduKodetzaileak.msg\n'}
+[7.854059] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/share/ament_index/resource_index/package_run_dependencies/mezuak\n'}
+[7.854271] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/share/ament_index/resource_index/parent_prefix_path/mezuak\n'}
+[7.854388] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/share/mezuak/environment/ament_prefix_path.sh\n'}
+[7.854498] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/share/mezuak/environment/ament_prefix_path.dsv\n'}
+[7.854604] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/share/mezuak/environment/path.sh\n'}
+[7.854697] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/share/mezuak/environment/path.dsv\n'}
+[7.854809] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/share/mezuak/local_setup.bash\n'}
+[7.854928] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/share/mezuak/local_setup.sh\n'}
+[7.855044] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/share/mezuak/local_setup.zsh\n'}
+[7.855164] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/share/mezuak/local_setup.dsv\n'}
+[7.855341] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/share/mezuak/package.dsv\n'}
+[7.855445] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/share/ament_index/resource_index/packages/mezuak\n'}
+[7.855617] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/share/mezuak/cmake/export_mezuak__rosidl_generator_cExport.cmake\n'}
+[7.855749] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/share/mezuak/cmake/export_mezuak__rosidl_generator_cExport-noconfig.cmake\n'}
+[7.855894] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/share/mezuak/cmake/export_mezuak__rosidl_typesupport_fastrtps_cExport.cmake\n'}
+[7.856027] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/share/mezuak/cmake/export_mezuak__rosidl_typesupport_fastrtps_cExport-noconfig.cmake\n'}
+[7.856168] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/share/mezuak/cmake/export_mezuak__rosidl_generator_cppExport.cmake\n'}
+[7.856307] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/share/mezuak/cmake/export_mezuak__rosidl_typesupport_fastrtps_cppExport.cmake\n'}
+[7.856432] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/share/mezuak/cmake/export_mezuak__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake\n'}
+[7.856577] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/share/mezuak/cmake/mezuak__rosidl_typesupport_introspection_cExport.cmake\n'}
+[7.856701] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/share/mezuak/cmake/mezuak__rosidl_typesupport_introspection_cExport-noconfig.cmake\n'}
+[7.856842] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/share/mezuak/cmake/mezuak__rosidl_typesupport_cExport.cmake\n'}
+[7.856968] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/share/mezuak/cmake/mezuak__rosidl_typesupport_cExport-noconfig.cmake\n'}
+[7.857111] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/share/mezuak/cmake/mezuak__rosidl_typesupport_introspection_cppExport.cmake\n'}
+[7.857256] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/share/mezuak/cmake/mezuak__rosidl_typesupport_introspection_cppExport-noconfig.cmake\n'}
+[7.857398] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/share/mezuak/cmake/mezuak__rosidl_typesupport_cppExport.cmake\n'}
+[7.857537] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/share/mezuak/cmake/mezuak__rosidl_typesupport_cppExport-noconfig.cmake\n'}
+[7.857678] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/share/mezuak/cmake/export_mezuak__rosidl_generator_pyExport.cmake\n'}
+[7.857812] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/share/mezuak/cmake/export_mezuak__rosidl_generator_pyExport-noconfig.cmake\n'}
+[7.857942] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/share/mezuak/cmake/rosidl_cmake-extras.cmake\n'}
+[7.858072] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/share/mezuak/cmake/ament_cmake_export_dependencies-extras.cmake\n'}
+[7.858210] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/share/mezuak/cmake/ament_cmake_export_include_directories-extras.cmake\n'}
+[7.858335] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/share/mezuak/cmake/ament_cmake_export_libraries-extras.cmake\n'}
+[7.858461] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/share/mezuak/cmake/ament_cmake_export_targets-extras.cmake\n'}
+[7.858589] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/share/mezuak/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake\n'}
+[7.858709] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/share/mezuak/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake\n'}
+[7.858844] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/share/mezuak/cmake/mezuakConfig.cmake\n'}
+[7.858960] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/share/mezuak/cmake/mezuakConfig-version.cmake\n'}
+[7.859090] (mezuak) StdoutLine: {'line': b'-- Installing: /home/javierac/mounted/ws/install/mezuak/share/mezuak/package.xml\n'}
+[7.862174] (mezuak) CommandEnded: {'returncode': 0}
+[7.883695] (mezuak) JobEnded: {'identifier': 'mezuak', 'rc': 0}
+[7.884860] (-) EventReactorShutdown: {}

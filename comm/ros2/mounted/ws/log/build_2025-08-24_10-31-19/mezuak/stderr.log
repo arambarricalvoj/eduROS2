@@ -1,0 +1,42 @@
+Error parsing '/home/javierac/mounted/ws/src/mezuak/package.xml':
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/catkin_pkg/package.py", line 610, in parse_package_string
+    root = dom.parseString(data)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/xml/dom/minidom.py", line 2000, in parseString
+    return expatbuilder.parseString(string)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/xml/dom/expatbuilder.py", line 922, in parseString
+    return builder.parseString(string)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/xml/dom/expatbuilder.py", line 220, in parseString
+    parser.Parse(string, True)
+xml.parsers.expat.ExpatError: mismatched tag: line 5, column 87
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/ros/jazzy/share/ament_cmake_core/cmake/core/package_xml_2_cmake.py", line 150, in <module>
+    main()
+  File "/opt/ros/jazzy/share/ament_cmake_core/cmake/core/package_xml_2_cmake.py", line 53, in main
+    raise e
+  File "/opt/ros/jazzy/share/ament_cmake_core/cmake/core/package_xml_2_cmake.py", line 49, in main
+    package = parse_package_string(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/catkin_pkg/package.py", line 612, in parse_package_string
+    raise InvalidPackage('The manifest contains invalid XML:\n%s' % ex, filename)
+catkin_pkg.package.InvalidPackage: Error(s) in package '/home/javierac/mounted/ws/src/mezuak/package.xml':
+The manifest contains invalid XML:
+mismatched tag: line 5, column 87
+[31mCMake Error at /opt/ros/jazzy/share/ament_cmake_core/cmake/core/ament_package_xml.cmake:95 (message):
+  execute_process(/usr/bin/python3
+  /opt/ros/jazzy/share/ament_cmake_core/cmake/core/package_xml_2_cmake.py
+  /home/javierac/mounted/ws/src/mezuak/package.xml
+  /home/javierac/mounted/ws/build/mezuak/ament_cmake_core/package.cmake)
+  returned error code 1
+Call Stack (most recent call first):
+  /opt/ros/jazzy/share/ament_cmake_core/cmake/core/ament_package_xml.cmake:49 (_ament_package_xml)
+  /opt/ros/jazzy/share/rosidl_cmake/cmake/rosidl_generate_interfaces.cmake:220 (ament_package_xml)
+  CMakeLists.txt:18 (rosidl_generate_interfaces)
+
+[0m

@@ -1,0 +1,4 @@
+source;share/mezuak/environment/ament_prefix_path.sh
+source;share/mezuak/environment/library_path.sh
+source;share/mezuak/environment/path.sh
+source;share/mezuak/environment/pythonpath.sh

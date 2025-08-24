@@ -5,6 +5,7 @@ from rclpy.node import Node
 from std_msgs.msg import String
 from geometry_msgs.msg import Twist
 from sensor_msgs.msg import JointState
+from mezuak.msg import MugimenduKodetzaileak
 from builtin_interfaces.msg import Time as TimeMsg
 
 # Beste liburutegiak
@@ -21,6 +22,7 @@ class MugimenduMotorrak(Node):
 
         # Argitaratzaileak
         self.joint_pub = self.create_publisher(JointState, 'joint_states', 10)
+        self.kodetzaileak_pub = self.create_publisher(MugimenduKodetzaileak, 'kodetzaileak', 10)
         
         # Entzuleak
         self.mugimendua_entzulea = self.create_subscription(
@@ -101,8 +103,13 @@ class MugimenduMotorrak(Node):
                 js.header.stamp = now
                 js.name = ['base_left_wheel_joint', 'base_right_wheel_joint']
                 js.position = [left_rad, right_rad]
-
                 self.joint_pub.publish(js)
+
+                # Publicar en kodetzaileak
+                mk = MugimenduKodetzaileak()
+                mk.graduak[0] = left_deg
+                mk.graduak[1] = right_deg
+                self.kodetzaileak_pub.publish(mk)
 
             except Exception as e:
                 self.get_logger().error(f"Error al recibir datos UDP: {e}")

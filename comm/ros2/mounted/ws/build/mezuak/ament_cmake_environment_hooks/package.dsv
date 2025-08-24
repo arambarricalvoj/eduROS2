@@ -1,0 +1,4 @@
+source;share/mezuak/local_setup.bash
+source;share/mezuak/local_setup.dsv
+source;share/mezuak/local_setup.sh
+source;share/mezuak/local_setup.zsh

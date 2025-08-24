@@ -10,6 +10,7 @@ setup.py
 ../../build/ip_nodes/ip_nodes.egg-info/top_level.txt
 ../../build/ip_nodes/ip_nodes.egg-info/zip-safe
 ip_nodes/__init__.py
+ip_nodes/biraketa_sentsorea.py
 ip_nodes/mugimendu_motorrak.py
 ip_nodes/teklatua.py
 ip_nodes/ultrasoinu_sentsorea.py
