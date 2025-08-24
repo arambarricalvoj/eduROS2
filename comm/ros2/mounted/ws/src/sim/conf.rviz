@@ -125,10 +125,12 @@ Visualization Manager:
           Value: true
         base_link:
           Value: true
+        base_gyro:
+          Value: false
         caster_wheel:
           Value: false
         ultrasonic:
-          Value: false
+          Value: true
       Marker Scale: 0.8
       Name: TF
       Show Arrows: false

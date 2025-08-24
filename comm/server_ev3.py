@@ -13,6 +13,8 @@ motIzq = LargeMotor(OUTPUT_A)
 motDer = LargeMotor(OUTPUT_D)
 
 ultrasonic = UltrasonicSensor(INPUT_2)
+gyro = GyroSensor(INPUT_3)
+gyro.reset()
 
 # ---------- Dirección IP --------------------------------
 ip = os.popen("hostname -I").read().strip()
@@ -74,6 +76,16 @@ def ultrasonidos_emisor_udp():
         udp_socket.sendto(mensaje.encode(), destino)
         time.sleep(0.1)
 
+# ---------- Publicación sensor de giro: emisor UDP ----------
+def giro_emisor_udp():
+    udp_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    destino = ("192.168.1.138", 5002)  # Cambia IP y puerto
+    print("Sensor de giro: emisor UDP en el puerto 5002")
+    while True:
+        mensaje = str(gyro.angle)
+        udp_socket.sendto(mensaje.encode(), destino)
+        time.sleep(0.05)
+
 """# ---------- Hilo TCP (envío) ----------
 def tcp_sender():
     tcp_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -109,6 +121,9 @@ if __name__ == "__main__":
     
     hilo_ultrasonicos_udp = threading.Thread(target=ultrasonidos_emisor_udp, daemon=True)
     hilo_ultrasonicos_udp.start()
+
+    hilo_giro_udp = threading.Thread(target=giro_emisor_udp, daemon=True)
+    hilo_giro_udp.start()
     
     hilo_encoders_udp = threading.Thread(target=encoders_emisor_udp, daemon=True)
     hilo_encoders_udp.start()
@@ -118,4 +133,3 @@ if __name__ == "__main__":
 
     # Mantener el programa vivo
     hilo_motores_movimientos_tcp.join()
-

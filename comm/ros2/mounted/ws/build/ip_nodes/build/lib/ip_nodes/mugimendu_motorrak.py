@@ -97,13 +97,13 @@ class MugimenduMotorrak(Node):
                 left_rad = self.graduak_radianetara(left_deg)
                 right_rad = self.graduak_radianetara(right_deg)
 
-                # Publicar en joint_states
+                """# Publicar en joint_states
                 js = JointState()
                 now = self.get_clock().now().to_msg()
                 js.header.stamp = now
                 js.name = ['base_left_wheel_joint', 'base_right_wheel_joint']
                 js.position = [left_rad, right_rad]
-                self.joint_pub.publish(js)
+                self.joint_pub.publish(js)"""
 
                 # Publicar en kodetzaileak
                 mk = MugimenduKodetzaileak()

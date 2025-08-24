@@ -26,6 +26,8 @@ setup(
             #'odom = ip_nodes.subscriber_odom_member_function:main',
             'mugimendu_motorrak = ip_nodes.mugimendu_motorrak:main',
             'ultrasoinu_sentsorea = ip_nodes.ultrasoinu_sentsorea:main',
+            'biraketa_sentsorea = ip_nodes.biraketa_sentsorea:main',
+            'joint_states = ip_nodes.joint_states:main',
         ],
     },
 )

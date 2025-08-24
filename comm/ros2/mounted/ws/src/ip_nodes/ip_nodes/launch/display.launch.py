@@ -70,5 +70,19 @@ def generate_launch_description():
         output='screen'
     )
 
-    return LaunchDescription([urdf_path_arg, rviz_config_arg, use_gui_arg, rsp, jsp_gui, rviz, teklatua, mugimendu_motorrak, ultrasoinu_sentsorea])
+    biraketa_sentsorea = Node(
+        package='ip_nodes',      
+        executable='biraketa_sentsorea',  
+        name='biraketa_sentsorea',
+        output='screen'
+    )
+
+    joint_states = Node(
+        package='ip_nodes',      
+        executable='joint_states',  
+        name='joint_states',
+        output='screen'
+    )
+
+    return LaunchDescription([urdf_path_arg, rviz_config_arg, use_gui_arg, rsp, jsp_gui, rviz, teklatua, mugimendu_motorrak, ultrasoinu_sentsorea, biraketa_sentsorea, joint_states])
 

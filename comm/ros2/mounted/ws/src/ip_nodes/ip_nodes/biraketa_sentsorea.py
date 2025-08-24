@@ -42,12 +42,12 @@ class BiraketaSentsorea(Node):
                     self.get_logger().warn("No se pudo convertir el valor a float")
                     continue
 
-                # Publicar en joint_states
+                """# Publicar en joint_states
                 js = JointState()
                 js.header.stamp = self.get_clock().now().to_msg()
                 js.name = ['base_gyro_joint']
                 js.position = [float((-1) * math.radians(angelua))]
-                self.joint_pub.publish(js)
+                self.joint_pub.publish(js)"""
 
                 msg = Int32()
                 msg.data = angelua

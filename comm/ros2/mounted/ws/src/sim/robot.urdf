@@ -26,6 +26,8 @@
         </visual>
     </link>
 
+    <link name="base_gyro"/>
+
     <link name="ultrasonic">
         <visual>
             <geometry>
@@ -68,8 +70,15 @@
 
     <joint name="base_joint" type="fixed">
         <parent link="base_footprint"/>
-        <child link="base_link"/>
+        <child link="base_gyro"/>
         <origin xyz="0 0 0.1" rpy="0 0 0"/>
+    </joint>
+
+    <joint name="base_gyro_joint" type="continuous">
+        <parent link="base_gyro"/>
+        <child link="base_link"/>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <axis xyz="0 0 1"/>
     </joint>
 
     <joint name="base_ultrasonic_joint" type="fixed">
