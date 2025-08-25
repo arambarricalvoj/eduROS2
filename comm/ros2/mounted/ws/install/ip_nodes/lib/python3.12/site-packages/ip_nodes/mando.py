@@ -1,57 +1,86 @@
-# --- IMPORTACIONES ---
 import rclpy
 from rclpy.node import Node
+from sensor_msgs.msg import Joy
 from geometry_msgs.msg import Twist
-import threading
-from inputs import get_gamepad
-# --- IMPORTACIONES ---
-
 
 class Mando(Node):
     def __init__(self):
-        super().__init__('mando')
-        self.get_logger().info("Nodo iniciado: mando DualShock4")
-
-        # Parámetro de velocidad
+        super().__init__('mando_joy')
         self.declare_parameter('abiadura', 25.0)
         self.abiadura = self.get_parameter('abiadura').value
 
-        # Publicador
+        self.sub = self.create_subscription(Joy, '/joy', self.callback_joy, 10)
         self.pub = self.create_publisher(Twist, '/cmd_vel', 10)
 
-        # Hilo para leer el mando
-        self.hilo_mando = threading.Thread(target=self.leer_mando, daemon=True)
-        self.hilo_mando.start()
+        self.deadzone = 0.2
+        self.boton_stop = 0  # Índice del botón X (SOUTH) → AJUSTA según tu mando
 
-    # --- MANDO con hilo ---
-    def leer_mando(self):
-        while rclpy.ok():
-            try:
-                events = get_gamepad()
-                for event in events:
-                    msg = Twist()
-                    # Pulsación
-                    if event.code == 'BTN_NORTH' and event.state == 1:
-                        msg.linear.x = -self.abiadura
-                        self.pub.publish(msg)
-                    elif event.code == 'BTN_SOUTH' and event.state == 1:
-                        msg.linear.x = self.abiadura
-                        self.pub.publish(msg)
-                    elif event.code == 'BTN_WEST' and event.state == 1:
-                        msg.angular.z = self.abiadura
-                        self.pub.publish(msg)
-                    elif event.code == 'BTN_EAST' and event.state == 1:
-                        msg.angular.z = -self.abiadura
-                        self.pub.publish(msg)
+        self.joystick_activo = True
+        self.boton_stop_anterior = 0
 
-                    # Soltar botón → STOP
-                    elif event.code in ['BTN_SOUTH', 'BTN_EAST', 'BTN_WEST', 'BTN_NORTH'] and event.state == 0:
-                        self.get_logger().info("STOP")
-                        self.pub.publish(Twist())
+        # Últimos valores publicados
+        self.last_linear = 0.0
+        self.last_angular = 0.0
+        self.change_threshold = 0.05
 
-            except Exception:
-                pass  # No hay eventos o no hay mando conectado
+        self.get_logger().info("Nodo Mando suscrito a /joy listo ✅")
 
+    def callback_joy(self, joy_msg: Joy):
+        boton_actual = joy_msg.buttons[self.boton_stop]
+
+        # Toggle joystick activo/desactivo
+        if boton_actual == 1 and self.boton_stop_anterior == 0:
+            self.joystick_activo = not self.joystick_activo
+            estado = "ACTIVADO ✅" if self.joystick_activo else "DESACTIVADO 🛑"
+            self.get_logger().info(f"Joystick {estado}")
+            if not self.joystick_activo:
+                self.pub.publish(Twist())
+                self.last_linear = 0.0
+                self.last_angular = 0.0
+
+        self.boton_stop_anterior = boton_actual
+
+        twist = Twist()
+
+        if self.joystick_activo:
+            # Control con stick izquierdo
+            eje_x = joy_msg.axes[0]
+            eje_y = joy_msg.axes[1]
+
+            if abs(eje_x) < self.deadzone:
+                eje_x = 0.0
+            if abs(eje_y) < self.deadzone:
+                eje_y = 0.0
+
+            linear = eje_y * self.abiadura
+            angular = eje_x * self.abiadura
+
+        else:
+            # Control con cruceta (D-Pad)
+            dpad_x = joy_msg.axes[6]  # izquierda/derecha
+            dpad_y = joy_msg.axes[7]  # arriba/abajo
+
+            linear = 0.0
+            angular = 0.0
+
+            if dpad_y == 1.0:   # Arriba
+                linear = self.abiadura
+            elif dpad_y == -1.0:  # Abajo
+                linear = -self.abiadura
+
+            if dpad_x == 1.0:   # Izquierda
+                angular = self.abiadura
+            elif dpad_x == -1.0:  # Derecha
+                angular = -self.abiadura
+
+        # Publicar solo si hay cambio significativo
+        if (abs(linear - self.last_linear) > self.change_threshold or
+            abs(angular - self.last_angular) > self.change_threshold):
+            twist.linear.x = linear
+            twist.angular.z = angular
+            self.pub.publish(twist)
+            self.last_linear = linear
+            self.last_angular = angular
 
 def main(args=None):
     rclpy.init(args=args)

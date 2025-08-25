@@ -1,0 +1,221 @@
+[0.173s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build']
+[0.173s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='build', build_base='build', install_base='install', merge_install=False, symlink_install=False, test_result_base=None, continue_on_error=False, executor='parallel', parallel_workers=20, event_handlers=None, ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['.'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=None, packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, cmake_args=None, cmake_target=None, cmake_target_skip_unavailable=False, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, ament_cmake_args=None, catkin_cmake_args=None, catkin_skip_building_tests=False, mixin_files=None, mixin=None, verb_parser=<colcon_mixin.mixin.mixin_argument.MixinArgumentDecorator object at 0x746b5007d220>, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x746b5007cf20>, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x746b5007cf20>>, mixin_verb=('build',))
+[0.246s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[0.247s] INFO:colcon.colcon_metadata.package_discovery.colcon_meta:Using configuration from '/root/.colcon/metadata/default/Gazebo.meta'
+[0.247s] INFO:colcon.colcon_metadata.package_discovery.colcon_meta:Using configuration from '/root/.colcon/metadata/default/fastdds.meta'
+[0.248s] INFO:colcon.colcon_metadata.package_discovery.colcon_meta:Using configuration from '/root/.colcon/metadata/default/fastrtps.meta'
+[0.248s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[0.248s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[0.248s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[0.248s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[0.248s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[0.249s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/javierac/mounted/ws'
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[0.303s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[0.303s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[0.303s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[0.303s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[0.303s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[0.303s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[0.304s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[0.304s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[0.304s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[0.304s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[0.304s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[0.304s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[0.304s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[0.305s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[0.305s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ignore', 'ignore_ament_install']
+[0.305s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore'
+[0.305s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore_ament_install'
+[0.305s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_pkg']
+[0.305s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_pkg'
+[0.305s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_meta']
+[0.305s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_meta'
+[0.305s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ros']
+[0.305s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ros'
+[0.305s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['cmake', 'python']
+[0.305s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'cmake'
+[0.305s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python'
+[0.305s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['python_setup_py']
+[0.305s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python_setup_py'
+[0.306s] Level 1:colcon.colcon_core.package_identification:_identify(src/ip_nodes) by extensions ['ignore', 'ignore_ament_install']
+[0.306s] Level 1:colcon.colcon_core.package_identification:_identify(src/ip_nodes) by extension 'ignore'
+[0.306s] Level 1:colcon.colcon_core.package_identification:_identify(src/ip_nodes) by extension 'ignore_ament_install'
+[0.306s] Level 1:colcon.colcon_core.package_identification:_identify(src/ip_nodes) by extensions ['colcon_pkg']
+[0.306s] Level 1:colcon.colcon_core.package_identification:_identify(src/ip_nodes) by extension 'colcon_pkg'
+[0.306s] Level 1:colcon.colcon_core.package_identification:_identify(src/ip_nodes) by extensions ['colcon_meta']
+[0.306s] Level 1:colcon.colcon_core.package_identification:_identify(src/ip_nodes) by extension 'colcon_meta'
+[0.306s] Level 1:colcon.colcon_core.package_identification:_identify(src/ip_nodes) by extensions ['ros']
+[0.306s] Level 1:colcon.colcon_core.package_identification:_identify(src/ip_nodes) by extension 'ros'
+[0.310s] DEBUG:colcon.colcon_core.package_identification:Package 'src/ip_nodes' with type 'ros.ament_python' and name 'ip_nodes'
+[0.310s] Level 1:colcon.colcon_core.package_identification:_identify(src/mezuak) by extensions ['ignore', 'ignore_ament_install']
+[0.311s] Level 1:colcon.colcon_core.package_identification:_identify(src/mezuak) by extension 'ignore'
+[0.311s] Level 1:colcon.colcon_core.package_identification:_identify(src/mezuak) by extension 'ignore_ament_install'
+[0.311s] Level 1:colcon.colcon_core.package_identification:_identify(src/mezuak) by extensions ['colcon_pkg']
+[0.311s] Level 1:colcon.colcon_core.package_identification:_identify(src/mezuak) by extension 'colcon_pkg'
+[0.311s] Level 1:colcon.colcon_core.package_identification:_identify(src/mezuak) by extensions ['colcon_meta']
+[0.311s] Level 1:colcon.colcon_core.package_identification:_identify(src/mezuak) by extension 'colcon_meta'
+[0.311s] Level 1:colcon.colcon_core.package_identification:_identify(src/mezuak) by extensions ['ros']
+[0.311s] Level 1:colcon.colcon_core.package_identification:_identify(src/mezuak) by extension 'ros'
+[0.312s] DEBUG:colcon.colcon_core.package_identification:Package 'src/mezuak' with type 'ros.ament_cmake' and name 'mezuak'
+[0.313s] Level 1:colcon.colcon_core.package_identification:_identify(src/sim) by extensions ['ignore', 'ignore_ament_install']
+[0.313s] Level 1:colcon.colcon_core.package_identification:_identify(src/sim) by extension 'ignore'
+[0.313s] Level 1:colcon.colcon_core.package_identification:_identify(src/sim) by extension 'ignore_ament_install'
+[0.313s] Level 1:colcon.colcon_core.package_identification:_identify(src/sim) by extensions ['colcon_pkg']
+[0.313s] Level 1:colcon.colcon_core.package_identification:_identify(src/sim) by extension 'colcon_pkg'
+[0.313s] Level 1:colcon.colcon_core.package_identification:_identify(src/sim) by extensions ['colcon_meta']
+[0.313s] Level 1:colcon.colcon_core.package_identification:_identify(src/sim) by extension 'colcon_meta'
+[0.313s] Level 1:colcon.colcon_core.package_identification:_identify(src/sim) by extensions ['ros']
+[0.313s] Level 1:colcon.colcon_core.package_identification:_identify(src/sim) by extension 'ros'
+[0.313s] Level 1:colcon.colcon_core.package_identification:_identify(src/sim) by extensions ['cmake', 'python']
+[0.314s] Level 1:colcon.colcon_core.package_identification:_identify(src/sim) by extension 'cmake'
+[0.314s] Level 1:colcon.colcon_core.package_identification:_identify(src/sim) by extension 'python'
+[0.314s] Level 1:colcon.colcon_core.package_identification:_identify(src/sim) by extensions ['python_setup_py']
+[0.314s] Level 1:colcon.colcon_core.package_identification:_identify(src/sim) by extension 'python_setup_py'
+[0.314s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[0.314s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[0.314s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[0.314s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[0.314s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[0.348s] Level 5:colcon.colcon_core.verb:set package 'ip_nodes' build argument 'cmake_args' from command line to 'None'
+[0.348s] Level 5:colcon.colcon_core.verb:set package 'ip_nodes' build argument 'cmake_target' from command line to 'None'
+[0.348s] Level 5:colcon.colcon_core.verb:set package 'ip_nodes' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.348s] Level 5:colcon.colcon_core.verb:set package 'ip_nodes' build argument 'cmake_clean_cache' from command line to 'False'
+[0.348s] Level 5:colcon.colcon_core.verb:set package 'ip_nodes' build argument 'cmake_clean_first' from command line to 'False'
+[0.348s] Level 5:colcon.colcon_core.verb:set package 'ip_nodes' build argument 'cmake_force_configure' from command line to 'False'
+[0.348s] Level 5:colcon.colcon_core.verb:set package 'ip_nodes' build argument 'ament_cmake_args' from command line to 'None'
+[0.348s] Level 5:colcon.colcon_core.verb:set package 'ip_nodes' build argument 'catkin_cmake_args' from command line to 'None'
+[0.348s] Level 5:colcon.colcon_core.verb:set package 'ip_nodes' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.348s] DEBUG:colcon.colcon_core.verb:Building package 'ip_nodes' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/javierac/mounted/ws/build/ip_nodes', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/javierac/mounted/ws/install/ip_nodes', 'merge_install': False, 'path': '/home/javierac/mounted/ws/src/ip_nodes', 'symlink_install': False, 'test_result_base': None}
+[0.349s] Level 5:colcon.colcon_core.verb:set package 'mezuak' build argument 'cmake_args' from command line to 'None'
+[0.349s] Level 5:colcon.colcon_core.verb:set package 'mezuak' build argument 'cmake_target' from command line to 'None'
+[0.349s] Level 5:colcon.colcon_core.verb:set package 'mezuak' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.349s] Level 5:colcon.colcon_core.verb:set package 'mezuak' build argument 'cmake_clean_cache' from command line to 'False'
+[0.349s] Level 5:colcon.colcon_core.verb:set package 'mezuak' build argument 'cmake_clean_first' from command line to 'False'
+[0.349s] Level 5:colcon.colcon_core.verb:set package 'mezuak' build argument 'cmake_force_configure' from command line to 'False'
+[0.349s] Level 5:colcon.colcon_core.verb:set package 'mezuak' build argument 'ament_cmake_args' from command line to 'None'
+[0.349s] Level 5:colcon.colcon_core.verb:set package 'mezuak' build argument 'catkin_cmake_args' from command line to 'None'
+[0.349s] Level 5:colcon.colcon_core.verb:set package 'mezuak' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.349s] DEBUG:colcon.colcon_core.verb:Building package 'mezuak' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/javierac/mounted/ws/build/mezuak', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/javierac/mounted/ws/install/mezuak', 'merge_install': False, 'path': '/home/javierac/mounted/ws/src/mezuak', 'symlink_install': False, 'test_result_base': None}
+[0.349s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[0.350s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[0.351s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/javierac/mounted/ws/src/ip_nodes' with build type 'ament_python'
+[0.351s] Level 1:colcon.colcon_core.shell:create_environment_hook('ip_nodes', 'ament_prefix_path')
+[0.354s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[0.355s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/javierac/mounted/ws/install/ip_nodes/share/ip_nodes/hook/ament_prefix_path.ps1'
+[0.355s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/javierac/mounted/ws/install/ip_nodes/share/ip_nodes/hook/ament_prefix_path.dsv'
+[0.356s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/javierac/mounted/ws/install/ip_nodes/share/ip_nodes/hook/ament_prefix_path.sh'
+[0.357s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.357s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.364s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/javierac/mounted/ws/src/mezuak' with build type 'ament_cmake'
+[0.364s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/javierac/mounted/ws/src/mezuak'
+[0.365s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.365s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.715s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/javierac/mounted/ws/src/ip_nodes'
+[0.715s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.716s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.726s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/javierac/mounted/ws/build/mezuak': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/javierac/mounted/ws/install/ip_nodes:/opt/ros/jazzy /usr/bin/cmake --build /home/javierac/mounted/ws/build/mezuak -- -j20 -l20
+[1.445s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/javierac/mounted/ws/build/mezuak' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/javierac/mounted/ws/install/ip_nodes:/opt/ros/jazzy /usr/bin/cmake --build /home/javierac/mounted/ws/build/mezuak -- -j20 -l20
+[1.465s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/javierac/mounted/ws/build/mezuak': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/javierac/mounted/ws/install/ip_nodes:/opt/ros/jazzy /usr/bin/cmake --install /home/javierac/mounted/ws/build/mezuak
+[1.576s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(mezuak)
+[1.577s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/javierac/mounted/ws/build/mezuak' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/javierac/mounted/ws/install/ip_nodes:/opt/ros/jazzy /usr/bin/cmake --install /home/javierac/mounted/ws/build/mezuak
+[1.580s] Level 1:colcon.colcon_core.environment:checking '/home/javierac/mounted/ws/install/mezuak' for CMake module files
+[1.581s] Level 1:colcon.colcon_core.environment:checking '/home/javierac/mounted/ws/install/mezuak' for CMake config files
+[1.581s] Level 1:colcon.colcon_core.shell:create_environment_hook('mezuak', 'cmake_prefix_path')
+[1.581s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/javierac/mounted/ws/install/mezuak/share/mezuak/hook/cmake_prefix_path.ps1'
+[1.582s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/javierac/mounted/ws/install/mezuak/share/mezuak/hook/cmake_prefix_path.dsv'
+[1.582s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/javierac/mounted/ws/install/mezuak/share/mezuak/hook/cmake_prefix_path.sh'
+[1.583s] Level 1:colcon.colcon_core.environment:checking '/home/javierac/mounted/ws/install/mezuak/lib'
+[1.584s] Level 1:colcon.colcon_core.shell:create_environment_hook('mezuak', 'ld_library_path_lib')
+[1.584s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/javierac/mounted/ws/install/mezuak/share/mezuak/hook/ld_library_path_lib.ps1'
+[1.585s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/javierac/mounted/ws/install/mezuak/share/mezuak/hook/ld_library_path_lib.dsv'
+[1.585s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/javierac/mounted/ws/install/mezuak/share/mezuak/hook/ld_library_path_lib.sh'
+[1.586s] Level 1:colcon.colcon_core.environment:checking '/home/javierac/mounted/ws/install/mezuak/bin'
+[1.586s] Level 1:colcon.colcon_core.environment:checking '/home/javierac/mounted/ws/install/mezuak/lib/pkgconfig/mezuak.pc'
+[1.586s] Level 1:colcon.colcon_core.environment:checking '/home/javierac/mounted/ws/install/mezuak/lib/python3.12/site-packages'
+[1.586s] Level 1:colcon.colcon_core.shell:create_environment_hook('mezuak', 'pythonpath')
+[1.587s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/javierac/mounted/ws/install/mezuak/share/mezuak/hook/pythonpath.ps1'
+[1.587s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/javierac/mounted/ws/install/mezuak/share/mezuak/hook/pythonpath.dsv'
+[1.588s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/javierac/mounted/ws/install/mezuak/share/mezuak/hook/pythonpath.sh'
+[1.588s] Level 1:colcon.colcon_core.environment:checking '/home/javierac/mounted/ws/install/mezuak/bin'
+[1.589s] INFO:colcon.colcon_core.shell:Creating package script '/home/javierac/mounted/ws/install/mezuak/share/mezuak/package.ps1'
+[1.590s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/javierac/mounted/ws/install/mezuak/share/mezuak/package.dsv'
+[1.591s] INFO:colcon.colcon_core.shell:Creating package script '/home/javierac/mounted/ws/install/mezuak/share/mezuak/package.sh'
+[1.592s] INFO:colcon.colcon_core.shell:Creating package script '/home/javierac/mounted/ws/install/mezuak/share/mezuak/package.bash'
+[1.593s] INFO:colcon.colcon_core.shell:Creating package script '/home/javierac/mounted/ws/install/mezuak/share/mezuak/package.zsh'
+[1.594s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/javierac/mounted/ws/install/mezuak/share/colcon-core/packages/mezuak)
+[1.595s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(mezuak)
+[1.595s] Level 1:colcon.colcon_core.environment:checking '/home/javierac/mounted/ws/install/mezuak' for CMake module files
+[1.596s] Level 1:colcon.colcon_core.environment:checking '/home/javierac/mounted/ws/install/mezuak' for CMake config files
+[1.596s] Level 1:colcon.colcon_core.shell:create_environment_hook('mezuak', 'cmake_prefix_path')
+[1.596s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/javierac/mounted/ws/install/mezuak/share/mezuak/hook/cmake_prefix_path.ps1'
+[1.597s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/javierac/mounted/ws/install/mezuak/share/mezuak/hook/cmake_prefix_path.dsv'
+[1.598s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/javierac/mounted/ws/install/mezuak/share/mezuak/hook/cmake_prefix_path.sh'
+[1.598s] Level 1:colcon.colcon_core.environment:checking '/home/javierac/mounted/ws/install/mezuak/lib'
+[1.599s] Level 1:colcon.colcon_core.shell:create_environment_hook('mezuak', 'ld_library_path_lib')
+[1.599s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/javierac/mounted/ws/install/mezuak/share/mezuak/hook/ld_library_path_lib.ps1'
+[1.599s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/javierac/mounted/ws/install/mezuak/share/mezuak/hook/ld_library_path_lib.dsv'
+[1.600s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/javierac/mounted/ws/install/mezuak/share/mezuak/hook/ld_library_path_lib.sh'
+[1.600s] Level 1:colcon.colcon_core.environment:checking '/home/javierac/mounted/ws/install/mezuak/bin'
+[1.601s] Level 1:colcon.colcon_core.environment:checking '/home/javierac/mounted/ws/install/mezuak/lib/pkgconfig/mezuak.pc'
+[1.601s] Level 1:colcon.colcon_core.environment:checking '/home/javierac/mounted/ws/install/mezuak/lib/python3.12/site-packages'
+[1.601s] Level 1:colcon.colcon_core.shell:create_environment_hook('mezuak', 'pythonpath')
+[1.601s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/javierac/mounted/ws/install/mezuak/share/mezuak/hook/pythonpath.ps1'
+[1.602s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/javierac/mounted/ws/install/mezuak/share/mezuak/hook/pythonpath.dsv'
+[1.602s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/javierac/mounted/ws/install/mezuak/share/mezuak/hook/pythonpath.sh'
+[1.603s] Level 1:colcon.colcon_core.environment:checking '/home/javierac/mounted/ws/install/mezuak/bin'
+[1.604s] INFO:colcon.colcon_core.shell:Creating package script '/home/javierac/mounted/ws/install/mezuak/share/mezuak/package.ps1'
+[1.604s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/javierac/mounted/ws/install/mezuak/share/mezuak/package.dsv'
+[1.605s] INFO:colcon.colcon_core.shell:Creating package script '/home/javierac/mounted/ws/install/mezuak/share/mezuak/package.sh'
+[1.606s] INFO:colcon.colcon_core.shell:Creating package script '/home/javierac/mounted/ws/install/mezuak/share/mezuak/package.bash'
+[1.606s] INFO:colcon.colcon_core.shell:Creating package script '/home/javierac/mounted/ws/install/mezuak/share/mezuak/package.zsh'
+[1.607s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/javierac/mounted/ws/install/mezuak/share/colcon-core/packages/mezuak)
+[1.628s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/javierac/mounted/ws/src/ip_nodes': PYTHONPATH=/home/javierac/mounted/ws/build/ip_nodes/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/javierac/mounted/ws/install/ip_nodes/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/ip_nodes build --build-base /home/javierac/mounted/ws/build/ip_nodes/build install --record /home/javierac/mounted/ws/build/ip_nodes/install.log --single-version-externally-managed install_data
+[2.295s] Level 1:colcon.colcon_core.environment:checking '/home/javierac/mounted/ws/install/ip_nodes' for CMake module files
+[2.296s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/javierac/mounted/ws/src/ip_nodes' returned '0': PYTHONPATH=/home/javierac/mounted/ws/build/ip_nodes/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/javierac/mounted/ws/install/ip_nodes/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/ip_nodes build --build-base /home/javierac/mounted/ws/build/ip_nodes/build install --record /home/javierac/mounted/ws/build/ip_nodes/install.log --single-version-externally-managed install_data
+[2.297s] Level 1:colcon.colcon_core.environment:checking '/home/javierac/mounted/ws/install/ip_nodes' for CMake config files
+[2.298s] Level 1:colcon.colcon_core.environment:checking '/home/javierac/mounted/ws/install/ip_nodes/lib'
+[2.298s] Level 1:colcon.colcon_core.environment:checking '/home/javierac/mounted/ws/install/ip_nodes/bin'
+[2.298s] Level 1:colcon.colcon_core.environment:checking '/home/javierac/mounted/ws/install/ip_nodes/lib/pkgconfig/ip_nodes.pc'
+[2.298s] Level 1:colcon.colcon_core.environment:checking '/home/javierac/mounted/ws/install/ip_nodes/lib/python3.12/site-packages'
+[2.298s] Level 1:colcon.colcon_core.shell:create_environment_hook('ip_nodes', 'pythonpath')
+[2.299s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/javierac/mounted/ws/install/ip_nodes/share/ip_nodes/hook/pythonpath.ps1'
+[2.299s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/javierac/mounted/ws/install/ip_nodes/share/ip_nodes/hook/pythonpath.dsv'
+[2.300s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/javierac/mounted/ws/install/ip_nodes/share/ip_nodes/hook/pythonpath.sh'
+[2.301s] Level 1:colcon.colcon_core.environment:checking '/home/javierac/mounted/ws/install/ip_nodes/bin'
+[2.301s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(ip_nodes)
+[2.301s] INFO:colcon.colcon_core.shell:Creating package script '/home/javierac/mounted/ws/install/ip_nodes/share/ip_nodes/package.ps1'
+[2.302s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/javierac/mounted/ws/install/ip_nodes/share/ip_nodes/package.dsv'
+[2.303s] INFO:colcon.colcon_core.shell:Creating package script '/home/javierac/mounted/ws/install/ip_nodes/share/ip_nodes/package.sh'
+[2.303s] INFO:colcon.colcon_core.shell:Creating package script '/home/javierac/mounted/ws/install/ip_nodes/share/ip_nodes/package.bash'
+[2.304s] INFO:colcon.colcon_core.shell:Creating package script '/home/javierac/mounted/ws/install/ip_nodes/share/ip_nodes/package.zsh'
+[2.305s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/javierac/mounted/ws/install/ip_nodes/share/colcon-core/packages/ip_nodes)
+[2.305s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[2.306s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[2.306s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[2.306s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[2.317s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.notify_send': Could not find 'notify-send'
+[2.318s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[2.318s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[2.318s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[2.322s] DEBUG:colcon.colcon_notification.desktop_notification.notify2:Failed to initialize notify2: org.freedesktop.DBus.Error.Spawn.ExecFailed: /usr/bin/dbus-launch terminated abnormally without any error message
+[2.323s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[2.324s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/javierac/mounted/ws/install/local_setup.ps1'
+[2.326s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/javierac/mounted/ws/install/_local_setup_util_ps1.py'
+[2.329s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/javierac/mounted/ws/install/setup.ps1'
+[2.331s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/javierac/mounted/ws/install/local_setup.sh'
+[2.332s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/javierac/mounted/ws/install/_local_setup_util_sh.py'
+[2.333s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/javierac/mounted/ws/install/setup.sh'
+[2.335s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/javierac/mounted/ws/install/local_setup.bash'
+[2.335s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/javierac/mounted/ws/install/setup.bash'
+[2.337s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/javierac/mounted/ws/install/local_setup.zsh'
+[2.338s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/javierac/mounted/ws/install/setup.zsh'

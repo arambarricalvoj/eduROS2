@@ -53,20 +53,35 @@ class MugimenduMotorrak(Node):
         threading.Thread(target=self.receive_data_udp, daemon=True).start()
 
 
-    def mugimendua_entzulea_callback(self, mezua):
+    def mugimendua_entzulea_callback(self, mezua: Twist):
         try:
-            if mezua.linear.x < 0.0 and mezua.angular.z == 0.0:  # Aurrera
-                self.bezero_socket.send(f'tank_drive.on(SpeedPercent({int(mezua.linear.x)}*(1)),SpeedPercent({int(mezua.linear.x)}*(1)))\n'.encode())
-            elif mezua.linear.x > 0.0 and mezua.angular.z == 0.0:  # Atzera
-                self.bezero_socket.send(f'tank_drive.on(SpeedPercent({int(mezua.linear.x)}*(1)),SpeedPercent({int(mezua.linear.x)}*(1)))\n'.encode())
-            elif mezua.linear.x == 0.0 and mezua.angular.z > 0.0:  # Ezkerra
-                self.bezero_socket.send(f'tank_drive.on(SpeedPercent({int(mezua.angular.z)}*(1)),SpeedPercent({int(mezua.angular.z)}*(-1)))\n'.encode())
-            elif mezua.linear.x == 0.0 and mezua.angular.z < 0.0:  # Eskuina
-                self.bezero_socket.send(f'tank_drive.on(SpeedPercent({int(mezua.angular.z)}*(1)),SpeedPercent({int(mezua.angular.z)}*(-1)))\n'.encode())
-            elif mezua.linear.x == 0.0 and mezua.angular.z == 0.0:  # Gelditu
+            # Parámetros del robot
+            L = 0.115   # distancia entre ruedas en metros (ajusta a tu robot)
+            v_max = 25.0  # velocidad máxima en "unidades SpeedPercent"
+
+            # Cálculo diferencial
+            v_izq = mezua.linear.x - (mezua.angular.z * L / 2.0)
+            v_der = mezua.linear.x + (mezua.angular.z * L / 2.0)
+
+            # Escalar a porcentaje [-25, 25]
+            p_izq = max(min(int(v_izq), v_max), -v_max)
+            p_der = max(min(int(v_der), v_max), -v_max)
+
+            # Si ambos son cero → parar
+            if p_izq == 0 and p_der == 0:
                 self.bezero_socket.send('tank_drive.off()\n'.encode())
+            else:
+                cmd = f'tank_drive.on(SpeedPercent(-{p_izq}), SpeedPercent(-{p_der}))\n'
+                self.bezero_socket.send(cmd.encode())
+
+            """self.get_logger().info(
+                f"cmd_vel: lin={mezua.linear.x:.2f}, ang={mezua.angular.z:.2f} "
+                f"→ L={p_izq}%, R={p_der}%"
+            )"""
+
         except Exception as e:
             self.get_logger().error(f"Errorea TCP bidaltzean: {e}")
+
 
     def graduak_radianetara(self, degrees):
         """Convierte grados a radianes, normalizados en el rango [-pi, pi]."""

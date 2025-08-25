@@ -197,6 +197,8 @@ python3 server_ev3.py
 
 ## más
 
+jstest-gtk
+
 pip3 install inputs --break-system-packages
 El flag --break-system-packages ignora la restricción de PEP 668. Úsalo solo si sabes que no vas a romper dependencias del sistema. Para instalar en la versión de Python de ROS2
 

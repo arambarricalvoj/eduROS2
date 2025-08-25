@@ -46,7 +46,7 @@ def generate_launch_description():
         output='screen'
     )
 
-    teklatua = Node(
+    """teklatua = Node(
         package='ip_nodes',         
         executable='teklatua',      
         name='teklatua',
@@ -54,7 +54,7 @@ def generate_launch_description():
         parameters=[{
             'abiadura': 25.0
         }]
-    )
+    )"""
 
     mando = Node(
         package='ip_nodes',         
@@ -63,6 +63,16 @@ def generate_launch_description():
         output='screen',
         parameters=[{
             'abiadura': 25.0
+        }]
+    )
+
+    joy = Node(
+        package='joy',         
+        executable='joy_node',      
+        name='joy',
+        output='screen',
+        parameters=[{
+            'deadzone': 0.25
         }]
     )
 
@@ -94,5 +104,5 @@ def generate_launch_description():
         output='screen'
     )
 
-    return LaunchDescription([urdf_path_arg, rviz_config_arg, use_gui_arg, rsp, jsp_gui, rviz, teklatua, mando, mugimendu_motorrak, ultrasoinu_sentsorea, biraketa_sentsorea, joint_states])
+    return LaunchDescription([urdf_path_arg, rviz_config_arg, use_gui_arg, rsp, jsp_gui, rviz, mando, joy, mugimendu_motorrak, ultrasoinu_sentsorea, biraketa_sentsorea, joint_states])
 

@@ -12,6 +12,7 @@ setup.py
 ip_nodes/__init__.py
 ip_nodes/biraketa_sentsorea.py
 ip_nodes/joint_states.py
+ip_nodes/mando copy.py
 ip_nodes/mando.py
 ip_nodes/mugimendu_motorrak.py
 ip_nodes/teklatua.py
