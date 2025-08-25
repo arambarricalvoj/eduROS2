@@ -194,3 +194,10 @@ En la terminal SSH del EV3
 ```bash
 python3 server_ev3.py
 ```
+
+## más
+
+pip3 install inputs --break-system-packages
+El flag --break-system-packages ignora la restricción de PEP 668. Úsalo solo si sabes que no vas a romper dependencias del sistema. Para instalar en la versión de Python de ROS2
+
+mando en docker: https://www.youtube.com/watch?v=uf4zOigzTFo&t=512s

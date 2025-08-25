@@ -28,6 +28,7 @@ setup(
             'ultrasoinu_sentsorea = ip_nodes.ultrasoinu_sentsorea:main',
             'biraketa_sentsorea = ip_nodes.biraketa_sentsorea:main',
             'joint_states = ip_nodes.joint_states:main',
+            'mando = ip_nodes.mando:main',
         ],
     },
 )

@@ -56,6 +56,16 @@ def generate_launch_description():
         }]
     )
 
+    mando = Node(
+        package='ip_nodes',         
+        executable='mando',      
+        name='mando',
+        output='screen',
+        parameters=[{
+            'abiadura': 25.0
+        }]
+    )
+
     mugimendu_motorrak = Node(
         package='ip_nodes',      
         executable='mugimendu_motorrak',  
@@ -84,5 +94,5 @@ def generate_launch_description():
         output='screen'
     )
 
-    return LaunchDescription([urdf_path_arg, rviz_config_arg, use_gui_arg, rsp, jsp_gui, rviz, teklatua, mugimendu_motorrak, ultrasoinu_sentsorea, biraketa_sentsorea, joint_states])
+    return LaunchDescription([urdf_path_arg, rviz_config_arg, use_gui_arg, rsp, jsp_gui, rviz, teklatua, mando, mugimendu_motorrak, ultrasoinu_sentsorea, biraketa_sentsorea, joint_states])
 
