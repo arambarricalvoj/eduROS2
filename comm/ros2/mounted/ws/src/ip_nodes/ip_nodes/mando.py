@@ -21,7 +21,7 @@ class Mando(Node):
         # Últimos valores publicados
         self.last_linear = 0.0
         self.last_angular = 0.0
-        self.change_threshold = 0.05
+        self.change_threshold = 2.0
 
         self.get_logger().info("Nodo Mando suscrito a /joy listo ✅")
 
@@ -43,9 +43,9 @@ class Mando(Node):
         twist = Twist()
 
         if self.joystick_activo:
-            # Control con stick izquierdo
-            eje_x = joy_msg.axes[0]
-            eje_y = joy_msg.axes[1]
+            # Control con stick izquierdo [0], [1]
+            eje_x = joy_msg.axes[3]
+            eje_y = joy_msg.axes[4]
 
             if abs(eje_x) < self.deadzone:
                 eje_x = 0.0

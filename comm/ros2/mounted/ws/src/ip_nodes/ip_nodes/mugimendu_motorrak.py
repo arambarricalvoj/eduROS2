@@ -53,31 +53,53 @@ class MugimenduMotorrak(Node):
         threading.Thread(target=self.receive_data_udp, daemon=True).start()
 
 
-    def mugimendua_entzulea_callback(self, mezua: Twist):
+    def mugimendua_entzulea_callback(self, mezua):
         try:
-            # Parámetros del robot
-            L = 0.115   # distancia entre ruedas en metros (ajusta a tu robot)
-            v_max = 25.0  # velocidad máxima en "unidades SpeedPercent"
+            # Velocidad máxima permitida
+            MAX_VEL = 25.0
 
-            # Cálculo diferencial
-            v_izq = mezua.linear.x - (mezua.angular.z * L / 2.0)
-            v_der = mezua.linear.x + (mezua.angular.z * L / 2.0)
+            # Tomamos los valores del Twist
+            linear = mezua.linear.x
+            angular = mezua.angular.z
 
-            # Escalar a porcentaje [-25, 25]
-            p_izq = max(min(int(v_izq), v_max), -v_max)
-            p_der = max(min(int(v_der), v_max), -v_max)
+            # Magnitud total de la orden
+            total = abs(linear) + abs(angular)
 
-            # Si ambos son cero → parar
-            if p_izq == 0 and p_der == 0:
+            # Escala para que la suma de |linear|+|angular| sea MAX_VEL
+            escala = MAX_VEL / total if total > MAX_VEL else 1.0
+
+            # Cálculo de velocidades
+            vel_izq = (linear - angular) * escala
+            vel_der = (linear + angular) * escala
+
+
+            # Calculamos velocidades de cada motor (mezcla diferencial)
+            """vel_izq = linear - angular
+            vel_der = linear + angular"""
+
+            # Invertimos signo para que adelante sea negativo
+            vel_izq *= -1
+            vel_der *= -1
+
+            # Escalamos a la velocidad máxima
+            # Asumimos que linear y angular ya vienen en rango [-MAX_VEL, MAX_VEL]
+            # Si no, normalizamos antes
+            """max_abs = max(abs(vel_izq), abs(vel_der))
+            if max_abs > MAX_VEL:
+                escala = MAX_VEL / max_abs
+                vel_izq *= escala
+                vel_der *= escala"""
+
+            # Redondeamos a enteros
+            vel_izq = int(vel_izq)
+            vel_der = int(vel_der)            
+
+            # Si ambas velocidades son cero → parar
+            if vel_izq == 0 and vel_der == 0:
                 self.bezero_socket.send('tank_drive.off()\n'.encode())
             else:
-                cmd = f'tank_drive.on(SpeedPercent(-{p_izq}), SpeedPercent(-{p_der}))\n'
+                cmd = f'tank_drive.on(SpeedPercent({vel_izq}),SpeedPercent({vel_der}))\n'
                 self.bezero_socket.send(cmd.encode())
-
-            """self.get_logger().info(
-                f"cmd_vel: lin={mezua.linear.x:.2f}, ang={mezua.angular.z:.2f} "
-                f"→ L={p_izq}%, R={p_der}%"
-            )"""
 
         except Exception as e:
             self.get_logger().error(f"Errorea TCP bidaltzean: {e}")

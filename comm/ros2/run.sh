@@ -11,5 +11,5 @@ docker run -e DISPLAY=$DISPLAY \
            --device /dev/input:/dev/input \
            -it \
            --gpus all \
-           --name eduros2_ev3_jazzy_v1.2_joystick \
-           arambarricalvoj/eduros2_ev3:jazzy_v1.2_joystick
+           --name eduros2_ev3_jazzy_v1.2_joystick_ds4 \
+           arambarricalvoj/eduros2_ev3:jazzy_v1.2_joystick_ds4
