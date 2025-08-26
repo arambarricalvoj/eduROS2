@@ -1,15 +1,15 @@
 teklatua:
   ros__parameters:
-    abiadura: 25.0
+    abiadura: 50.0
 
 mando:
   ros__parameters:
-    abiadura: 25.0
+    abiadura: 50.0
     threshold: 2.0
 
 mugimendu_motorrak:
   ros__parameters:
-    abiadura: 25.0
+    abiadura: 50.0
 
 joy:
   ros__parameters:

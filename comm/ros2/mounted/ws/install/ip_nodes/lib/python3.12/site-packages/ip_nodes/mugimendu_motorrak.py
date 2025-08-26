@@ -58,8 +58,6 @@ class MugimenduMotorrak(Node):
 
     def mugimendua_entzulea_callback(self, mezua):
         try:
-            # Velocidad máxima permitida
-            self.abiadura = 25.0
 
             # Tomamos los valores del Twist
             linear = mezua.linear.x
@@ -72,8 +70,12 @@ class MugimenduMotorrak(Node):
             escala = self.abiadura / total if total > self.abiadura else 1.0
 
             # Cálculo de velocidades
-            vel_izq = (linear - angular) * escala
-            vel_der = (linear + angular) * escala
+            if linear < 0.0: #para que vaya bien hacia atrás
+                vel_izq = (linear + angular) * escala
+                vel_der = (linear - angular) * escala
+            else:
+                vel_izq = (linear - angular) * escala
+                vel_der = (linear + angular) * escala
 
 
             # Calculamos velocidades de cada motor (mezcla diferencial)
