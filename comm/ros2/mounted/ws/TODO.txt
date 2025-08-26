@@ -2,4 +2,8 @@ limpiar mugimendu_motorrak.py y server_ev3 y joint states nodos (revisar todo el
 
 generalizar con parámetros para ajustar puertos y etc...
 
+con los gatillos del mando subir y bajar la velocidad... (nodo repartidor de variable global?)
+
+action/nodo para seguir recto hasta ultrasónico < 10cm
+
 readme
