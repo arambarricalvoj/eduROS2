@@ -1,11 +1,12 @@
 from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument
-from launch.substitutions import LaunchConfiguration
+from launch.substitutions import LaunchConfiguration, PathJoinSubstitution
+from launch_ros.substitutions import FindPackageShare
 from launch_ros.actions import Node
-from launch.conditions import IfCondition
+from launch.conditions import IfCondition, UnlessCondition
 
 def generate_launch_description():
-    urdf_path_arg = DeclareLaunchArgument(
+    """urdf_path_arg = DeclareLaunchArgument(
         'urdf_path',
         default_value='/home/javierac/mounted/ws/src/sim/robot.urdf',
         description='Ruta al URDF'
@@ -23,10 +24,52 @@ def generate_launch_description():
         description='Iniciar joint_state_publisher_gui (true/false)'
     )
 
+    velocidad_arg = DeclareLaunchArgument(
+        'abiadura',
+        default_value='25.0',
+        description='Gehienezko abiadura'
+    )
+
+    #LaunchConfiguration('velocidad')"""
+
+    urdf_path_arg = DeclareLaunchArgument(
+        'urdf_path',
+        default_value='/home/javierac/mounted/ws/src/sim/robot.urdf',
+        description='Ruta al URDF'
+    )
+
+    rviz_config_arg = DeclareLaunchArgument(
+        'rviz_config',
+        default_value='/home/javierac/mounted/ws/src/sim/conf.rviz',
+        description='Ruta al archivo de configuración de RViz2'
+    )
+    
+    use_gui_arg = DeclareLaunchArgument(
+        'use_gui',
+        default_value='false',
+        description='Iniciar joint_state_publisher_gui (true/false)'
+    )
+
+    use_controller_arg = DeclareLaunchArgument(
+        'use_controller',
+        default_value='false',
+        description='Iniciar con mando (true/false)'
+    )
+    
+    params_file_arg = DeclareLaunchArgument(
+        'params_file',
+        default_value=PathJoinSubstitution([
+            FindPackageShare('ip_nodes'),
+            'config',
+            'params.yaml'
+        ]),
+        description='Ruta al archivo de parámetros YAML'
+    )
+    params_file = LaunchConfiguration('params_file')
+
     rsp = Node(
         package='robot_state_publisher',
         executable='robot_state_publisher',
-        # Tal cual lo pediste: pasando la ruta del URDF como argumento (mostrará un warning de compatibilidad).
         arguments=[LaunchConfiguration('urdf_path')],
         output='screen'
     )
@@ -51,9 +94,8 @@ def generate_launch_description():
         executable='teklatua',      
         name='teklatua',
         output='screen',
-        parameters=[{
-            'abiadura': 25.0
-        }]
+        parameters=[params_file],
+        condition=UnlessCondition(LaunchConfiguration('use_controller'))
     )
 
     mando = Node(
@@ -61,9 +103,8 @@ def generate_launch_description():
         executable='mando',      
         name='mando',
         output='screen',
-        parameters=[{
-            'abiadura': 25.0
-        }]
+        parameters=[params_file],
+        condition=IfCondition(LaunchConfiguration('use_controller'))
     )
 
     joy = Node(
@@ -71,17 +112,16 @@ def generate_launch_description():
         executable='joy_node',      
         name='joy',
         output='screen',
-        parameters=[{
-            'deadzone': 0.25,
-            'autorepeat_rate': 5.0
-        }]
+        parameters=[params_file],
+        condition=IfCondition(LaunchConfiguration('use_controller'))
     )
 
     mugimendu_motorrak = Node(
         package='ip_nodes',      
         executable='mugimendu_motorrak',  
         name='mugimendu_motorrak',
-        output='screen'
+        output='screen',
+        parameters=[params_file],
     )
 
     ultrasoinu_sentsorea = Node(
@@ -105,5 +145,20 @@ def generate_launch_description():
         output='screen'
     )
 
-    return LaunchDescription([urdf_path_arg, rviz_config_arg, use_gui_arg, rsp, jsp_gui, rviz, teklatua, mando, joy, mugimendu_motorrak, ultrasoinu_sentsorea, biraketa_sentsorea, joint_states])
-
+    return LaunchDescription([
+    urdf_path_arg,
+    rviz_config_arg,
+    use_gui_arg,
+    use_controller_arg,
+    params_file_arg, 
+    rsp,
+    jsp_gui,
+    rviz,
+    teklatua,
+    mando,
+    joy,
+    mugimendu_motorrak,
+    ultrasoinu_sentsorea,
+    biraketa_sentsorea,
+    joint_states
+])

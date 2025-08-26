@@ -20,6 +20,9 @@ class MugimenduMotorrak(Node):
         super().__init__('mugimendu_motorrak')  # ROS2-n izango duen izena
         self.get_logger().info("nodoa hasiarazi da\n")
 
+        self.declare_parameter('abiadura', 25.0)
+        self.abiadura = self.get_parameter('abiadura').value
+
         # Argitaratzaileak
         self.joint_pub = self.create_publisher(JointState, 'joint_states', 10)
         self.kodetzaileak_pub = self.create_publisher(MugimenduKodetzaileak, 'kodetzaileak', 10)
@@ -56,7 +59,7 @@ class MugimenduMotorrak(Node):
     def mugimendua_entzulea_callback(self, mezua):
         try:
             # Velocidad máxima permitida
-            MAX_VEL = 25.0
+            self.abiadura = 25.0
 
             # Tomamos los valores del Twist
             linear = mezua.linear.x
@@ -65,8 +68,8 @@ class MugimenduMotorrak(Node):
             # Magnitud total de la orden
             total = abs(linear) + abs(angular)
 
-            # Escala para que la suma de |linear|+|angular| sea MAX_VEL
-            escala = MAX_VEL / total if total > MAX_VEL else 1.0
+            # Escala para que la suma de |linear|+|angular| sea self.abiadura
+            escala = self.abiadura / total if total > self.abiadura else 1.0
 
             # Cálculo de velocidades
             vel_izq = (linear - angular) * escala
@@ -82,21 +85,17 @@ class MugimenduMotorrak(Node):
             vel_der *= -1
 
             # Escalamos a la velocidad máxima
-            # Asumimos que linear y angular ya vienen en rango [-MAX_VEL, MAX_VEL]
+            # Asumimos que linear y angular ya vienen en rango [-self.abiadura, self.abiadura]
             # Si no, normalizamos antes
             """max_abs = max(abs(vel_izq), abs(vel_der))
-            if max_abs > MAX_VEL:
-                escala = MAX_VEL / max_abs
+            if max_abs > self.abiadura:
+                escala = self.abiadura / max_abs
                 vel_izq *= escala
                 vel_der *= escala"""
 
             # Redondeamos a enteros
             vel_izq = int(vel_izq)
-            vel_der = int(vel_der)
-
-            self.get_logger().info(f"izq: {vel_izq}")
-            self.get_logger().info(f"der: {vel_der}")
-            
+            vel_der = int(vel_der)            
 
             # Si ambas velocidades son cero → parar
             if vel_izq == 0 and vel_der == 0:

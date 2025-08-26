@@ -1,0 +1,36 @@
+[1.214s] Invoking command in '/home/javierac/mounted/ws/src/ip_nodes': PYTHONPATH=/home/javierac/mounted/ws/build/ip_nodes/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/javierac/mounted/ws/install/ip_nodes/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/ip_nodes build --build-base /home/javierac/mounted/ws/build/ip_nodes/build install --record /home/javierac/mounted/ws/build/ip_nodes/install.log --single-version-externally-managed install_data
+[1.567s] running egg_info
+[1.587s] writing ../../build/ip_nodes/ip_nodes.egg-info/PKG-INFO
+[1.588s] writing dependency_links to ../../build/ip_nodes/ip_nodes.egg-info/dependency_links.txt
+[1.588s] writing entry points to ../../build/ip_nodes/ip_nodes.egg-info/entry_points.txt
+[1.588s] writing requirements to ../../build/ip_nodes/ip_nodes.egg-info/requires.txt
+[1.588s] writing top-level names to ../../build/ip_nodes/ip_nodes.egg-info/top_level.txt
+[1.629s] reading manifest file '../../build/ip_nodes/ip_nodes.egg-info/SOURCES.txt'
+[1.630s] adding license file 'LICENSE'
+[1.631s] writing manifest file '../../build/ip_nodes/ip_nodes.egg-info/SOURCES.txt'
+[1.631s] running build
+[1.631s] running build_py
+[1.632s] copying ip_nodes/mando.py -> /home/javierac/mounted/ws/build/ip_nodes/build/lib/ip_nodes
+[1.632s] copying ip_nodes/mugimendu_motorrak.py -> /home/javierac/mounted/ws/build/ip_nodes/build/lib/ip_nodes
+[1.632s] running install
+[1.642s] running install_lib
+[1.663s] copying /home/javierac/mounted/ws/build/ip_nodes/build/lib/ip_nodes/mando.py -> /home/javierac/mounted/ws/install/ip_nodes/lib/python3.12/site-packages/ip_nodes
+[1.664s] copying /home/javierac/mounted/ws/build/ip_nodes/build/lib/ip_nodes/mugimendu_motorrak.py -> /home/javierac/mounted/ws/install/ip_nodes/lib/python3.12/site-packages/ip_nodes
+[1.665s] byte-compiling /home/javierac/mounted/ws/install/ip_nodes/lib/python3.12/site-packages/ip_nodes/mando.py to mando.cpython-312.pyc
+[1.666s] byte-compiling /home/javierac/mounted/ws/install/ip_nodes/lib/python3.12/site-packages/ip_nodes/mugimendu_motorrak.py to mugimendu_motorrak.cpython-312.pyc
+[1.668s] running install_data
+[1.669s] copying ip_nodes/launch/display.launch.py -> /home/javierac/mounted/ws/install/ip_nodes/share/ip_nodes/launch
+[1.669s] creating /home/javierac/mounted/ws/install/ip_nodes/share/ip_nodes/config
+[1.669s] copying ip_nodes/config/params.yaml -> /home/javierac/mounted/ws/install/ip_nodes/share/ip_nodes/config
+[1.669s] running install_egg_info
+[1.691s] removing '/home/javierac/mounted/ws/install/ip_nodes/lib/python3.12/site-packages/ip_nodes-0.0.0-py3.12.egg-info' (and everything under it)
+[1.691s] Copying ../../build/ip_nodes/ip_nodes.egg-info to /home/javierac/mounted/ws/install/ip_nodes/lib/python3.12/site-packages/ip_nodes-0.0.0-py3.12.egg-info
+[1.692s] running install_scripts
+[1.843s] Installing biraketa_sentsorea script to /home/javierac/mounted/ws/install/ip_nodes/lib/ip_nodes
+[1.844s] Installing joint_states script to /home/javierac/mounted/ws/install/ip_nodes/lib/ip_nodes
+[1.844s] Installing mando script to /home/javierac/mounted/ws/install/ip_nodes/lib/ip_nodes
+[1.844s] Installing mugimendu_motorrak script to /home/javierac/mounted/ws/install/ip_nodes/lib/ip_nodes
+[1.844s] Installing teklatua script to /home/javierac/mounted/ws/install/ip_nodes/lib/ip_nodes
+[1.844s] Installing ultrasoinu_sentsorea script to /home/javierac/mounted/ws/install/ip_nodes/lib/ip_nodes
+[1.844s] writing list of installed files to '/home/javierac/mounted/ws/build/ip_nodes/install.log'
+[1.880s] Invoked command in '/home/javierac/mounted/ws/src/ip_nodes' returned '0': PYTHONPATH=/home/javierac/mounted/ws/build/ip_nodes/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/javierac/mounted/ws/install/ip_nodes/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/ip_nodes build --build-base /home/javierac/mounted/ws/build/ip_nodes/build install --record /home/javierac/mounted/ws/build/ip_nodes/install.log --single-version-externally-managed install_data

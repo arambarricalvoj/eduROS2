@@ -5,9 +5,13 @@ from geometry_msgs.msg import Twist
 
 class Mando(Node):
     def __init__(self):
-        super().__init__('mando_joy')
+        super().__init__('mando')
+
         self.declare_parameter('abiadura', 25.0)
         self.abiadura = self.get_parameter('abiadura').value
+
+        self.declare_parameter('threshold', 2.0)
+        self.threshold = self.get_parameter('threshold').value
 
         self.sub = self.create_subscription(Joy, '/joy', self.callback_joy, 10)
         self.pub = self.create_publisher(Twist, '/cmd_vel', 10)
@@ -21,7 +25,6 @@ class Mando(Node):
         # Últimos valores publicados
         self.last_linear = 0.0
         self.last_angular = 0.0
-        self.change_threshold = 2.0
 
         self.get_logger().info("Nodo Mando suscrito a /joy listo ✅")
 
@@ -74,8 +77,8 @@ class Mando(Node):
                 angular = -self.abiadura
 
         # Publicar solo si hay cambio significativo
-        if (abs(linear - self.last_linear) > self.change_threshold or
-            abs(angular - self.last_angular) > self.change_threshold):
+        if (abs(linear - self.last_linear) > self.threshold or
+            abs(angular - self.last_angular) > self.threshold):
             twist.linear.x = linear
             twist.angular.z = angular
             self.pub.publish(twist)
