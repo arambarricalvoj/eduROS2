@@ -1,8 +1,3 @@
-solucionar mando y mugimendu_motorrak:
-    - cuello de botella con el joystick
-    - no muevo joystick y se mueve (depurar deadzone, valores, llegada tcp...)
-    - fórmulas conversión joystick a movimiento
-
 limpiar mugimendu_motorrak.py y server_ev3 y joint states nodos (revisar todo el proyecto)
 
 generalizar con parámetros para ajustar puertos y etc...

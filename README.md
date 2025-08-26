@@ -187,7 +187,7 @@ Hasta que entra al menos un mensaje con el nombre exacto de esas juntas (base_le
 ## 9. ARRANCAR PROYECTO
 En el contenedor Docker
 ```bash
-ros2 launch ip_nodes display.launch.py use_gui:=false
+ros2 launch ip_nodes display.launch.py use_controller:=true
 ```
 
 En la terminal SSH del EV3

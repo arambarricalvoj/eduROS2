@@ -23,6 +23,10 @@ class MugimenduMotorrak(Node):
         self.declare_parameter('abiadura', 25.0)
         self.abiadura = self.get_parameter('abiadura').value
 
+        self.declare_parameter('usar_mando', False)  # valor por defecto False
+        self.motor_alderantzikatuak = self.get_parameter('motor_alderantzikatuak').value
+
+
         # Argitaratzaileak
         self.joint_pub = self.create_publisher(JointState, 'joint_states', 10)
         self.kodetzaileak_pub = self.create_publisher(MugimenduKodetzaileak, 'kodetzaileak', 10)
@@ -83,8 +87,8 @@ class MugimenduMotorrak(Node):
             vel_der = linear + angular"""
 
             # Invertimos signo para que adelante sea negativo
-            vel_izq *= -1
-            vel_der *= -1
+            vel_izq *= -1 if self.motor_alderantzikatuak is True else 1
+            vel_der *= -1 if self.motor_alderantzikatuak is True else 1
 
             # Escalamos a la velocidad máxima
             # Asumimos que linear y angular ya vienen en rango [-self.abiadura, self.abiadura]

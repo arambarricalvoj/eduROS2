@@ -10,6 +10,7 @@ mando:
 mugimendu_motorrak:
   ros__parameters:
     abiadura: 50.0
+    motor_alderantzikatuak: true
 
 joy:
   ros__parameters:
