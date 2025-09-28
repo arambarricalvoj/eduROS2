@@ -23,7 +23,7 @@ class MugimenduMotorrak(Node):
         self.declare_parameter('abiadura', 25.0)
         self.abiadura = self.get_parameter('abiadura').value
 
-        self.declare_parameter('usar_mando', False)  # valor por defecto False
+        self.declare_parameter('motor_alderantzikatuak', False)  # valor por defecto False
         self.motor_alderantzikatuak = self.get_parameter('motor_alderantzikatuak').value
 
 
@@ -60,6 +60,10 @@ class MugimenduMotorrak(Node):
         threading.Thread(target=self.receive_data_udp, daemon=True).start()
 
 
+    def gelditu(self):
+        self.bezero_socket.send('tank_drive.off()\n'.encode())
+        self.get_logger().info("mugimendu_motorrak nodoa itxi da eta motorrak gelditu dira.\n")
+    
     def mugimendua_entzulea_callback(self, mezua):
         try:
 
@@ -163,10 +167,15 @@ class MugimenduMotorrak(Node):
 
 def main(args=None):
     rclpy.init(args=args)
-    mugimendu_motorrak = MugimenduMotorrak()
-    rclpy.spin(mugimendu_motorrak) 
-    mugimendu_motorrak.destroy_node()
-    rclpy.shutdown()
+    mugimendu_motorrak = MugimenduMotorrak()  
+    try:
+        rclpy.spin(mugimendu_motorrak) 
+    except KeyboardInterrupt:
+        mugimendu_motorrak.get_logger().info("Erabiltzaileak nodoa gelditu du.")
+        mugimendu_motorrak.gelditu()
+    finally:
+        mugimendu_motorrak.destroy_node()
+        rclpy.shutdown()
 
 
 if __name__ == '__main__':

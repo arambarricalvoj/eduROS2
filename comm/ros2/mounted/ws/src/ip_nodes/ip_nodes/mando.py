@@ -6,6 +6,7 @@ from geometry_msgs.msg import Twist
 class Mando(Node):
     def __init__(self):
         super().__init__('mando')
+        self.get_logger().info("nodoa hasiarazi da")
 
         self.declare_parameter('abiadura', 25.0)
         self.abiadura = self.get_parameter('abiadura').value
@@ -26,15 +27,13 @@ class Mando(Node):
         self.last_linear = 0.0
         self.last_angular = 0.0
 
-        self.get_logger().info("Nodo Mando suscrito a /joy listo ✅")
-
     def callback_joy(self, joy_msg: Joy):
         boton_actual = joy_msg.buttons[self.boton_stop]
 
         # Toggle joystick activo/desactivo
         if boton_actual == 1 and self.boton_stop_anterior == 0:
             self.joystick_activo = not self.joystick_activo
-            estado = "ACTIVADO ✅" if self.joystick_activo else "DESACTIVADO 🛑"
+            estado = "ACTIVADO" if self.joystick_activo else "DESACTIVADO" #✅ 🛑
             self.get_logger().info(f"Joystick {estado}")
             if not self.joystick_activo:
                 self.pub.publish(Twist())
