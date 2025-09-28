@@ -2,11 +2,15 @@ import rclpy
 from rclpy.node import Node
 from sensor_msgs.msg import Joy
 from geometry_msgs.msg import Twist
+from std_srvs.srv import Trigger
+from rclpy.callback_groups import ReentrantCallbackGroup
 
 class Mando(Node):
     def __init__(self):
         super().__init__('mando')
         self.get_logger().info("nodoa hasiarazi da")
+
+        self.cb_group = ReentrantCallbackGroup()
 
         self.declare_parameter('abiadura', 25.0)
         self.abiadura = self.get_parameter('abiadura').value
@@ -27,6 +31,19 @@ class Mando(Node):
         self.last_linear = 0.0
         self.last_angular = 0.0
 
+        # Zerbitzua kontrol-mota aldatzeko (TCP edo UDP)
+        self.kontrol_mota_srv = self.create_client(Trigger, 'kontrol_mota', callback_group=self.cb_group)
+        while not self.kontrol_mota_srv.wait_for_service(timeout_sec=1.0):
+            self.get_logger().info('/kontrol_mota zerbitzuaren zain...')
+
+    def kontrol_mota_aldatu(self):
+        req = Trigger.Request()
+        future = self.kontrol_mota_srv.call_async(req)
+        rclpy.spin_until_future_complete(self, future)
+        #future.add_done_callback(self.kontrol_mota_callback)
+        return future.result()
+
+    
     def callback_joy(self, joy_msg: Joy):
         boton_actual = joy_msg.buttons[self.boton_stop]
 
@@ -35,6 +52,7 @@ class Mando(Node):
             self.joystick_activo = not self.joystick_activo
             estado = "ACTIVADO" if self.joystick_activo else "DESACTIVADO" #✅ 🛑
             self.get_logger().info(f"Joystick {estado}")
+            self.kontrol_mota_aldatu()
             if not self.joystick_activo:
                 self.pub.publish(Twist())
                 self.last_linear = 0.0

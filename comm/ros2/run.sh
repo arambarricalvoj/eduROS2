@@ -7,6 +7,7 @@ docker run -e DISPLAY=$DISPLAY \
            -p 5000:5000/udp \
            -p 5001:5001/udp \
            -p 5002:5002/udp \
+           -p 5003:5003/udp \
            --device /dev/dri:/dev/dri \
            --device /dev/input:/dev/input \
            -it \

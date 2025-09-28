@@ -1,4 +1,0 @@
-Invoking command in '/home/javierac/mounted/ws/build/mezuak': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/javierac/mounted/ws/install/ip_nodes:/opt/ros/jazzy /usr/bin/cmake --build /home/javierac/mounted/ws/build/mezuak -- -j20 -l20
-Invoked command in '/home/javierac/mounted/ws/build/mezuak' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/javierac/mounted/ws/install/ip_nodes:/opt/ros/jazzy /usr/bin/cmake --build /home/javierac/mounted/ws/build/mezuak -- -j20 -l20
-Invoking command in '/home/javierac/mounted/ws/build/mezuak': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/javierac/mounted/ws/install/ip_nodes:/opt/ros/jazzy /usr/bin/cmake --install /home/javierac/mounted/ws/build/mezuak
-Invoked command in '/home/javierac/mounted/ws/build/mezuak' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/javierac/mounted/ws/install/ip_nodes:/opt/ros/jazzy /usr/bin/cmake --install /home/javierac/mounted/ws/build/mezuak

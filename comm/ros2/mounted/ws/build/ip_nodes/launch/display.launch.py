@@ -1,1 +1,0 @@
-/home/javierac/mounted/ws/src/ip_nodes/launch/display.launch.py

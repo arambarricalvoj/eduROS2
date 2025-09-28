@@ -7,6 +7,7 @@ from geometry_msgs.msg import Twist
 from sensor_msgs.msg import JointState
 from mezuak.msg import MugimenduKodetzaileak
 from builtin_interfaces.msg import Time as TimeMsg
+from std_srvs.srv import Trigger
 
 # Beste liburutegiak
 import socket
@@ -39,6 +40,10 @@ class MugimenduMotorrak(Node):
             10
         )
 
+        # Zerbitzua: TCP edo UDP kontrola aldatzeko
+        self.kontrol_mota = False # True --> TCP, False --> UDP
+        self.kontrola_srv = self.create_service(Trigger, 'kontrol_mota', self.kontrola_aldatu_callback)
+
         # TCP klase aldagaiak motorrak kontrolatzeko
         self.bezero_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         try:
@@ -48,6 +53,14 @@ class MugimenduMotorrak(Node):
         except Exception as e:
             self.get_logger().error(f"Ezin izan da TCP bidez konektatu: {e}")
 
+        # UDP klase aldagaiak motorrak kontrolatzeko
+        self.udp_mugimendua_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        try:
+            self.udp_mugimendua_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+            self.udp_destino = ("192.168.1.140", 5003)  # Cambia IP y puerto
+        except Exception as e:
+            self.get_logger().error(f"Ezin izan da UDP ataka sortu: {e}")
+        
         # UDP klase aldagaiak kodetzaileen informazioa jasotzeko
         self.udp_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         try:
@@ -63,6 +76,14 @@ class MugimenduMotorrak(Node):
     def gelditu(self):
         self.bezero_socket.send('tank_drive.off()\n'.encode())
         self.get_logger().info("mugimendu_motorrak nodoa itxi da eta motorrak gelditu dira.\n")
+    
+    def kontrola_aldatu_callback(self, request, response):
+        self.kontrol_mota = not self.kontrol_mota
+        response.success = True
+        response.message = f"Kontrol-mota: {self.kontrol_mota} ({'TCP' if self.kontrol_mota else 'UDP'})"
+        self.get_logger().info(response.message)
+        return response
+
     
     def mugimendua_entzulea_callback(self, mezua):
         try:
@@ -109,10 +130,16 @@ class MugimenduMotorrak(Node):
 
             # Si ambas velocidades son cero → parar
             if vel_izq == 0 and vel_der == 0:
-                self.bezero_socket.send('tank_drive.off()\n'.encode())
+                if self.kontrol_mota:
+                    self.bezero_socket.send('tank_drive.off()\n'.encode())
+                else:
+                    self.udp_mugimendua_socket.sendto('tank_drive.off()\n'.encode(), self.udp_destino)
             else:
                 cmd = f'tank_drive.on(SpeedPercent({vel_izq}),SpeedPercent({vel_der}))\n'
-                self.bezero_socket.send(cmd.encode())
+                if self.kontrol_mota:
+                    self.bezero_socket.send(cmd.encode())
+                else:
+                    self.udp_mugimendua_socket.sendto(cmd.encode(), self.udp_destino)
 
         except Exception as e:
             self.get_logger().error(f"Errorea TCP bidaltzean: {e}")
