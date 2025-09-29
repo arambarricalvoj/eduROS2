@@ -11,6 +11,7 @@ setup(
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
         ('share/' + package_name + '/launch', [package_name + '/launch/display.launch.py']),
+        ('share/' + package_name + '/launch', [package_name + '/launch/zuzen_objektuarenganaino.py']),
         ('share/' + package_name + '/config', [package_name + '/config/params.yaml']),
     ],
     install_requires=['setuptools'],
@@ -30,6 +31,7 @@ setup(
             'biraketa_sentsorea = ip_nodes.biraketa_sentsorea:main',
             'joint_states = ip_nodes.joint_states:main',
             'mando = ip_nodes.mando:main',
+            'zuzen_objektuarenganaino = ip_nodes.zuzen_objektuarenganaino:main',
         ],
     },
 )

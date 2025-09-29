@@ -189,10 +189,18 @@ En el contenedor Docker
 ```bash
 ros2 launch ip_nodes display.launch.py use_controller:=true
 ```
+o
+```bash
+ros2 launch ip_nodes zuzen_objektuarenganaino.py
+```
 
 En la terminal SSH del EV3
 ```bash
 python3 server_ev3.py
+```
+o
+```bash
+python3 server_ev3\ cUDP.py
 ```
 
 ## más

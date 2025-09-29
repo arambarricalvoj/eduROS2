@@ -1,18 +1,26 @@
-teklatua:
+/**:
   ros__parameters:
     abiadura: 50.0
 
+#teklatua:
+  #ros__parameters:
+    #abiadura: 50.0
+
 mando:
   ros__parameters:
-    abiadura: 50.0
+    #abiadura: 50.0
     threshold: 2.0
 
 mugimendu_motorrak:
   ros__parameters:
-    abiadura: 50.0
+    #abiadura: 50.0
     motor_alderantzikatuak: true
 
 joy:
   ros__parameters:
     deadzone: 0.25
     autorepeat_rate: 5.0
+
+zuzen_objektuarenganaino:
+  ros__parameters:
+    eten_distantzia: 0.15

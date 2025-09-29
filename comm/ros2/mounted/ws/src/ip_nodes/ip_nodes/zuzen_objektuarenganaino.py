@@ -1,0 +1,93 @@
+# --- INPORTAZIOAK ---
+# ROS2 liburutegiak
+import rclpy
+from rclpy.node import Node
+from geometry_msgs.msg import Twist
+from std_msgs.msg import Int32
+from sensor_msgs.msg import Range
+
+# Beste liburutegiak
+# --- INPORTAZIOAK ---
+
+
+class ZuzenObjektuarenganaino(Node):
+    def __init__(self):
+        super().__init__('zuzen_objektuarenganaino')  # ROS2-n izango duen izena
+        self.get_logger().info("nodoa hasiarazi da\n")
+
+        self.nodoa_itxi = False
+
+        self.declare_parameter('abiadura', 25.0)
+        self.abiadura = self.get_parameter('abiadura').value
+        self.aurreko_abiadura = False
+
+        self.declare_parameter('eten_distantzia', 0.15)
+        self.eten_distantzia = self.get_parameter('eten_distantzia').value
+
+        self.yaw_angelua = None
+        self.ultrasoinu_distantzia = None
+
+        # Argitaratzaileak
+        self.cmd_vel_pub = self.create_publisher(Twist, 'cmd_vel', 10)
+
+        # Timer-a: 0.1 segunduro funtzioa exekutatzen da
+        self.timer = self.create_timer(0.1, self.mugitu_objektuarenganaino) # 0.1 segunduro
+        
+        # Entzuleak
+        self.biraketa_sentsorea_entzulea = self.create_subscription(Int32,'yaw_angelua',self.biraketa_sentsorea_callback,10)
+        self.ultrasoinu_sentsorea_entzulea = self.create_subscription(Range,'distantzia',self.ultrasoinu_sentsorea_callback,10)
+
+    def biraketa_sentsorea_callback(self, mezua: Int32):
+        try:
+            self.yaw_angelua = mezua.data
+        
+        except Exception as e:
+            self.get_logger().info(f"Errorea biraketa sentsorearen callback: {e}")
+
+    def ultrasoinu_sentsorea_callback(self, mezua: Range):
+        try:
+            self.ultrasoinu_distantzia = mezua.range
+        
+        except Exception as e:
+            self.get_logger().info(f"Errorea biraketa sentsorearen callback: {e}")
+
+    def mugitu_objektuarenganaino(self):
+        if self.ultrasoinu_distantzia is None:
+            return  # Ez dugu oraindik distantziarik
+
+        if self.ultrasoinu_distantzia > self.eten_distantzia:
+            # Aurrera mugitu
+            if not self.aurreko_abiadura:
+                self.aurreko_abiadura = True
+                mezua = Twist()
+                mezua.linear.x = self.abiadura  # Abiadura finkoa
+                self.cmd_vel_pub.publish(mezua)
+        else:
+            # Gelditu eta nodoa itxi
+            mezua = Twist()  # 0 abiadura
+            self.cmd_vel_pub.publish(mezua)
+            self.get_logger().info("Objektua hurbil dago. Nodoa gelditzen...")
+            self.nodoa_itxi = True
+            self.timer.cancel()
+
+
+def main(args=None):
+    rclpy.init(args=args)
+    zuzen_objektuarenganaino = ZuzenObjektuarenganaino()  
+    try:
+        while rclpy.ok():
+            rclpy.spin_once(zuzen_objektuarenganaino, timeout_sec=0.1)
+            if zuzen_objektuarenganaino.nodoa_itxi:
+                break
+
+    except KeyboardInterrupt:
+        zuzen_objektuarenganaino.get_logger().info("Erabiltzaileak nodoa gelditu du.")
+
+    finally:
+        zuzen_objektuarenganaino.destroy_node()
+        zuzen_objektuarenganaino.get_logger().info("Nodoa amaitu da.")
+        rclpy.shutdown()
+
+
+if __name__ == '__main__':
+    main()

@@ -115,35 +115,6 @@ def giro_emisor_udp():
         udp_socket.sendto(mensaje.encode(), destino)
         time.sleep(0.05)
 
-"""# ---------- Hilo TCP (envío) ----------
-def tcp_sender():
-    tcp_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    destino = ("192.168.1.138", 54321)  # Cambia IP y puerto
-    try:
-        tcp_socket.connect(destino)
-        print("Conectado a {}:{}".format(destino[0], destino[1]))
-        while True:
-            # Aquí iría la lectura real de encoders:
-            # encoder_a = motIzq.position
-            # encoder_d = motDer.position
-            mensaje = "test"  # Sustituye por f"{encoder_a},{encoder_d}" cuando lo implementes
-            tcp_socket.sendall(mensaje.encode())
-            print("Enviado por TCP: {}".format(mensaje))
-            time.sleep(1)
-    except Exception as e:
-        print("Error en conexión TCP: {}".format(e))
-    finally:
-        tcp_socket.close()"""
-
-
-"""if __name__ == "__main__":
-    # Lanzamos hilo UDP
-    hilo_udp = threading.Thread(target=udp_sender, daemon=True)
-    hilo_udp.start()
-
-    # Lanzamos servidor TCP (bloqueante)
-    start_server()"""
-
 if __name__ == "__main__":
     print("Lego Mindstorms EV3 - IP direction: {}".format(ip))
     print("Connect to IP: 192.168.1.138\n")
