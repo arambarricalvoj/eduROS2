@@ -1,10 +1,12 @@
 {
-  "OUTPUT_A": "M1EMH",
+  "OUTPUT_A": "LM",
   "OUTPUT_B": null,
   "OUTPUT_C": null,
-  "OUTPUT_D": "M1ESMH",
+  "OUTPUT_D": "LM",
   "INPUT_1": null,
   "INPUT_2": "US",
   "INPUT_3": "GS",
-  "INPUT_4": null
+  "INPUT_4": null,
+  "MOVE_TANK_LEFT": "OUTPUT_A",
+  "MOVE_TANK_RIGHT": "OUTPUT_D"
 }

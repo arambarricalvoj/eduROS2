@@ -1,0 +1,13 @@
+json_script.py: servidor EV3 con lectura desde JSON
+    - Tanque de motores solo LARGEMOTOR
+
+2 sockets para los motores de movimiento
+2 sockets para cada motor
+1 socket multiplexado para todos los sensores
+    - Robot con dos motores de movimiento y dos de accesorios: 2 + 2*2 + 1 = 7 sockets
+
+
+hay que poder elegir desde JSON qué motores de movimiento queremos
+
+siguiente tarea:
+    - multriplexar los sockets de sensores
