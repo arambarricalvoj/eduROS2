@@ -5,6 +5,7 @@ from rclpy.node import Node
 from geometry_msgs.msg import Twist
 from std_msgs.msg import Int32
 from sensor_msgs.msg import Range
+from rclpy.callback_groups import ReentrantCallbackGroup
 
 # Beste liburutegiak
 # --- INPORTAZIOAK ---
@@ -17,6 +18,8 @@ class ZuzenObjektuarenganaino(Node):
 
         self.nodoa_itxi = False
 
+        self.callback_group = ReentrantCallbackGroup()
+
         self.declare_parameter('abiadura', 25.0)
         self.abiadura = self.get_parameter('abiadura').value
         self.aurreko_abiadura = False
@@ -24,22 +27,34 @@ class ZuzenObjektuarenganaino(Node):
         self.declare_parameter('eten_distantzia', 0.15)
         self.eten_distantzia = self.get_parameter('eten_distantzia').value
 
+        self.declare_parameter('desbideratzeak_zuzendu', False)
+        self.desbideratzeak_zuzendu = self.get_parameter('desbideratzeak_zuzendu').value
+        self.get_logger().info(f"desbideratzeak_zuzendu: {self.desbideratzeak_zuzendu}")
+        self.desbideratzeak_zuzendu = True
+
         self.yaw_angelua = None
+        self.offset = None
         self.ultrasoinu_distantzia = None
+
+        self.kp = 7
 
         # Argitaratzaileak
         self.cmd_vel_pub = self.create_publisher(Twist, 'cmd_vel', 10)
 
         # Timer-a: 0.1 segunduro funtzioa exekutatzen da
-        self.timer = self.create_timer(0.1, self.mugitu_objektuarenganaino) # 0.1 segunduro
+        self.timer = self.create_timer(0.1, self.mugitu_objektuarenganaino, callback_group=self.callback_group) # 0.1 segunduro
         
         # Entzuleak
-        self.biraketa_sentsorea_entzulea = self.create_subscription(Int32,'yaw_angelua',self.biraketa_sentsorea_callback,10)
-        self.ultrasoinu_sentsorea_entzulea = self.create_subscription(Range,'distantzia',self.ultrasoinu_sentsorea_callback,10)
+        self.biraketa_sentsorea_entzulea = self.create_subscription(Int32,'yaw_angelua',self.biraketa_sentsorea_callback,10,callback_group=self.callback_group)
+        self.ultrasoinu_sentsorea_entzulea = self.create_subscription(Range,'distantzia',self.ultrasoinu_sentsorea_callback,10,callback_group=self.callback_group)
 
     def biraketa_sentsorea_callback(self, mezua: Int32):
         try:
             self.yaw_angelua = mezua.data
+
+            if not self.offset:
+                self.offset = self.yaw_angelua   
+                self.get_logger().info(f"Offset: {self.offset}")             
         
         except Exception as e:
             self.get_logger().info(f"Errorea biraketa sentsorearen callback: {e}")
@@ -52,15 +67,22 @@ class ZuzenObjektuarenganaino(Node):
             self.get_logger().info(f"Errorea biraketa sentsorearen callback: {e}")
 
     def mugitu_objektuarenganaino(self):
+        error = (self.yaw_angelua - self.offset) * self.kp
+        error_percent = error * 100 / 360
+        self.get_logger().info(f"Current: {self.yaw_angelua}") 
+        self.get_logger().info(f"Error: {error}") 
+        self.get_logger().info(f"Error pct: {error_percent}") 
+        
         if self.ultrasoinu_distantzia is None:
             return  # Ez dugu oraindik distantziarik
 
         if self.ultrasoinu_distantzia > self.eten_distantzia:
             # Aurrera mugitu
             if not self.aurreko_abiadura:
-                self.aurreko_abiadura = True
+                self.aurreko_abiadura = True if not self.desbideratzeak_zuzendu else False
                 mezua = Twist()
-                mezua.linear.x = self.abiadura  # Abiadura finkoa
+                mezua.linear.x = self.abiadura * (100 - error_percent) # Abiadura finkoa
+                mezua.angular.z = self.abiadura * error_percent  # Abiadura finkoa
                 self.cmd_vel_pub.publish(mezua)
         else:
             # Gelditu eta nodoa itxi

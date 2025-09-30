@@ -116,6 +116,8 @@ class MugimenduMotorrak(Node):
                 else:
                     self.udp_mugimendua_socket.sendto('tank_drive.off()\n'.encode(), self.udp_destino) # UDP
             else:
+                self.get_logger().info(f"vel izq: {vel_izq}")
+                self.get_logger().info(f"vel der: {vel_der}")
                 cmd = f'tank_drive.on(SpeedPercent({vel_izq}),SpeedPercent({vel_der}))\n'
                 if self.kontrol_mota:
                     self.bezero_socket.send(cmd.encode()) # TCP

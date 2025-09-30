@@ -1,0 +1,5 @@
+30/09/2025
+zuzen_objektuarenganaino:
+    - avanza hasta objeto y corrige desviaciones
+    - el parámetro booldesbideratzeak_zuzendu no funciona
+    - el kp cómo hacerlo?

@@ -1,6 +1,6 @@
 /**:
   ros__parameters:
-    abiadura: 50.0
+    abiadura: 30.0
 
 #teklatua:
   #ros__parameters:
@@ -24,3 +24,4 @@ joy:
 zuzen_objektuarenganaino:
   ros__parameters:
     eten_distantzia: 0.15
+    desbideratzeak_zuzendu: 1
