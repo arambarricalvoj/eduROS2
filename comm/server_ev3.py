@@ -13,8 +13,14 @@ motIzq = LargeMotor(OUTPUT_A)
 motDer = LargeMotor(OUTPUT_D)
 
 ultrasonic = UltrasonicSensor(INPUT_2)
+
 gyro = GyroSensor(INPUT_3)
 gyro.reset()
+
+csDER = ColorSensor(INPUT_1)
+csIZQ = ColorSensor(INPUT_4)
+csDER.mode = 'COL-REFLECT' # edo ColorSensor.MODE_COL_REFLECT
+csIZQ.mode = 'COL-REFLECT' # edo ColorSensor.MODE_COL_REFLECT
 
 # ---------- Dirección IP --------------------------------
 ip = os.popen("hostname -I").read().strip()
@@ -42,7 +48,7 @@ def motores_movimiento_servidor_tcp():
                 comando, buffer = buffer.split("\n", 1)
                 comando = comando.strip()
                 if comando:
-                    #print("Recibido:", comando)
+                    print("Recibido:", comando)
                     try:
                         exec(comando)
                     except Exception as e:
@@ -50,6 +56,35 @@ def motores_movimiento_servidor_tcp():
 
         client_socket.close()
         print("Conexión con {} cerrada".format(addr))
+
+
+# ---------- Control movimientos: receptor UDP ----------
+def motores_movimiento_receptor_udp():
+    udp_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    udp_socket.bind(("0.0.0.0", 5004))
+    print("Receptor UDP activo en puerto 5004")
+
+    udp_socket.setblocking(False)  # No bloquear si no hay datos
+
+    while True:
+        try:
+            # Leer todos los datagramas disponibles en el buffer del OS, pero solo ejecutar el último
+            ultimo_comando = None
+            while True:
+                try:
+                    data, addr = udp_socket.recvfrom(1024) # El socket UDP actúa como una FIFO (First-In, First-Out): cada llamada a recvfrom() te da el siguiente datagrama en cola.
+                    ultimo_comando = data.decode(errors='ignore').strip()
+                except BlockingIOError:
+                    break  # No hay más datos en cola
+
+            if ultimo_comando:
+                try:
+                    exec(ultimo_comando)
+                except Exception as e:
+                    print("Error ejecutando comando:", e)
+
+        except Exception as e:
+            print("Error al recibir datos UDP:", e)
 
 
 # ---------- Publicación encoders: emisor UDP ----------
@@ -61,7 +96,7 @@ def encoders_emisor_udp():
         # Aquí iría la lectura real de encoders:
         encoder_a = motIzq.position
         encoder_d = motDer.position
-        mensaje = "{},{}".format(encoder_a, encoder_d) #"test"  # Sustituye por f"{encoder_a},{encoder_d}" cuando lo implementes
+        mensaje = "{},{}".format(encoder_a, encoder_d)
         udp_socket.sendto(mensaje.encode(), destino)
         #print("Enviado por UDP: {}".format(mensaje))
         time.sleep(0.02)
@@ -86,34 +121,17 @@ def giro_emisor_udp():
         udp_socket.sendto(mensaje.encode(), destino)
         time.sleep(0.05)
 
-"""# ---------- Hilo TCP (envío) ----------
-def tcp_sender():
-    tcp_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    destino = ("192.168.1.138", 54321)  # Cambia IP y puerto
-    try:
-        tcp_socket.connect(destino)
-        print("Conectado a {}:{}".format(destino[0], destino[1]))
-        while True:
-            # Aquí iría la lectura real de encoders:
-            # encoder_a = motIzq.position
-            # encoder_d = motDer.position
-            mensaje = "test"  # Sustituye por f"{encoder_a},{encoder_d}" cuando lo implementes
-            tcp_socket.sendall(mensaje.encode())
-            print("Enviado por TCP: {}".format(mensaje))
-            time.sleep(1)
-    except Exception as e:
-        print("Error en conexión TCP: {}".format(e))
-    finally:
-        tcp_socket.close()"""
-
-
-"""if __name__ == "__main__":
-    # Lanzamos hilo UDP
-    hilo_udp = threading.Thread(target=udp_sender, daemon=True)
-    hilo_udp.start()
-
-    # Lanzamos servidor TCP (bloqueante)
-    start_server()"""
+# ---------- Publicación ultrasonidos: emisor UDP ----------
+def colores_emisor_udp():
+    udp_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    destino = ("192.168.1.138", 5003)  # Cambia IP y puerto
+    print("Sensores de color: emisor UDP en el puerto 5003")
+    while True:
+        csIZQ_value = csIZQ.reflected_light_intensity
+        csDER_value = csDER.reflected_light_intensity
+        mensaje = "{},{}".format(csIZQ_value, csDER_value)
+        udp_socket.sendto(mensaje.encode(), destino)
+        time.sleep(0.05)
 
 if __name__ == "__main__":
     print("Lego Mindstorms EV3 - IP direction: {}".format(ip))
@@ -128,8 +146,14 @@ if __name__ == "__main__":
     hilo_encoders_udp = threading.Thread(target=encoders_emisor_udp, daemon=True)
     hilo_encoders_udp.start()
 
+    hilo_colores_udp = threading.Thread(target=colores_emisor_udp, daemon=True)
+    hilo_colores_udp.start()
+
     hilo_motores_movimientos_tcp = threading.Thread(target=motores_movimiento_servidor_tcp, daemon=True)
     hilo_motores_movimientos_tcp.start()
+
+    hilo_motores_movimientos_udp = threading.Thread(target=motores_movimiento_receptor_udp, daemon=True)
+    hilo_motores_movimientos_udp.start()
 
     # Mantener el programa vivo
     hilo_motores_movimientos_tcp.join()
