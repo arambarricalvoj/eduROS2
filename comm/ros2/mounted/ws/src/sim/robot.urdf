@@ -38,6 +38,26 @@
         </visual>
     </link>
 
+    <link name="left_color_light_sensor">
+        <visual>
+            <geometry>
+                <box size="0.04 0.04 0.08"/>
+            </geometry>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <material name="black"/>
+        </visual>
+    </link>
+
+    <link name="right_color_light_sensor">
+        <visual>
+            <geometry>
+                <box size="0.04 0.04 0.08"/>
+            </geometry>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <material name="black"/>
+        </visual>
+    </link>
+
     <link name="left_wheel">
         <visual>
             <geometry>
@@ -85,6 +105,18 @@
         <parent link="base_link"/>
         <child link="ultrasonic"/>
         <origin xyz="-0.3 0 0.15" rpy="0 0 3.14"/>
+    </joint>
+
+    <joint name="base_left_color_light_sensor_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="left_color_light_sensor"/>
+        <origin xyz="-0.28 0.18 0.01" rpy="0 0 3.14"/> <!--z = caster wheel radius - (color light sensor z size)/2-->
+    </joint>
+
+    <joint name="base_right_color_light_sensor_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="right_color_light_sensor"/>
+        <origin xyz="-0.28 -0.18 0.01" rpy="0 0 3.14"/> <!--z = caster wheel radius - (color light sensor z size)/2-->
     </joint>
 
     <joint name="base_left_wheel_joint" type="continuous">
