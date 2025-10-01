@@ -17,6 +17,7 @@ find_package(unique_identifier_msgs REQUIRED)
 
 rosidl_generate_interfaces(${PROJECT_NAME}
   "msg/MugimenduKodetzaileak.msg"
+  "msg/IslatutakoArgia.msg"
   DEPENDENCIES geometry_msgs std_msgs unique_identifier_msgs action_msgs sensor_msgs
 )
 # uncomment the following section in order to fill in
