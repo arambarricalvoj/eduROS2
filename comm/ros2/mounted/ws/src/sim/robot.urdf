@@ -110,13 +110,13 @@
     <joint name="base_left_color_light_sensor_joint" type="fixed">
         <parent link="base_link"/>
         <child link="left_color_light_sensor"/>
-        <origin xyz="-0.28 0.18 0.01" rpy="0 0 3.14"/> <!--z = caster wheel radius - (color light sensor z size)/2-->
+        <origin xyz="-0.28 -0.18 0.01" rpy="0 0 3.14"/> <!--z = caster wheel radius - (color light sensor z size)/2-->
     </joint>
 
     <joint name="base_right_color_light_sensor_joint" type="fixed">
         <parent link="base_link"/>
         <child link="right_color_light_sensor"/>
-        <origin xyz="-0.28 -0.18 0.01" rpy="0 0 3.14"/> <!--z = caster wheel radius - (color light sensor z size)/2-->
+        <origin xyz="-0.28 0.18 0.01" rpy="0 0 3.14"/> <!--z = caster wheel radius - (color light sensor z size)/2-->
     </joint>
 
     <joint name="base_left_wheel_joint" type="continuous">

@@ -3,7 +3,7 @@ from rclpy.node import Node
 from visualization_msgs.msg import Marker, MarkerArray
 from std_msgs.msg import ColorRGBA
 from mezuak.msg import IslatutakoArgia
-from tf_transformations import quaternion_from_euler
+from transformations import quaternion_from_euler
 
 import socket
 import threading
@@ -19,7 +19,8 @@ class KoloreSentsorea(Node):
 
         # Argitaratzaileak
         self.argia_pub = self.create_publisher(IslatutakoArgia, 'islatutako_argia', 10)
-        self.rviz_marker_pub = self.create_publisher(MarkerArray, 'sensor_marker', 10)
+        self.rviz_left_marker_pub = self.create_publisher(Marker, 'left_light_sensor_marker', 10)
+        self.rviz_right_marker_pub = self.create_publisher(Marker, 'right_light_sensor_marker', 10)
 
         self.intensity = 0.5   # valor entre 0 y 1
         self.mode_rgb = False
@@ -89,7 +90,9 @@ class KoloreSentsorea(Node):
         ezker_marker.pose.orientation.z = q[2]
         ezker_marker.pose.orientation.w = q[3]
         ezker_marker.pose.position.z = -ezker_marker.scale.z / 2.0 #ezker_marker.pose.position.z = 0.1
-        ezker_marker.color = ColorRGBA(r=1.0, g=0.0, b=0.0, a=0.5)
+
+        alpha = self.ezker_islatutako_argia / 100
+        ezker_marker.color = ColorRGBA(r=1.0, g=0.0, b=0.0, a=alpha)
 
         """if self.mode_rgb:
             r, g, b = self.rgb
@@ -97,7 +100,8 @@ class KoloreSentsorea(Node):
         else:
             marker.color = ColorRGBA(r=1.0, g=0.0, b=0.0, a=self.intensity)"""
 
-        array.markers.append(ezker_marker)
+        array_marker.markers.append(ezker_marker)
+        self.rviz_left_marker_pub.publish(ezker_marker)
 
 
         eskuin_marker = Marker()
@@ -115,7 +119,9 @@ class KoloreSentsorea(Node):
         eskuin_marker.pose.orientation.z = q[2]
         eskuin_marker.pose.orientation.w = q[3]
         eskuin_marker.pose.position.z = -eskuin_marker.scale.z / 2.0
-        eskuin_marker.color = ColorRGBA(r=0.0, g=0.0, b=1.0, a=0.5)
+
+        alpha = self.eskuin_islatutako_argia / 100
+        eskuin_marker.color = ColorRGBA(r=1.0, g=0.0, b=0.0, a=alpha)
 
         """
         scale.z = altura del cilindro (a lo largo del eje Z local del frame).
@@ -129,9 +135,12 @@ El cilindro se dibuja centrado en su origen. Es decir, si scale.z = 0.2, el cili
         else:
             marker.color = ColorRGBA(r=1.0, g=0.0, b=0.0, a=self.intensity)"""
 
-        array.markers.append(eskuin_marker)
+        array_marker.markers.append(eskuin_marker)
 
-        self.rviz_marker_pub.publish(array_marker)
+        #self.rviz_marker_pub.publish(ezker_marker)
+        #self.rviz_marker_pub.publish(eskuin_marker)
+
+        self.rviz_right_marker_pub.publish(eskuin_marker)
 
 
 

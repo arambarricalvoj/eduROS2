@@ -138,6 +138,13 @@ def generate_launch_description():
         output='screen'
     )
 
+    kolore_sentsorea = Node(
+        package='ip_nodes',      
+        executable='kolore_sentsorea',  
+        name='kolore_sentsorea',
+        output='screen'
+    )
+
     joint_states = Node(
         package='ip_nodes',      
         executable='joint_states',  
@@ -160,5 +167,6 @@ def generate_launch_description():
     mugimendu_motorrak,
     ultrasoinu_sentsorea,
     biraketa_sentsorea,
+    kolore_sentsorea,
     joint_states
 ])

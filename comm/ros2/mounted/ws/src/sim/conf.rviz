@@ -65,14 +65,26 @@ Visualization Manager:
 
     - Class: rviz_default_plugins/Marker
       Enabled: true
-      Name: Sensor Marker
+      Name: Left Light Sensor Marker
       Queue Size: 10
       Topic:
         Depth: 5
         Durability Policy: Volatile
         History Policy: Keep Last
         Reliability Policy: Reliable
-        Value: /sensor_marker
+        Value: /left_light_sensor_marker
+      Value: true
+
+    - Class: rviz_default_plugins/Marker
+      Enabled: true
+      Name: Right Light Sensor Marker
+      Queue Size: 10
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /right_light_sensor_marker
       Value: true
 
     
