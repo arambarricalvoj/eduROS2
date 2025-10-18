@@ -210,4 +210,6 @@ jstest-gtk
 pip3 install inputs --break-system-packages
 El flag --break-system-packages ignora la restricción de PEP 668. Úsalo solo si sabes que no vas a romper dependencias del sistema. Para instalar en la versión de Python de ROS2
 
+pip3 install transformations --break-system-packages
+
 mando en docker: https://www.youtube.com/watch?v=uf4zOigzTFo&t=512s
