@@ -212,4 +212,12 @@ El flag --break-system-packages ignora la restricción de PEP 668. Úsalo solo
 
 pip3 install transformations --break-system-packages
 
+docker commit eduros2_ev3_jazzy_v1.2_joystick_ds4(contenedor_actual) arambarricalvoj/eduros2_ev3:jazzy_v1.3_transformations
+
+docker push arambarricalvoj/eduros2_ev3:jazzy_v1.3_transformations
+
+docker pull arambarricalvoj/eduros2_ev3:jazzy_v1.3_transformations
+
+https://hub.docker.com/r/arambarricalvoj/eduros2_ev3/tags
+
 mando en docker: https://www.youtube.com/watch?v=uf4zOigzTFo&t=512s
