@@ -53,7 +53,7 @@ class MugimenduMotorrak(Node):
         self.udp_mugimendua_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         try:
             self.udp_mugimendua_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-            self.udp_destino = ("192.168.1.140", 5003)  # Cambia IP y puerto
+            self.udp_destino = ("192.168.1.140", 5004)  # Cambia IP y puerto
         except Exception as e:
             self.get_logger().error(f"Ezin izan da UDP ataka sortu: {e}")
         
