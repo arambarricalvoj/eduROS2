@@ -1,4 +1,4 @@
-comm/ros2/mounted/ws/build/
-comm/ros2/mounted/ws/install/
-comm/ros2/mounted/ws/log/
-
+eduros2_lego/ws/build/
+eduros2_lego/ws/install/
+eduros2_lego/ws/log/
+eduros2_lego/path/
