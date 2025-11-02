@@ -174,7 +174,7 @@ En el ordenador de ROS2, nos aseguramos de que la overlay del proyecto en ROS2 e
 cd /home/$USER/eduros2_lego/ws
 source install/setup.bash
 ```
-Para controlar el robot con el mando a distancia conectado por USB o Bluetooth al ordenador (ver [video](doc/videos/presentacion.mp4)):
+Para controlar el robot con el mando a distancia conectado por USB o Bluetooth al ordenador (ver ![video](videos/presentacion.mp4)):
 ```bash
 ros2 launch eduros2_lego display.launch.py use_controller:=true
 ```
