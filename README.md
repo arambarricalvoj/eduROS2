@@ -186,14 +186,14 @@ ros2 launch eduros2_lego display.launch.py use_controller:=true
 
 El parámetro ```use_controller:=true``` activa el mando (joystick derecho), mientras que ```use_controller:=false``` desactiva el mando y activa las flechas del teclado. Usando el mando, si se pulsa el botón "X" o "A" se desactiva el joystick (UDP) y se controla mediante las flechas del mando (TCP).
 
-<!--![Imagen extraída del primer vídeo](doc/md_img/vid1.png)-->
+![Imagen extraída del primer vídeo](doc/md_img/vid1.png)
 
-[![Vídeo de presentación](https://raw.githubusercontent.com/arambarricalvoj/eduROS2/ROSConEs25/videos/presentacion.mp4)](https://raw.githubusercontent.com/arambarricalvoj/eduROS2/ROSConEs25/videos/presentacion.mp4)
+<!--[![Vídeo de presentación](https://raw.githubusercontent.com/arambarricalvoj/eduROS2/ROSConEs25/videos/presentacion.mp4)](https://raw.githubusercontent.com/arambarricalvoj/eduROS2/ROSConEs25/videos/presentacion.mp4)-->
 
 Para ejecutar el programa en el que el robot avanza recto corrigiendo las desviaciones de trayectoria mediante el sensor de giro hasta detectar, con el sensor ultrasónicos, un objeto a menos de 15 cm (ver [video](videos/zuzen.mp4)):
 ```bash
 ros2 launch eduros2_lego zuzen_objektuarenganaino.py
 ```
 
-[![Vídeo de caso práctico](https://raw.githubusercontent.com/arambarricalvoj/eduROS2/ROSConEs25/videos/zuzen.mp4)](https://raw.githubusercontent.com/arambarricalvoj/eduROS2/ROSConEs25/videos/zuzen.mp4)
-<!--![Imagen extraída del segundo vídeo](videos/zuzen.gif)-->
+<!--[![Vídeo de caso práctico](https://raw.githubusercontent.com/arambarricalvoj/eduROS2/ROSConEs25/videos/zuzen.mp4)](https://raw.githubusercontent.com/arambarricalvoj/eduROS2/ROSConEs25/videos/zuzen.mp4)-->
+![Imagen extraída del segundo vídeo](videos/zuzen.gif)
