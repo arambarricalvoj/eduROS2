@@ -145,13 +145,15 @@ class MugimenduMotorrak(Node):
 
                 # Procesar el mensaje
                 partes = mezua.split(',')
-                if len(partes) != 2:
+                if len(partes) != 4:
                     self.get_logger().warn("Formato inválido, se esperaban dos valores separados por coma")
                     continue
 
                 try:
                     left_deg = float(partes[0])
                     right_deg = float(partes[1])
+                    left_speed = float(partes[2])
+                    right_speed = float(partes[3])
                 except ValueError:
                     self.get_logger().warn("No se pudieron convertir los valores a float")
                     continue
@@ -163,6 +165,8 @@ class MugimenduMotorrak(Node):
                 mk = MugimenduKodetzaileak()
                 mk.graduak[0] = left_deg
                 mk.graduak[1] = right_deg
+                mk.abiadurak[0] = left_speed
+                mk.abiadurak[1] = right_speed
                 self.kodetzaileak_pub.publish(mk)
 
             except Exception as e:

@@ -197,3 +197,17 @@ ros2 launch eduros2_lego zuzen_objektuarenganaino.py
 
 <!--[![Vídeo de caso práctico](https://raw.githubusercontent.com/arambarricalvoj/eduROS2/ROSConEs25/videos/zuzen.mp4)](https://raw.githubusercontent.com/arambarricalvoj/eduROS2/ROSConEs25/videos/zuzen.mp4)-->
 ![Imagen extraída del segundo vídeo](videos/zuzen.gif)
+
+
+# fuzzylite
+
+git clone https://github.com/fuzzylite/fuzzylite.git /opt/fuzzylite
+cd /opt/fuzzylite
+mkdir build && cd build
+cmake ..
+make -j$(nproc)
+make install
+
+NO FUNCIONA: export CMAKE_PREFIX_PATH=$CMAKE_PREFIX_PATH:/usr/local/share/fuzzylite/cmake
+
+export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH

@@ -96,7 +96,9 @@ def encoders_emisor_udp():
         # Aquí iría la lectura real de encoders:
         encoder_a = motIzq.position
         encoder_d = motDer.position
-        mensaje = "{},{}".format(encoder_a, encoder_d)
+        speed_a = motIzq.speed
+        speed_d = motDer.speed
+        mensaje = "{},{},{},{}".format(encoder_a, encoder_d, speed_a, speed_d)
         udp_socket.sendto(mensaje.encode(), destino)
         #print("Enviado por UDP: {}".format(mensaje))
         time.sleep(0.02)
