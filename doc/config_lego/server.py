@@ -98,6 +98,20 @@ def encoders_emisor_udp():
         encoder_d = motDer.position
         speed_a = motIzq.speed
         speed_d = motDer.speed
+
+        # Conversión a grados/s
+        """speed_a_deg = (speed_a / motIzq.count_per_rot) * 360.0
+        speed_d_deg = (speed_d / motDer.count_per_rot) * 360.0
+
+        print("")
+        print(motIzq.count_per_rot)
+        print(motDer.count_per_rot)
+        print("")
+        print(speed_a)
+        print(speed_a_deg)
+        print(speed_d)
+        print(speed_d_deg)"""        
+
         mensaje = "{},{},{},{}".format(encoder_a, encoder_d, speed_a, speed_d)
         udp_socket.sendto(mensaje.encode(), destino)
         #print("Enviado por UDP: {}".format(mensaje))

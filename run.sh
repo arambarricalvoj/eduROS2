@@ -13,6 +13,7 @@ docker run -e DISPLAY=$DISPLAY \
            --device /dev/dri:/dev/dri \
            --device /dev/input:/dev/input \
            -it \
+           --rm \
            --gpus all \
-           --name eduros2_lego_jazzy_v1.3_transformations \
-           arambarricalvoj/eduros2_ev3:jazzy_v1.3_transformations
+           --name eduros2_control_inteligente \
+           arambarricalvoj/eduros2_ev3:control_inteligente

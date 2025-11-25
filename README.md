@@ -158,7 +158,7 @@ scp /path/to/local/file username@remote_ip:/path/to/remote/directory
 
 Ejemplo:
 ```bash
-scp config_lego/server.py robot@192.168.1.140:/home/robot
+scp doc/config_lego/server.py robot@192.168.1.140:/home/robot
 ```
 En la terminal SSH del robot, cuando ya estamos conectados al robot, ejecutar:
 ```bash
@@ -211,3 +211,5 @@ make install
 NO FUNCIONA: export CMAKE_PREFIX_PATH=$CMAKE_PREFIX_PATH:/usr/local/share/fuzzylite/cmake
 
 export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
+
+ros2 launch eduros2_lego fuzzy_zuzen.py

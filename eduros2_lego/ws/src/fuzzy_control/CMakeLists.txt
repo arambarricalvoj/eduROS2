@@ -14,32 +14,36 @@ find_package(mezuak REQUIRED)
 # --- Librería con la lógica fuzzy ---
 add_library(fuzzyEngine src/fuzzyEngine.cpp)
 
-# Añadimos cabeceras propias y las de fuzzylite
 target_include_directories(fuzzyEngine PUBLIC
   include
   /usr/local/include   # aquí está fl/Headers.h
 )
 
-# Enlazamos directamente con la librería fuzzylite
 target_link_libraries(fuzzyEngine /usr/local/lib/libfuzzylite.so)
 
-# --- Ejecutable principal (el nodo) ---
+# --- Ejecutables (nodos) ---
 add_executable(fuzzyEncoders src/fuzzyEncoders.cpp)
+add_executable(fuzzyMugimendua src/fuzzyMugimendua.cpp)
+
 target_include_directories(fuzzyEncoders PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include/${PROJECT_NAME}>)
-target_compile_features(fuzzyEncoders PUBLIC c_std_99 cxx_std_17)
 
-# Vincular dependencias ROS2 y la librería fuzzyEngine
-ament_target_dependencies(fuzzyEncoders
-  rclcpp
-  std_msgs
-  mezuak
-)
+target_include_directories(fuzzyMugimendua PUBLIC
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+  $<INSTALL_INTERFACE:include/${PROJECT_NAME}>)
+
+target_compile_features(fuzzyEncoders PUBLIC c_std_99 cxx_std_17)
+target_compile_features(fuzzyMugimendua PUBLIC c_std_99 cxx_std_17)
+
+ament_target_dependencies(fuzzyEncoders rclcpp std_msgs mezuak)
+ament_target_dependencies(fuzzyMugimendua rclcpp std_msgs mezuak)
+
 target_link_libraries(fuzzyEncoders fuzzyEngine)
+target_link_libraries(fuzzyMugimendua fuzzyEngine)
 
 # --- Instalación ---
-install(TARGETS fuzzyEngine fuzzyEncoders
+install(TARGETS fuzzyEngine fuzzyEncoders fuzzyMugimendua
   ARCHIVE DESTINATION lib/${PROJECT_NAME}
   LIBRARY DESTINATION lib/${PROJECT_NAME}
   RUNTIME DESTINATION lib/${PROJECT_NAME})

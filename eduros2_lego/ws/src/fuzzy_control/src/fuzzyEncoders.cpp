@@ -15,7 +15,7 @@ public:
 private:
     void encoder_callback(const mezuak::msg::MugimenduKodetzaileak::SharedPtr msg) {
         
-        /*RCLCPP_INFO(this->get_logger(), 
+        RCLCPP_INFO(this->get_logger(), 
                     "graduak: [%d, %d], abiadurak: [%d, %d]",
                     static_cast<int>(msg->graduak[0]), 
                     static_cast<int>(msg->graduak[1]), 
