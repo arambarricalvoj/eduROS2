@@ -3,12 +3,17 @@
 #include "mezuak/msg/mugimendu_kodetzaileak.hpp"
 #include "sensor_msgs/msg/range.hpp"
 #include "fuzzy_control/fuzzyEngine.hpp"
+#include "fuzzy_control/trajectoryError.hpp"
 
 using std::placeholders::_1;
 
 class FuzzyControlNode : public rclcpp::Node {
 public:
-    FuzzyControlNode() : Node("fuzzy_control_node") {
+    FuzzyControlNode() 
+    : Node("fuzzy_control_node"),
+      // inicializa el objeto trajectory_error con parámetros físicos del robot
+      trajectory_error_(0.0624, 0.011) // diámetro rueda=0.0624 m (62.4mm), axle_track=0.011 m (11mm)
+    {
         // Suscripción a los encoders
         sub_encoders_ = this->create_subscription<mezuak::msg::MugimenduKodetzaileak>(
             "/kodetzaileak", 10,
@@ -37,12 +42,10 @@ private:
 
     void encoder_callback(const mezuak::msg::MugimenduKodetzaileak::SharedPtr msg) {
         if (!ultrasoinu_distantzia_.has_value()) {
-            // No tenemos aún medida de distancia
             return;
         }
 
         if (ultrasoinu_distantzia_.value() <= eten_distantzia_) {
-            // Objeto demasiado cerca → detener
             auto stop_twist = geometry_msgs::msg::Twist();
             pub_->publish(stop_twist);
             RCLCPP_INFO(this->get_logger(), "Objeto cercano (%.2f m). Robot detenido.",
@@ -50,25 +53,33 @@ private:
             return;
         }
 
-        // Calcular corrección difusa
         double v_izq = static_cast<double>(msg->abiadurak[0]);
         double v_der = static_cast<double>(msg->abiadurak[1]);
 
-        double e_v = std::abs(v_izq) - std::abs(v_der);
-        // Normalizar al rango máximo (±1050)
-        double e_v_pct = (e_v / 1050.0) * 100.0;   // porcentaje [-100, 100]
+        // calcular dt con timestamps reales
+        static rclcpp::Time last_time = this->now();
+        rclcpp::Time current_time = this->now();
+        double dt = (current_time - last_time).seconds();
+        last_time = current_time;
 
-        double delta_v = fuzzy_.infer_delta_v(e_v);
+        // actualizar error de trayectoria acumulado
+        trajectory_error_.update(v_izq, v_der, dt);
+        double e_traj = trajectory_error_.getError();
+
+        // inferencia fuzzy sobre el error de trayectoria
+        double delta_v = fuzzy_.infer_delta_v(e_traj);
+
+        // solo para log: error instantáneo en porcentaje
+        double e_v = std::abs(v_izq) - std::abs(v_der);
+        double e_v_pct = (e_v / 1050.0) * 100.0;
 
         RCLCPP_INFO(this->get_logger(),
-            "Vel izq=%.2f, der=%.2f | e_v=%.2f | Delta=%.2f | Dist=%.2f",
-            v_izq, v_der, e_v_pct, delta_v, ultrasoinu_distantzia_.value());
+            "Vel izq=%.2f, der=%.2f | e_v=%.2f%% | e_traj=%.2f rad | Delta=%.2f | Dist=%.2f",
+            v_izq, v_der, e_v_pct, e_traj, delta_v, ultrasoinu_distantzia_.value());
 
-        // Construir Twist
         auto twist = geometry_msgs::msg::Twist();
-        twist.linear.x = abiadura_;                       // velocidad base
-        twist.angular.z = (delta_v / 100.0) * abiadura_;  // corrección proporcional
-
+        twist.linear.x = abiadura_;
+        twist.angular.z = (delta_v / 100.0) * abiadura_;
         pub_->publish(twist);
     }
 
@@ -77,8 +88,9 @@ private:
     rclcpp::Subscription<sensor_msgs::msg::Range>::SharedPtr sub_range_;
     rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr pub_;
 
-    // Motor difuso
+    // Motor difuso y error de trayectoria
     FuzzyEngine fuzzy_;
+    TrajectoryError trajectory_error_;
 
     // Parámetros
     double abiadura_;
