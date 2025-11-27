@@ -11,14 +11,15 @@ FuzzyEngine::FuzzyEngine() {
     // EV3 Large Motor: ±1050 grados/segundo ≈ ±1050 tacho counts/segundo
     ev_ = new InputVariable;
     ev_->setName("e_v");
-    ev_->setRange(-1100.0, 1100.0);
+    ev_->setRange(-100.0, 100.0);
 
     // términos solapados para cubrir todo el rango
-    ev_->addTerm(new Triangle("muy_bajo", -1100, -800, -400));
-    ev_->addTerm(new Triangle("bajo",     -600, -300, 0));
-    ev_->addTerm(new Triangle("medio",    -200, 0, 200));
-    ev_->addTerm(new Triangle("alto",      0, 300, 600));
-    ev_->addTerm(new Triangle("muy_alto",  400, 800, 1100));
+    ev_->addTerm(new Triangle("muy_bajo", -100, -80, -40));
+    ev_->addTerm(new Triangle("bajo",     -60, -30, 0));
+    ev_->addTerm(new Triangle("medio",    -20, 0, 20));
+    ev_->addTerm(new Triangle("alto",      0, 30, 60));
+    ev_->addTerm(new Triangle("muy_alto",  40, 80, 100));
+
     engine_->addInputVariable(ev_);
 
     // Salida Delta_v (corrección en porcentaje de potencia del motor)

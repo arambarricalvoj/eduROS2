@@ -31,64 +31,46 @@ public:
     }
 
 private:
-    std::deque<double> buffer_izq_;
-    std::deque<double> buffer_der_;
-    const size_t N = 5;  // tamaño de ventana
-    double error_acumulado_ = 0.0;
-
     void range_callback(const sensor_msgs::msg::Range::SharedPtr msg) {
         ultrasoinu_distantzia_ = msg->range;
     }
 
-    double filtrar(std::deque<double>& buffer, double nueva) {
-    buffer.push_back(nueva);
-    if (buffer.size() > N) buffer.pop_front();
-    double suma = 0.0;
-    for (auto v : buffer) suma += v;
-    return suma / buffer.size();  // media móvil
+    void encoder_callback(const mezuak::msg::MugimenduKodetzaileak::SharedPtr msg) {
+        if (!ultrasoinu_distantzia_.has_value()) {
+            // No tenemos aún medida de distancia
+            return;
+        }
+
+        if (ultrasoinu_distantzia_.value() <= eten_distantzia_) {
+            // Objeto demasiado cerca → detener
+            auto stop_twist = geometry_msgs::msg::Twist();
+            pub_->publish(stop_twist);
+            RCLCPP_INFO(this->get_logger(), "Objeto cercano (%.2f m). Robot detenido.",
+                        ultrasoinu_distantzia_.value());
+            return;
+        }
+
+        // Calcular corrección difusa
+        double v_izq = static_cast<double>(msg->abiadurak[0]);
+        double v_der = static_cast<double>(msg->abiadurak[1]);
+
+        double e_v = std::abs(v_izq) - std::abs(v_der);
+        // Normalizar al rango máximo (±1050)
+        double e_v_pct = (e_v / 1050.0) * 100.0;   // porcentaje [-100, 100]
+
+        double delta_v = fuzzy_.infer_delta_v(e_v);
+
+        RCLCPP_INFO(this->get_logger(),
+            "Vel izq=%.2f, der=%.2f | e_v=%.2f | Delta=%.2f | Dist=%.2f",
+            v_izq, v_der, e_v_pct, delta_v, ultrasoinu_distantzia_.value());
+
+        // Construir Twist
+        auto twist = geometry_msgs::msg::Twist();
+        twist.linear.x = abiadura_;                       // velocidad base
+        twist.angular.z = (delta_v / 100.0) * abiadura_;  // corrección proporcional
+
+        pub_->publish(twist);
     }
-
-    // miembros privados
-double ultima_correccion_ = 0.0;
-bool corrigiendo_ = false;
-
-void encoder_callback(const mezuak::msg::MugimenduKodetzaileak::SharedPtr msg) {
-    if (!ultrasoinu_distantzia_.has_value()) return;
-    if (ultrasoinu_distantzia_.value() <= eten_distantzia_) {
-        pub_->publish(geometry_msgs::msg::Twist());
-        return;
-    }
-
-    double v_izq = filtrar(buffer_izq_, static_cast<double>(msg->abiadurak[0]));
-    double v_der = filtrar(buffer_der_, static_cast<double>(msg->abiadurak[1]));
-    double e_v = std::abs(v_izq) - std::abs(v_der);
-
-    // Histéresis
-    const double umbral_alto = 8.0;
-    const double umbral_bajo = 3.0;
-
-    if (!corrigiendo_ && std::abs(e_v) > umbral_alto) {
-        corrigiendo_ = true;
-    } else if (corrigiendo_ && std::abs(e_v) < umbral_bajo) {
-        corrigiendo_ = false;
-    }
-
-    // Acumulador integral
-    if (corrigiendo_) {
-        error_acumulado_ += e_v;
-        error_acumulado_ = std::clamp(error_acumulado_, -100.0, 100.0);
-        double delta_v = fuzzy_.infer_delta_v(error_acumulado_);
-        ultima_correccion_ = (delta_v / 200.0) * abiadura_;
-    }
-
-    geometry_msgs::msg::Twist twist;
-    twist.linear.x = abiadura_;
-    twist.angular.z = ultima_correccion_;  // mantener corrección hasta que se libere
-
-    pub_->publish(twist);
-}
-
-
 
     // Subscripciones y publicador
     rclcpp::Subscription<mezuak::msg::MugimenduKodetzaileak>::SharedPtr sub_encoders_;
