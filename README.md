@@ -213,3 +213,7 @@ NO FUNCIONA: export CMAKE_PREFIX_PATH=$CMAKE_PREFIX_PATH:/usr/local/share/fuzzyl
 export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
 
 ros2 launch eduros2_lego fuzzy_zuzen.py
+
+gz sim -v 4 /home/javierac/eduros2_lego/ws/src/eduros2_lego/eduros2_lego/sim/ground.sdf
+
+ros2 run ros_gz_sim create   -file /home/javierac/eduros2_lego/ws/src/eduros2_lego/eduros2_lego/sim/gz_robot.urdf   -name mi_robot   -x 0 -y 0 -z 0.25
