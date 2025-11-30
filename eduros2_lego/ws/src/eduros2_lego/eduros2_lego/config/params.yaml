@@ -25,3 +25,7 @@ zuzen_objektuarenganaino:
   ros__parameters:
     eten_distantzia: 0.15
     desbideratzeak_zuzendu: 1
+
+fuzzy_mugimendua:
+  ros__parameters:
+    kontrol_mota: "nbs"
