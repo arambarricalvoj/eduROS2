@@ -217,3 +217,13 @@ ros2 launch eduros2_lego fuzzy_zuzen.py
 gz sim -v 4 /home/javierac/eduros2_lego/ws/src/eduros2_lego/eduros2_lego/sim/ground.sdf
 
 ros2 run ros_gz_sim create   -file /home/javierac/eduros2_lego/ws/src/eduros2_lego/eduros2_lego/sim/gz_robot.urdf   -name mi_robot   -x 0 -y 0 -z 0.25
+
+
+export LD_LIBRARY_PATH=/usr/local/libtorch/lib:$LD_LIBRARY_PATH
+
+https://docs.pytorch.org/cppdocs/installing.html
+
+el controlador neuronal oscila, sobreimpulsa, y se corrige, porque necesita mucho más entrenamiento. Si introducimos imperfecciones (model_imp.pt), falla, porque lo que intenta es buscar un promediado, las imperfecciones son con RL con castigos. Se ha intentado con un objetivo basado en la distancia restante, quizás si esa constraint sea más sencillo. Funcionar funciona, pero tiene un comportamiento característico de NN, sería mejor RL, lo intentamos?
+
+ros2 launch eduros2_lego fuzzy_nn_zuzen.py
+

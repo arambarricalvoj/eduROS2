@@ -29,3 +29,8 @@ zuzen_objektuarenganaino:
 fuzzy_mugimendua:
   ros__parameters:
     kontrol_mota: "nbs"
+    ikas_modua: "True"
+
+fuzzy_nn_mugimendua:
+  ros__parameters:
+    kontrol_mota: "nbs"
