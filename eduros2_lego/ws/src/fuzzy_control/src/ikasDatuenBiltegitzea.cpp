@@ -27,7 +27,7 @@ public:
             RCLCPP_ERROR(this->get_logger(), "No se pudo abrir %s", path.c_str());
         } else {
             // Cabecera del CSV
-            file_ << "pos_izq,pos_der,vel_izq,vel_der,yaw,error_traj,delta_v,dist_restante\n";
+            file_ << "pos_izq,pos_der,vel_izq,vel_der,yaw,error_traj,delta_v,dist_restante,reward,done\n";
             RCLCPP_INFO(this->get_logger(), "Archivo CSV abierto en %s", path.c_str());
         }
     }
@@ -49,7 +49,10 @@ private:
               << msg->yaw << ","
               << msg->error_traj << ","
               << msg->delta_v << ","
-              << msg->dist_restante << "\n";
+              << msg->dist_restante << ","
+              << msg->reward << ","
+              << (msg->done ? 1 : 0) << "\n";
+
     }
 
     rclcpp::Subscription<mezuak::msg::IkasDatuak>::SharedPtr sub_;
