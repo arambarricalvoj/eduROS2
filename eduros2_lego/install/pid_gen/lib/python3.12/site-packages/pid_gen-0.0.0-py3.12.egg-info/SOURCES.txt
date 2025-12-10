@@ -1,0 +1,19 @@
+package.xml
+setup.cfg
+setup.py
+../../../build/pid_gen/pid_gen.egg-info/PKG-INFO
+../../../build/pid_gen/pid_gen.egg-info/SOURCES.txt
+../../../build/pid_gen/pid_gen.egg-info/dependency_links.txt
+../../../build/pid_gen/pid_gen.egg-info/entry_points.txt
+../../../build/pid_gen/pid_gen.egg-info/requires.txt
+../../../build/pid_gen/pid_gen.egg-info/top_level.txt
+../../../build/pid_gen/pid_gen.egg-info/zip-safe
+pid_gen/__init__.py
+pid_gen/zuzen_objektuarenganaino copy.py
+pid_gen/zuzen_objektuarenganaino.py
+pid_gen/config/params.yaml
+pid_gen/launch/zuzen_objektuarenganaino.py
+resource/pid_gen
+test/test_copyright.py
+test/test_flake8.py
+test/test_pep257.py

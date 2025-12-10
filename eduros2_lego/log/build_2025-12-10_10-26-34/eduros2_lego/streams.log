@@ -1,0 +1,32 @@
+[0.940s] Invoking command in '/home/javierac/eduros2_lego/ws/src/eduros2_lego': PYTHONPATH=/home/javierac/eduros2_lego/build/eduros2_lego/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/javierac/eduros2_lego/install/eduros2_lego/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../../build/eduros2_lego build --build-base /home/javierac/eduros2_lego/build/eduros2_lego/build install --record /home/javierac/eduros2_lego/build/eduros2_lego/install.log --single-version-externally-managed install_data
+[1.174s] running egg_info
+[1.188s] writing ../../../build/eduros2_lego/eduros2_lego.egg-info/PKG-INFO
+[1.189s] writing dependency_links to ../../../build/eduros2_lego/eduros2_lego.egg-info/dependency_links.txt
+[1.189s] writing entry points to ../../../build/eduros2_lego/eduros2_lego.egg-info/entry_points.txt
+[1.189s] writing requirements to ../../../build/eduros2_lego/eduros2_lego.egg-info/requires.txt
+[1.189s] writing top-level names to ../../../build/eduros2_lego/eduros2_lego.egg-info/top_level.txt
+[1.220s] reading manifest file '../../../build/eduros2_lego/eduros2_lego.egg-info/SOURCES.txt'
+[1.221s] writing manifest file '../../../build/eduros2_lego/eduros2_lego.egg-info/SOURCES.txt'
+[1.221s] running build
+[1.221s] running build_py
+[1.221s] copying eduros2_lego/zuzen_objektuarenganaino.py -> /home/javierac/eduros2_lego/build/eduros2_lego/build/lib/eduros2_lego
+[1.221s] running install
+[1.227s] running install_lib
+[1.242s] copying /home/javierac/eduros2_lego/build/eduros2_lego/build/lib/eduros2_lego/zuzen_objektuarenganaino.py -> /home/javierac/eduros2_lego/install/eduros2_lego/lib/python3.12/site-packages/eduros2_lego
+[1.242s] byte-compiling /home/javierac/eduros2_lego/install/eduros2_lego/lib/python3.12/site-packages/eduros2_lego/zuzen_objektuarenganaino.py to zuzen_objektuarenganaino.cpython-312.pyc
+[1.244s] running install_data
+[1.244s] copying eduros2_lego/config/params.yaml -> /home/javierac/eduros2_lego/install/eduros2_lego/share/eduros2_lego/config
+[1.244s] running install_egg_info
+[1.260s] removing '/home/javierac/eduros2_lego/install/eduros2_lego/lib/python3.12/site-packages/eduros2_lego-0.0.0-py3.12.egg-info' (and everything under it)
+[1.260s] Copying ../../../build/eduros2_lego/eduros2_lego.egg-info to /home/javierac/eduros2_lego/install/eduros2_lego/lib/python3.12/site-packages/eduros2_lego-0.0.0-py3.12.egg-info
+[1.261s] running install_scripts
+[1.366s] Installing biraketa_sentsorea script to /home/javierac/eduros2_lego/install/eduros2_lego/lib/eduros2_lego
+[1.366s] Installing joint_states script to /home/javierac/eduros2_lego/install/eduros2_lego/lib/eduros2_lego
+[1.366s] Installing kolore_sentsorea script to /home/javierac/eduros2_lego/install/eduros2_lego/lib/eduros2_lego
+[1.366s] Installing mando script to /home/javierac/eduros2_lego/install/eduros2_lego/lib/eduros2_lego
+[1.366s] Installing mugimendu_motorrak script to /home/javierac/eduros2_lego/install/eduros2_lego/lib/eduros2_lego
+[1.367s] Installing teklatua script to /home/javierac/eduros2_lego/install/eduros2_lego/lib/eduros2_lego
+[1.367s] Installing ultrasoinu_sentsorea script to /home/javierac/eduros2_lego/install/eduros2_lego/lib/eduros2_lego
+[1.367s] Installing zuzen_objektuarenganaino script to /home/javierac/eduros2_lego/install/eduros2_lego/lib/eduros2_lego
+[1.367s] writing list of installed files to '/home/javierac/eduros2_lego/build/eduros2_lego/install.log'
+[1.393s] Invoked command in '/home/javierac/eduros2_lego/ws/src/eduros2_lego' returned '0': PYTHONPATH=/home/javierac/eduros2_lego/build/eduros2_lego/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/javierac/eduros2_lego/install/eduros2_lego/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../../build/eduros2_lego build --build-base /home/javierac/eduros2_lego/build/eduros2_lego/build install --record /home/javierac/eduros2_lego/build/eduros2_lego/install.log --single-version-externally-managed install_data

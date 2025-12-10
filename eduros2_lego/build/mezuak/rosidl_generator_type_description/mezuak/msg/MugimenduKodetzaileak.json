@@ -1,0 +1,36 @@
+{
+  "type_description_msg": {
+    "type_description": {
+      "type_name": "mezuak/msg/MugimenduKodetzaileak",
+      "fields": [
+        {
+          "name": "graduak",
+          "type": {
+            "type_id": 50,
+            "capacity": 2,
+            "string_capacity": 0,
+            "nested_type_name": ""
+          },
+          "default_value": ""
+        },
+        {
+          "name": "abiadurak",
+          "type": {
+            "type_id": 52,
+            "capacity": 2,
+            "string_capacity": 0,
+            "nested_type_name": ""
+          },
+          "default_value": ""
+        }
+      ]
+    },
+    "referenced_type_descriptions": []
+  },
+  "type_hashes": [
+    {
+      "type_name": "mezuak/msg/MugimenduKodetzaileak",
+      "hash_string": "RIHS01_95f2a4db0f0326934517799751f17c313ab482e1f20811b20e2877cb929b9d5f"
+    }
+  ]
+}

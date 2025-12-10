@@ -1,0 +1,74 @@
+running egg_info
+creating ../../../build/eduros2_lego/eduros2_lego.egg-info
+writing ../../../build/eduros2_lego/eduros2_lego.egg-info/PKG-INFO
+writing dependency_links to ../../../build/eduros2_lego/eduros2_lego.egg-info/dependency_links.txt
+writing entry points to ../../../build/eduros2_lego/eduros2_lego.egg-info/entry_points.txt
+writing requirements to ../../../build/eduros2_lego/eduros2_lego.egg-info/requires.txt
+writing top-level names to ../../../build/eduros2_lego/eduros2_lego.egg-info/top_level.txt
+writing manifest file '../../../build/eduros2_lego/eduros2_lego.egg-info/SOURCES.txt'
+reading manifest file '../../../build/eduros2_lego/eduros2_lego.egg-info/SOURCES.txt'
+writing manifest file '../../../build/eduros2_lego/eduros2_lego.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/javierac/eduros2_lego/build/eduros2_lego/build
+creating /home/javierac/eduros2_lego/build/eduros2_lego/build/lib
+creating /home/javierac/eduros2_lego/build/eduros2_lego/build/lib/eduros2_lego
+copying eduros2_lego/__init__.py -> /home/javierac/eduros2_lego/build/eduros2_lego/build/lib/eduros2_lego
+copying eduros2_lego/teklatua.py -> /home/javierac/eduros2_lego/build/eduros2_lego/build/lib/eduros2_lego
+copying eduros2_lego/joint_states.py -> /home/javierac/eduros2_lego/build/eduros2_lego/build/lib/eduros2_lego
+copying eduros2_lego/mando.py -> /home/javierac/eduros2_lego/build/eduros2_lego/build/lib/eduros2_lego
+copying eduros2_lego/ultrasoinu_sentsorea.py -> /home/javierac/eduros2_lego/build/eduros2_lego/build/lib/eduros2_lego
+copying eduros2_lego/mugimendu_motorrak.py -> /home/javierac/eduros2_lego/build/eduros2_lego/build/lib/eduros2_lego
+copying eduros2_lego/kolore_sentsorea.py -> /home/javierac/eduros2_lego/build/eduros2_lego/build/lib/eduros2_lego
+copying eduros2_lego/biraketa_sentsorea.py -> /home/javierac/eduros2_lego/build/eduros2_lego/build/lib/eduros2_lego
+copying eduros2_lego/zuzen_objektuarenganaino.py -> /home/javierac/eduros2_lego/build/eduros2_lego/build/lib/eduros2_lego
+running install
+running install_lib
+creating /home/javierac/eduros2_lego/install/eduros2_lego/lib/python3.12/site-packages/eduros2_lego
+copying /home/javierac/eduros2_lego/build/eduros2_lego/build/lib/eduros2_lego/__init__.py -> /home/javierac/eduros2_lego/install/eduros2_lego/lib/python3.12/site-packages/eduros2_lego
+copying /home/javierac/eduros2_lego/build/eduros2_lego/build/lib/eduros2_lego/teklatua.py -> /home/javierac/eduros2_lego/install/eduros2_lego/lib/python3.12/site-packages/eduros2_lego
+copying /home/javierac/eduros2_lego/build/eduros2_lego/build/lib/eduros2_lego/joint_states.py -> /home/javierac/eduros2_lego/install/eduros2_lego/lib/python3.12/site-packages/eduros2_lego
+copying /home/javierac/eduros2_lego/build/eduros2_lego/build/lib/eduros2_lego/mando.py -> /home/javierac/eduros2_lego/install/eduros2_lego/lib/python3.12/site-packages/eduros2_lego
+copying /home/javierac/eduros2_lego/build/eduros2_lego/build/lib/eduros2_lego/ultrasoinu_sentsorea.py -> /home/javierac/eduros2_lego/install/eduros2_lego/lib/python3.12/site-packages/eduros2_lego
+copying /home/javierac/eduros2_lego/build/eduros2_lego/build/lib/eduros2_lego/mugimendu_motorrak.py -> /home/javierac/eduros2_lego/install/eduros2_lego/lib/python3.12/site-packages/eduros2_lego
+copying /home/javierac/eduros2_lego/build/eduros2_lego/build/lib/eduros2_lego/kolore_sentsorea.py -> /home/javierac/eduros2_lego/install/eduros2_lego/lib/python3.12/site-packages/eduros2_lego
+copying /home/javierac/eduros2_lego/build/eduros2_lego/build/lib/eduros2_lego/biraketa_sentsorea.py -> /home/javierac/eduros2_lego/install/eduros2_lego/lib/python3.12/site-packages/eduros2_lego
+copying /home/javierac/eduros2_lego/build/eduros2_lego/build/lib/eduros2_lego/zuzen_objektuarenganaino.py -> /home/javierac/eduros2_lego/install/eduros2_lego/lib/python3.12/site-packages/eduros2_lego
+byte-compiling /home/javierac/eduros2_lego/install/eduros2_lego/lib/python3.12/site-packages/eduros2_lego/__init__.py to __init__.cpython-312.pyc
+byte-compiling /home/javierac/eduros2_lego/install/eduros2_lego/lib/python3.12/site-packages/eduros2_lego/teklatua.py to teklatua.cpython-312.pyc
+byte-compiling /home/javierac/eduros2_lego/install/eduros2_lego/lib/python3.12/site-packages/eduros2_lego/joint_states.py to joint_states.cpython-312.pyc
+byte-compiling /home/javierac/eduros2_lego/install/eduros2_lego/lib/python3.12/site-packages/eduros2_lego/mando.py to mando.cpython-312.pyc
+byte-compiling /home/javierac/eduros2_lego/install/eduros2_lego/lib/python3.12/site-packages/eduros2_lego/ultrasoinu_sentsorea.py to ultrasoinu_sentsorea.cpython-312.pyc
+byte-compiling /home/javierac/eduros2_lego/install/eduros2_lego/lib/python3.12/site-packages/eduros2_lego/mugimendu_motorrak.py to mugimendu_motorrak.cpython-312.pyc
+byte-compiling /home/javierac/eduros2_lego/install/eduros2_lego/lib/python3.12/site-packages/eduros2_lego/kolore_sentsorea.py to kolore_sentsorea.cpython-312.pyc
+byte-compiling /home/javierac/eduros2_lego/install/eduros2_lego/lib/python3.12/site-packages/eduros2_lego/biraketa_sentsorea.py to biraketa_sentsorea.cpython-312.pyc
+byte-compiling /home/javierac/eduros2_lego/install/eduros2_lego/lib/python3.12/site-packages/eduros2_lego/zuzen_objektuarenganaino.py to zuzen_objektuarenganaino.cpython-312.pyc
+running install_data
+creating /home/javierac/eduros2_lego/install/eduros2_lego/share/ament_index
+creating /home/javierac/eduros2_lego/install/eduros2_lego/share/ament_index/resource_index
+creating /home/javierac/eduros2_lego/install/eduros2_lego/share/ament_index/resource_index/packages
+copying resource/eduros2_lego -> /home/javierac/eduros2_lego/install/eduros2_lego/share/ament_index/resource_index/packages
+copying package.xml -> /home/javierac/eduros2_lego/install/eduros2_lego/share/eduros2_lego
+creating /home/javierac/eduros2_lego/install/eduros2_lego/share/eduros2_lego/launch
+copying eduros2_lego/launch/display.launch.py -> /home/javierac/eduros2_lego/install/eduros2_lego/share/eduros2_lego/launch
+copying eduros2_lego/launch/zuzen_objektuarenganaino.py -> /home/javierac/eduros2_lego/install/eduros2_lego/share/eduros2_lego/launch
+copying eduros2_lego/launch/zuzen_pid_objektuarenganaino.py -> /home/javierac/eduros2_lego/install/eduros2_lego/share/eduros2_lego/launch
+copying eduros2_lego/launch/fuzzy_zuzen.py -> /home/javierac/eduros2_lego/install/eduros2_lego/share/eduros2_lego/launch
+copying eduros2_lego/launch/fuzzy_nn_zuzen.py -> /home/javierac/eduros2_lego/install/eduros2_lego/share/eduros2_lego/launch
+creating /home/javierac/eduros2_lego/install/eduros2_lego/share/eduros2_lego/config
+copying eduros2_lego/config/params.yaml -> /home/javierac/eduros2_lego/install/eduros2_lego/share/eduros2_lego/config
+creating /home/javierac/eduros2_lego/install/eduros2_lego/share/eduros2_lego/sim
+copying eduros2_lego/sim/robot.urdf -> /home/javierac/eduros2_lego/install/eduros2_lego/share/eduros2_lego/sim
+copying eduros2_lego/sim/conf.rviz -> /home/javierac/eduros2_lego/install/eduros2_lego/share/eduros2_lego/sim
+running install_egg_info
+Copying ../../../build/eduros2_lego/eduros2_lego.egg-info to /home/javierac/eduros2_lego/install/eduros2_lego/lib/python3.12/site-packages/eduros2_lego-0.0.0-py3.12.egg-info
+running install_scripts
+Installing biraketa_sentsorea script to /home/javierac/eduros2_lego/install/eduros2_lego/lib/eduros2_lego
+Installing joint_states script to /home/javierac/eduros2_lego/install/eduros2_lego/lib/eduros2_lego
+Installing kolore_sentsorea script to /home/javierac/eduros2_lego/install/eduros2_lego/lib/eduros2_lego
+Installing mando script to /home/javierac/eduros2_lego/install/eduros2_lego/lib/eduros2_lego
+Installing mugimendu_motorrak script to /home/javierac/eduros2_lego/install/eduros2_lego/lib/eduros2_lego
+Installing teklatua script to /home/javierac/eduros2_lego/install/eduros2_lego/lib/eduros2_lego
+Installing ultrasoinu_sentsorea script to /home/javierac/eduros2_lego/install/eduros2_lego/lib/eduros2_lego
+Installing zuzen_objektuarenganaino script to /home/javierac/eduros2_lego/install/eduros2_lego/lib/eduros2_lego
+writing list of installed files to '/home/javierac/eduros2_lego/build/eduros2_lego/install.log'

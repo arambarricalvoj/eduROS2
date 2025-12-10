@@ -1,0 +1,9 @@
+[console_scripts]
+biraketa_sentsorea = eduros2_lego.biraketa_sentsorea:main
+joint_states = eduros2_lego.joint_states:main
+kolore_sentsorea = eduros2_lego.kolore_sentsorea:main
+mando = eduros2_lego.mando:main
+mugimendu_motorrak = eduros2_lego.mugimendu_motorrak:main
+teklatua = eduros2_lego.teklatua:main
+ultrasoinu_sentsorea = eduros2_lego.ultrasoinu_sentsorea:main
+zuzen_objektuarenganaino = eduros2_lego.zuzen_objektuarenganaino:main

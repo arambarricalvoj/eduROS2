@@ -1,0 +1,22 @@
+running egg_info
+writing ../../../build/pid_gen/pid_gen.egg-info/PKG-INFO
+writing dependency_links to ../../../build/pid_gen/pid_gen.egg-info/dependency_links.txt
+writing entry points to ../../../build/pid_gen/pid_gen.egg-info/entry_points.txt
+writing requirements to ../../../build/pid_gen/pid_gen.egg-info/requires.txt
+writing top-level names to ../../../build/pid_gen/pid_gen.egg-info/top_level.txt
+reading manifest file '../../../build/pid_gen/pid_gen.egg-info/SOURCES.txt'
+writing manifest file '../../../build/pid_gen/pid_gen.egg-info/SOURCES.txt'
+running build
+running build_py
+copying pid_gen/zuzen_objektuarenganaino.py -> /home/javierac/eduros2_lego/build/pid_gen/build/lib/pid_gen
+running install
+running install_lib
+copying /home/javierac/eduros2_lego/build/pid_gen/build/lib/pid_gen/zuzen_objektuarenganaino.py -> /home/javierac/eduros2_lego/install/pid_gen/lib/python3.12/site-packages/pid_gen
+byte-compiling /home/javierac/eduros2_lego/install/pid_gen/lib/python3.12/site-packages/pid_gen/zuzen_objektuarenganaino.py to zuzen_objektuarenganaino.cpython-312.pyc
+running install_data
+running install_egg_info
+removing '/home/javierac/eduros2_lego/install/pid_gen/lib/python3.12/site-packages/pid_gen-0.0.0-py3.12.egg-info' (and everything under it)
+Copying ../../../build/pid_gen/pid_gen.egg-info to /home/javierac/eduros2_lego/install/pid_gen/lib/python3.12/site-packages/pid_gen-0.0.0-py3.12.egg-info
+running install_scripts
+Installing zuzen_objektuarenganaino script to /home/javierac/eduros2_lego/install/pid_gen/lib/pid_gen
+writing list of installed files to '/home/javierac/eduros2_lego/build/pid_gen/install.log'

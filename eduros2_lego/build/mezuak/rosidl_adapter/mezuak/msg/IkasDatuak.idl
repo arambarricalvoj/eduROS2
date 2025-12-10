@@ -1,0 +1,36 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from mezuak/msg/IkasDatuak.msg
+// generated code does not contain a copyright notice
+
+
+module mezuak {
+  module msg {
+    @verbatim (language="comment", text=
+      "Neurona-sarea ONLINE ikasteko datuak ")
+    struct IkasDatuak {
+      double pos_izq;
+
+      double pos_der;
+
+      double vel_izq;
+
+      double vel_der;
+
+      double yaw;
+
+      double error_traj;
+
+      double delta_v;
+
+      double dist_restante;
+
+      @verbatim (language="comment", text=
+        "hutsik NN ikasteko (soilik RL ikasteko)")
+      float reward;
+
+      @verbatim (language="comment", text=
+        "hutsik NN ikasteko (soilik RL ikasteko)")
+      boolean done;
+    };
+  };
+};

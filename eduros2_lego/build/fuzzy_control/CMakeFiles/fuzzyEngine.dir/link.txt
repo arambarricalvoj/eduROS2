@@ -1,0 +1,2 @@
+/usr/bin/ar qc libfuzzyEngine.a CMakeFiles/fuzzyEngine.dir/src/fuzzyEngine.cpp.o
+/usr/bin/ranlib libfuzzyEngine.a

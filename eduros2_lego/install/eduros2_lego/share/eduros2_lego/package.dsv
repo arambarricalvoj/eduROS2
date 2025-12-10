@@ -1,0 +1,6 @@
+source;share/eduros2_lego/hook/pythonpath.ps1
+source;share/eduros2_lego/hook/pythonpath.dsv
+source;share/eduros2_lego/hook/pythonpath.sh
+source;share/eduros2_lego/hook/ament_prefix_path.ps1
+source;share/eduros2_lego/hook/ament_prefix_path.dsv
+source;share/eduros2_lego/hook/ament_prefix_path.sh

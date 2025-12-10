@@ -1,0 +1,24 @@
+[0.914s] Invoking command in '/home/javierac/eduros2_lego/ws/src/pid_gen': PYTHONPATH=/home/javierac/eduros2_lego/build/pid_gen/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/javierac/eduros2_lego/install/pid_gen/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../../build/pid_gen build --build-base /home/javierac/eduros2_lego/build/pid_gen/build install --record /home/javierac/eduros2_lego/build/pid_gen/install.log --single-version-externally-managed install_data
+[1.149s] running egg_info
+[1.162s] writing ../../../build/pid_gen/pid_gen.egg-info/PKG-INFO
+[1.163s] writing dependency_links to ../../../build/pid_gen/pid_gen.egg-info/dependency_links.txt
+[1.163s] writing entry points to ../../../build/pid_gen/pid_gen.egg-info/entry_points.txt
+[1.163s] writing requirements to ../../../build/pid_gen/pid_gen.egg-info/requires.txt
+[1.163s] writing top-level names to ../../../build/pid_gen/pid_gen.egg-info/top_level.txt
+[1.195s] reading manifest file '../../../build/pid_gen/pid_gen.egg-info/SOURCES.txt'
+[1.196s] writing manifest file '../../../build/pid_gen/pid_gen.egg-info/SOURCES.txt'
+[1.196s] running build
+[1.196s] running build_py
+[1.196s] copying pid_gen/zuzen_objektuarenganaino.py -> /home/javierac/eduros2_lego/build/pid_gen/build/lib/pid_gen
+[1.196s] running install
+[1.202s] running install_lib
+[1.217s] copying /home/javierac/eduros2_lego/build/pid_gen/build/lib/pid_gen/zuzen_objektuarenganaino.py -> /home/javierac/eduros2_lego/install/pid_gen/lib/python3.12/site-packages/pid_gen
+[1.218s] byte-compiling /home/javierac/eduros2_lego/install/pid_gen/lib/python3.12/site-packages/pid_gen/zuzen_objektuarenganaino.py to zuzen_objektuarenganaino.cpython-312.pyc
+[1.220s] running install_data
+[1.220s] running install_egg_info
+[1.236s] removing '/home/javierac/eduros2_lego/install/pid_gen/lib/python3.12/site-packages/pid_gen-0.0.0-py3.12.egg-info' (and everything under it)
+[1.236s] Copying ../../../build/pid_gen/pid_gen.egg-info to /home/javierac/eduros2_lego/install/pid_gen/lib/python3.12/site-packages/pid_gen-0.0.0-py3.12.egg-info
+[1.237s] running install_scripts
+[1.343s] Installing zuzen_objektuarenganaino script to /home/javierac/eduros2_lego/install/pid_gen/lib/pid_gen
+[1.343s] writing list of installed files to '/home/javierac/eduros2_lego/build/pid_gen/install.log'
+[1.369s] Invoked command in '/home/javierac/eduros2_lego/ws/src/pid_gen' returned '0': PYTHONPATH=/home/javierac/eduros2_lego/build/pid_gen/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/javierac/eduros2_lego/install/pid_gen/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../../build/pid_gen build --build-base /home/javierac/eduros2_lego/build/pid_gen/build install --record /home/javierac/eduros2_lego/build/pid_gen/install.log --single-version-externally-managed install_data
