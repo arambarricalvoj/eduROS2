@@ -56,6 +56,13 @@ def generate_launch_description():
     )
     params_file = LaunchConfiguration('params_file')
 
+    # Nuevo argumento para activar el nodo de registro
+    use_logger_arg = DeclareLaunchArgument(
+        'use_logger',
+        default_value='false',
+        description='Iniciar nodo de registro de datos (true/false)'
+    )
+
     rsp = Node(
         package='robot_state_publisher',
         executable='robot_state_publisher',
@@ -141,21 +148,33 @@ def generate_launch_description():
         output='screen'
     )
 
+    # Nodo de registro condicionado
+    datuen_erregistratzailea = Node(
+        package='eduros2_lego',
+        executable='datuen_erregistratzailea',
+        name='datuen_erregistratzailea',
+        output='screen',
+        parameters=[params_file],
+        condition=IfCondition(LaunchConfiguration('use_logger'))
+    )
+
     return LaunchDescription([
-    urdf_path_arg,
-    rviz_config_arg,
-    use_gui_arg,
-    use_controller_arg,
-    params_file_arg, 
-    rsp,
-    jsp_gui,
-    rviz,
-    teklatua,
-    mando,
-    joy,
-    mugimendu_motorrak,
-    ultrasoinu_sentsorea,
-    biraketa_sentsorea,
-    kolore_sentsorea,
-    joint_states
-])
+        urdf_path_arg,
+        rviz_config_arg,
+        use_gui_arg,
+        use_controller_arg,
+        params_file_arg,
+        use_logger_arg,
+        rsp,
+        jsp_gui,
+        rviz,
+        teklatua,
+        mando,
+        joy,
+        mugimendu_motorrak,
+        ultrasoinu_sentsorea,
+        biraketa_sentsorea,
+        kolore_sentsorea,
+        joint_states,
+        datuen_erregistratzailea
+    ])

@@ -1,8 +1,0 @@
-{
-  "package_name": "mezuak",
-  "non_idl_tuples": [
-    "/home/javierac/eduros2_lego/ws/src/mezuak:msg/MugimenduKodetzaileak.msg",
-    "/home/javierac/eduros2_lego/ws/src/mezuak:msg/IslatutakoArgia.msg",
-    "/home/javierac/eduros2_lego/ws/src/mezuak:msg/IkasDatuak.msg"
-  ]
-}

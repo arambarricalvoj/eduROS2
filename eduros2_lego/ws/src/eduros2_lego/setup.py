@@ -36,6 +36,7 @@ setup(
             'joint_states = eduros2_lego.joint_states:main',
             'mando = eduros2_lego.mando:main',
             'zuzen_objektuarenganaino = eduros2_lego.zuzen_objektuarenganaino:main',
+            'datuen_erregistratzailea = eduros2_lego.registro:main'
         ],
     },
 )

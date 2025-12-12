@@ -71,6 +71,12 @@ install(TARGETS fuzzyEngine fuzzyEncoders fuzzyMugimendua ikasDatuenBiltegitzea 
 install(DIRECTORY include/
   DESTINATION include/${PROJECT_NAME})
 
+# Instalar el modelo TorchScript en la carpeta de instalación ikas_datuak
+install(FILES
+  ${CMAKE_CURRENT_SOURCE_DIR}/model/model.pt
+  DESTINATION share/ikas_datuak
+)
+
 # Tests opcionales
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)

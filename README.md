@@ -227,3 +227,4 @@ el controlador neuronal oscila, sobreimpulsa, y se corrige, porque necesita much
 
 ros2 launch eduros2_lego fuzzy_nn_zuzen.py
 
+ros2 launch eduros2_lego display.launch.py use_controller:=true use_logger:=true

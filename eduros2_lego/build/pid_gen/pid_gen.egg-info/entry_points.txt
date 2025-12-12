@@ -1,2 +1,0 @@
-[console_scripts]
-zuzen_objektuarenganaino = pid_gen.zuzen_objektuarenganaino:main

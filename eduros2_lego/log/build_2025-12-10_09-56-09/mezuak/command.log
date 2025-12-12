@@ -1,6 +1,0 @@
-Invoking command in '/home/javierac/eduros2_lego/build/mezuak': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake /home/javierac/eduros2_lego/ws/src/mezuak -DCMAKE_INSTALL_PREFIX=/home/javierac/eduros2_lego/install/mezuak
-Invoked command in '/home/javierac/eduros2_lego/build/mezuak' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake /home/javierac/eduros2_lego/ws/src/mezuak -DCMAKE_INSTALL_PREFIX=/home/javierac/eduros2_lego/install/mezuak
-Invoking command in '/home/javierac/eduros2_lego/build/mezuak': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --build /home/javierac/eduros2_lego/build/mezuak -- -j20 -l20
-Invoked command in '/home/javierac/eduros2_lego/build/mezuak' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --build /home/javierac/eduros2_lego/build/mezuak -- -j20 -l20
-Invoking command in '/home/javierac/eduros2_lego/build/mezuak': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --install /home/javierac/eduros2_lego/build/mezuak
-Invoked command in '/home/javierac/eduros2_lego/build/mezuak' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --install /home/javierac/eduros2_lego/build/mezuak

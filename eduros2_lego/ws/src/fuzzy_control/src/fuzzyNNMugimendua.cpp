@@ -1,14 +1,15 @@
 #include "rclcpp/rclcpp.hpp"
 #include "geometry_msgs/msg/twist.hpp"
 #include "mezuak/msg/mugimendu_kodetzaileak.hpp"
-#include "mezuak/msg/ikas_datuak.hpp"
 #include "sensor_msgs/msg/range.hpp"
 #include "std_msgs/msg/int32.hpp"
 
 #include <torch/script.h> // LibTorch
 #include <optional>
 #include <vector>
-#include <cmath>
+#include <fstream>
+#include <chrono>
+#include <string>
 
 using std::placeholders::_1;
 
@@ -16,14 +17,18 @@ class NNControlNode : public rclcpp::Node {
 public:
     NNControlNode() : Node("nn_control_node") {
         // Ruta del modelo (TorchScript)
-        std::string path = "/home/javierac/eduros2_lego/ws/install/ikas_datuak/model.pt";
+        std::string path = "/home/javierac/eduros2_lego/ws/install/fuzzy_control/share/ikas_datuak/model.pt";
 
         // Parámetros
         this->declare_parameter<double>("eten_distantzia", 0.15);
-        eten_distantzia_ = this->get_parameter("eten_distantzia").as_double();
+        this->declare_parameter<bool>("seinalea_gorde", true);
+        this->declare_parameter<std::string>("kontrol_mota", "nbs");   // nbs | nag | npg
+        this->declare_parameter<double>("factor", 1.0);                // ganancia aplicada al delta_v
 
-        this->declare_parameter<std::string>("ikas_modua", "False");
-        ikas_modua_ = this->get_parameter("ikas_modua").as_string();
+        eten_distantzia_ = this->get_parameter("eten_distantzia").as_double();
+        seinalea_gorde_  = this->get_parameter("seinalea_gorde").as_bool();
+        kontrol_mota_    = this->get_parameter("kontrol_mota").as_string();
+        factor_          = this->get_parameter("factor").as_double();
 
         // Suscripciones
         sub_encoders_ = this->create_subscription<mezuak::msg::MugimenduKodetzaileak>(
@@ -35,9 +40,8 @@ public:
         sub_yaw_ = this->create_subscription<std_msgs::msg::Int32>(
             "yaw_angelua", 10, std::bind(&NNControlNode::yaw_callback, this, _1));
 
-        // Publicadores
+        // Publicador
         pub_cmd_vel_ = this->create_publisher<geometry_msgs::msg::Twist>("cmd_vel", 10);
-        pub_training_ = this->create_publisher<mezuak::msg::IkasDatuak>("ikasteko_datuak", 10);
 
         // Cargar el modelo TorchScript
         try {
@@ -46,6 +50,25 @@ public:
             RCLCPP_INFO(this->get_logger(), "Modelo cargado correctamente: %s", path.c_str());
         } catch (const c10::Error& e) {
             RCLCPP_ERROR(this->get_logger(), "Error cargando el modelo: %s", e.what());
+        }
+
+        // Inicializar CSV
+        if (seinalea_gorde_) {
+            csv_name_ = "registro_nn.csv";
+            csv_.open(csv_name_, std::ios::out);
+            if (!csv_.is_open()) {
+                RCLCPP_WARN(this->get_logger(), "No se pudo abrir el CSV: %s", csv_name_.c_str());
+            } else {
+                csv_ << "timestamp,pos_izq,pos_der,vel_izq,vel_der,yaw,distancia,"
+                        "delta_v,delta_v_aplicado\n";
+            }
+        }
+    }
+
+    ~NNControlNode() override {
+        if (csv_.is_open()) {
+            csv_.flush();
+            csv_.close();
         }
     }
 
@@ -56,12 +79,11 @@ private:
     }
 
     void yaw_callback(const std_msgs::msg::Int32::SharedPtr msg) {
-        yaw_angle_ = msg->data; // Se asume yaw en grados
+        yaw_angle_ = msg->data; // yaw en grados
     }
 
     // Callback principal
     void encoder_callback(const mezuak::msg::MugimenduKodetzaileak::SharedPtr msg) {
-        // Comprobaciones de disponibilidad
         if (!ultrasoinu_distantzia_.has_value()) {
             RCLCPP_WARN_THROTTLE(this->get_logger(), *this->get_clock(), 2000,
                                  "Aún no hay datos de distancia. Ignorando callback.");
@@ -75,59 +97,17 @@ private:
 
         const double dist = ultrasoinu_distantzia_.value();
 
-        // Inicio de episodio: primer registro tras terminar o al arrancar
-        if (!episodio_activo_) {
-            yaw_offset_ = static_cast<double>(yaw_angle_);
-            episodio_activo_ = true;
-            episodio_terminado_ = false;
-            RCLCPP_INFO(this->get_logger(), "Inicio de episodio. Yaw offset = %.2f", yaw_offset_);
-        }
-
-        // Condición de parada por obstáculo: fin de episodio
+        // 🚨 Parada por obstáculo
         if (dist <= eten_distantzia_) {
             auto stop_twist = geometry_msgs::msg::Twist();
             pub_cmd_vel_->publish(stop_twist);
-            RCLCPP_INFO(this->get_logger(), "Objeto cercano (%.3f m <= %.3f m). Robot detenido.",
+            RCLCPP_INFO(this->get_logger(),
+                        "Objeto cercano (%.3f m <= %.3f m). Robot detenido.",
                         dist, eten_distantzia_);
-
-            // Publicar SOLO una vez la transición final con done = true
-            if (!episodio_terminado_) {
-                auto sample = mezuak::msg::IkasDatuak();
-                // Estado actual
-                sample.pos_izq = msg->graduak[0];
-                sample.pos_der = msg->graduak[1];
-                sample.vel_izq = msg->abiadurak[0];
-                sample.vel_der = msg->abiadurak[1];
-                sample.yaw = yaw_angle_;
-                sample.error_traj = 0.0f; // si lo calculas, ponlo aquí
-
-                // Acción final (0 al detener)
-                sample.delta_v = 0.0;
-
-                // Distancia restante respecto al umbral
-                sample.dist_restante = dist - eten_distantzia_;
-
-                // Marcar fin y asignar recompensa según yaw final ~ yaw inicial (±2 grados)
-                const double yaw_diff = std::abs(static_cast<double>(yaw_angle_) - yaw_offset_);
-                const bool exito = (yaw_diff <= 2.0);
-
-                sample.done = true;
-                sample.reward = exito ? +10.0f : -10.0f;
-
-                pub_training_->publish(sample);
-                RCLCPP_INFO(this->get_logger(),
-                            "Episodio %s. yaw_final=%.2f, yaw_inicial=%.2f, diff=%.2f, reward=%.1f",
-                            exito ? "exitoso" : "fallido",
-                            static_cast<double>(yaw_angle_), yaw_offset_, yaw_diff, sample.reward);
-
-                // Reset de flags para próximo episodio
-                episodio_terminado_ = true;
-                episodio_activo_ = false;
-            }
-            return; // fin de callback tras detener
+            return; // no seguimos calculando
         }
 
-        // Inferencia de la red (features: 7)
+        // Inferencia de la red
         std::vector<float> input_data = {
             static_cast<float>(msg->graduak[0]),   // pos_izq
             static_cast<float>(msg->graduak[1]),   // pos_der
@@ -141,36 +121,37 @@ private:
         torch::Tensor input = torch::tensor(input_data).reshape({1, 7});
         torch::Tensor output = module_.value().forward({input}).toTensor();
         double delta_v = output.item<double>();
-        /*torch::Tensor state = torch::tensor(input_data).reshape({1, 7});
-        torch::Tensor action = torch::tensor({0.0f}).reshape({1, 1}); // ejemplo acción
-        torch::Tensor output = module_.value().forward({state, action}).toTensor();
-        double delta_v = output.item<double>();*/
 
+        // Aplicar ganancia "factor" al delta_v
+        double delta_v_aplicado = delta_v * factor_;
 
         // Publicar cmd_vel
         auto twist = geometry_msgs::msg::Twist();
         twist.linear.x = 25.0; // velocidad base
-        twist.angular.z = (delta_v / 100.0) * twist.linear.x;
+        twist.angular.z = (delta_v_aplicado / 100.0) * twist.linear.x;
         pub_cmd_vel_->publish(twist);
 
-        // Publicar transición de entrenamiento (cada paso)
-        if (ikas_modua_ == "True") {
-            auto sample = mezuak::msg::IkasDatuak();
-            sample.pos_izq = msg->graduak[0];
-            sample.pos_der = msg->graduak[1];
-            sample.vel_izq = msg->abiadurak[0];
-            sample.vel_der = msg->abiadurak[1];
-            sample.yaw = yaw_angle_;
-            sample.error_traj = 0.0f; // o el valor calculado si lo tienes
-            sample.delta_v = delta_v;
-            sample.dist_restante = dist - eten_distantzia_;
+        // Guardar paso al CSV
+        log_csv(delta_v, delta_v_aplicado, msg, dist);
+    }
 
-            // Recompensa paso a paso (opcional). Si no quieres shaping, déjala en 0.
-            sample.reward = 0.0f;
-            sample.done = false;
-
-            pub_training_->publish(sample);
-        }
+    // Logging CSV
+    void log_csv(double delta_v, double delta_v_aplicado,
+                 const mezuak::msg::MugimenduKodetzaileak::SharedPtr& msg,
+                 double dist) {
+        if (!seinalea_gorde_ || !csv_.is_open()) return;
+        auto ts = std::chrono::system_clock::now().time_since_epoch();
+        long long timestamp_ms = std::chrono::duration_cast<std::chrono::milliseconds>(ts).count();
+        csv_ << timestamp_ms << ","
+             << static_cast<int>(msg->graduak[0]) << ","
+             << static_cast<int>(msg->graduak[1]) << ","
+             << static_cast<int>(msg->abiadurak[0]) << ","
+             << static_cast<int>(msg->abiadurak[1]) << ","
+             << yaw_angle_ << ","
+             << dist << ","
+             << delta_v << ","
+             << delta_v_aplicado
+             << "\n";
     }
 
     // Suscriptores y publicadores
@@ -178,21 +159,21 @@ private:
     rclcpp::Subscription<sensor_msgs::msg::Range>::SharedPtr sub_range_;
     rclcpp::Subscription<std_msgs::msg::Int32>::SharedPtr sub_yaw_;
     rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr pub_cmd_vel_;
-    rclcpp::Publisher<mezuak::msg::IkasDatuak>::SharedPtr pub_training_;
 
     // Estado interno
     std::optional<double> ultrasoinu_distantzia_;
-    std::string ikas_modua_;
     double eten_distantzia_;
     int yaw_angle_ = 0;
 
-    // Gestión de episodios
-    bool episodio_activo_ = false;
-    bool episodio_terminado_ = false;
-    double yaw_offset_ = 0.0;
-
     // Modelo
     std::optional<torch::jit::script::Module> module_;
+
+    // CSV
+    bool seinalea_gorde_ = true;
+    std::ofstream csv_;
+    std::string csv_name_;
+    std::string kontrol_mota_;
+    double factor_;
 };
 
 int main(int argc, char * argv[]) {

@@ -32,6 +32,7 @@ fuzzy_mugimendua:
   ros__parameters:
     kontrol_mota: "nbs"
     ikas_modua: "True"
+    seinalea_gorde: True
 
 fuzzy_nn_mugimendua:
   ros__parameters:
