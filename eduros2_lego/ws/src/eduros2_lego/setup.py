@@ -12,7 +12,7 @@ setup(
         ('share/' + package_name, ['package.xml']),
         ('share/' + package_name + '/launch', [package_name + '/launch/display.launch.py']),
         ('share/' + package_name + '/launch', [package_name + '/launch/zuzen_objektuarenganaino.py']),
-        ('share/' + package_name + '/launch', [package_name + '/launch/zuzen_pid_objektuarenganaino.py']),
+        ('share/' + package_name + '/launch', [package_name + '/launch/ga_opt_zuzen_objektuarenganaino.py']),
         ('share/' + package_name + '/launch', [package_name + '/launch/fuzzy_zuzen.py']),
         ('share/' + package_name + '/launch', [package_name + '/launch/fuzzy_nn_zuzen.py']),
         ('share/' + package_name + '/config', [package_name + '/config/params.yaml']),

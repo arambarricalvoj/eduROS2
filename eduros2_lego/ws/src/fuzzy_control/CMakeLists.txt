@@ -26,14 +26,14 @@ target_include_directories(fuzzyEngine PUBLIC
 target_link_libraries(fuzzyEngine /usr/local/lib/libfuzzylite.so)
 
 # --- Ejecutables (nodos) ---
-add_executable(fuzzyEncoders src/fuzzyEncoders.cpp)
+# add_executable(fuzzyEncoders src/fuzzyEncoders.cpp)
 add_executable(fuzzyMugimendua src/fuzzyMugimendua.cpp)
 add_executable(ikasDatuenBiltegitzea src/ikasDatuenBiltegitzea.cpp)
 add_executable(fuzzyNNMugimendua src/fuzzyNNMugimendua.cpp)
 
-target_include_directories(fuzzyEncoders PUBLIC
-  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-  $<INSTALL_INTERFACE:include/${PROJECT_NAME}>)
+# target_include_directories(fuzzyEncoders PUBLIC
+#  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+#  $<INSTALL_INTERFACE:include/${PROJECT_NAME}>)
 
 target_include_directories(fuzzyMugimendua PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
@@ -47,23 +47,24 @@ target_include_directories(fuzzyNNMugimendua PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include/${PROJECT_NAME}>)
 
-target_compile_features(fuzzyEncoders PUBLIC c_std_99 cxx_std_17)
+# target_compile_features(fuzzyEncoders PUBLIC c_std_99 cxx_std_17)
 target_compile_features(fuzzyMugimendua PUBLIC c_std_99 cxx_std_17)
 target_compile_features(ikasDatuenBiltegitzea PUBLIC c_std_99 cxx_std_17)
 target_compile_features(fuzzyNNMugimendua PUBLIC c_std_99 cxx_std_17)
 
-ament_target_dependencies(fuzzyEncoders rclcpp std_msgs mezuak)
+# ament_target_dependencies(fuzzyEncoders rclcpp std_msgs mezuak)
 ament_target_dependencies(fuzzyMugimendua rclcpp std_msgs mezuak)
 ament_target_dependencies(ikasDatuenBiltegitzea rclcpp std_msgs mezuak)
 ament_target_dependencies(fuzzyNNMugimendua rclcpp std_msgs mezuak)
 
-target_link_libraries(fuzzyEncoders fuzzyEngine)
+# target_link_libraries(fuzzyEncoders fuzzyEngine)
 target_link_libraries(fuzzyMugimendua fuzzyEngine)
 target_link_libraries(ikasDatuenBiltegitzea fuzzyEngine)
 target_link_libraries(fuzzyNNMugimendua fuzzyEngine "${TORCH_LIBRARIES}")
 
 # --- Instalación ---
-install(TARGETS fuzzyEngine fuzzyEncoders fuzzyMugimendua ikasDatuenBiltegitzea fuzzyNNMugimendua
+# install(TARGETS fuzzyEngine fuzzyEncoders fuzzyMugimendua ikasDatuenBiltegitzea fuzzyNNMugimendua
+install(TARGETS fuzzyEngine fuzzyMugimendua ikasDatuenBiltegitzea fuzzyNNMugimendua
   ARCHIVE DESTINATION lib/${PROJECT_NAME}
   LIBRARY DESTINATION lib/${PROJECT_NAME}
   RUNTIME DESTINATION lib/${PROJECT_NAME})

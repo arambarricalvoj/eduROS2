@@ -16,19 +16,19 @@ using std::placeholders::_1;
 class NNControlNode : public rclcpp::Node {
 public:
     NNControlNode() : Node("nn_control_node") {
-        // Ruta del modelo (TorchScript)
-        std::string path = "/home/javierac/eduros2_lego/ws/install/fuzzy_control/share/ikas_datuak/model.pt";
 
         // Parámetros
         this->declare_parameter<double>("eten_distantzia", 0.15);
         this->declare_parameter<bool>("seinalea_gorde", true);
         this->declare_parameter<std::string>("kontrol_mota", "nbs");   // nbs | nag | npg
         this->declare_parameter<double>("factor", 1.0);                // ganancia aplicada al delta_v
+        this->declare_parameter<std::string>("modeloa", "/home/javierac/eduros2_lego/ws/install/fuzzy_control/share/ikas_datuak/model.pt"); 
 
         eten_distantzia_ = this->get_parameter("eten_distantzia").as_double();
         seinalea_gorde_  = this->get_parameter("seinalea_gorde").as_bool();
         kontrol_mota_    = this->get_parameter("kontrol_mota").as_string();
         factor_          = this->get_parameter("factor").as_double();
+        path = this->get_parameter("modeloa").as_string();
 
         // Suscripciones
         sub_encoders_ = this->create_subscription<mezuak::msg::MugimenduKodetzaileak>(
@@ -97,25 +97,24 @@ private:
 
         const double dist = ultrasoinu_distantzia_.value();
 
-        // 🚨 Parada por obstáculo
         if (dist <= eten_distantzia_) {
             auto stop_twist = geometry_msgs::msg::Twist();
             pub_cmd_vel_->publish(stop_twist);
             RCLCPP_INFO(this->get_logger(),
                         "Objeto cercano (%.3f m <= %.3f m). Robot detenido.",
                         dist, eten_distantzia_);
-            return; // no seguimos calculando
+            return;
         }
 
         // Inferencia de la red
         std::vector<float> input_data = {
-            static_cast<float>(msg->graduak[0]),   // pos_izq
-            static_cast<float>(msg->graduak[1]),   // pos_der
-            static_cast<float>(msg->abiadurak[0]), // vel_izq
-            static_cast<float>(msg->abiadurak[1]), // vel_der
-            static_cast<float>(yaw_angle_),        // yaw (grados)
-            static_cast<float>(0.0f),              // error_traj (si lo calculas aparte)
-            static_cast<float>(dist)               // distancia absoluta al obstáculo
+            static_cast<float>(msg->graduak[0]),   
+            static_cast<float>(msg->graduak[1]),   
+            static_cast<float>(msg->abiadurak[0]),
+            static_cast<float>(msg->abiadurak[1]), 
+            static_cast<float>(yaw_angle_),        
+            static_cast<float>(0.0f),              
+            static_cast<float>(dist)               
         };
 
         torch::Tensor input = torch::tensor(input_data).reshape({1, 7});
@@ -173,6 +172,7 @@ private:
     std::ofstream csv_;
     std::string csv_name_;
     std::string kontrol_mota_;
+    std::string path;
     double factor_;
 };
 

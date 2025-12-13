@@ -19,11 +19,6 @@ FuzzyEngine::FuzzyEngine() {
     ev_->addTerm(new Triangle("medio",    -20, 0, 20));
     ev_->addTerm(new Triangle("alto",      0, 30, 60));
     ev_->addTerm(new Triangle("muy_alto",  40, 80, 100));
-    /*ev_->addTerm(new Trapezoid("muy_bajo", -100, -100, -80, -40));
-    ev_->addTerm(new Trapezoid("bajo",     -60, -40, -20, 0));
-    ev_->addTerm(new Trapezoid("medio",    -20, -5, 5, 20));
-    ev_->addTerm(new Trapezoid("alto",      0, 20, 40, 60));
-    ev_->addTerm(new Trapezoid("muy_alto",  40, 80, 100, 100));*/
 
     engine_->addInputVariable(ev_);
 
@@ -42,13 +37,6 @@ FuzzyEngine::FuzzyEngine() {
     Delta_v_->addTerm(new Triangle("positivo_suave",   0, 30, 60));
     Delta_v_->addTerm(new Triangle("positivo_fuerte",  50, 100, 100));
     engine_->addOutputVariable(Delta_v_);
-    // términos de salida trapezoidales
-    /*Delta_v_->addTerm(new Trapezoid("negativo_fuerte", -100, -100, -80, -50));
-    Delta_v_->addTerm(new Trapezoid("negativo_suave",  -60, -40, -20, 0));
-    Delta_v_->addTerm(new Trapezoid("nulo",            -5, -2, 2, 5));
-    Delta_v_->addTerm(new Trapezoid("positivo_suave",   0, 20, 40, 60));
-    Delta_v_->addTerm(new Trapezoid("positivo_fuerte",  50, 80, 100, 100));
-    engine_->addOutputVariable(Delta_v_);*/
 
     // Reglas difusas
     RuleBlock* rules = new RuleBlock;

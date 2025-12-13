@@ -24,17 +24,21 @@ joy:
 zuzen_objektuarenganaino:
   ros__parameters:
     eten_distantzia: 0.15
-    desbideratzeak_zuzendu: 1
-    kp: 9.0
-    seinalea_gorde: "True"
+    desbideratzeak_zuzendu: True
+    kp: 5.31
+    seinalea_gorde: True
 
 fuzzy_mugimendua:
   ros__parameters:
+    eten_distantzia: 0.15
     kontrol_mota: "nbs"
-    ikas_modua: "True"
+    ikas_modua: False
     seinalea_gorde: True
 
 fuzzy_nn_mugimendua:
   ros__parameters:
+    modeloa: "/home/javierac/eduros2_lego/ws/install/fuzzy_control/share/ikas_datuak/model.pt"
+    eten_distantzia: 0.15
+    factor: 1.0
     kontrol_mota: "nbs"
-    ikas_modua: "False"
+    seinalea_gorde: True

@@ -1,6 +1,7 @@
-xhost +local:*
+xhost +local:docker
 docker run -e DISPLAY=$DISPLAY \
            -e USER=$USER \
+           -e LD_LIBRARY_PATH=/usr/local/libtorch/lib:$LD_LIBRARY_PATH \
            -e NVIDIA_VISIBLE_DEVICES=all \
            -e NVIDIA_DRIVER_CAPABILITIES=graphics,utility,compute \
            -v /tmp/.X11-unix/:/tmp/.X11-unix/ \
@@ -13,6 +14,7 @@ docker run -e DISPLAY=$DISPLAY \
            -p 5003:5003/udp \
            -p 5004:5004/udp \
            --device /dev/input:/dev/input \
+           -u $(id -u):$(id -g) \
            -it \
            --rm \
            --gpus all \

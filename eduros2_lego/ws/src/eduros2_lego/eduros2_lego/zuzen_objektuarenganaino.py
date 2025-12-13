@@ -6,11 +6,11 @@ from geometry_msgs.msg import Twist
 from std_msgs.msg import Int32
 from sensor_msgs.msg import Range
 from rclpy.callback_groups import ReentrantCallbackGroup
-import csv
-import time
 
 # Beste liburutegiak
 # --- INPORTAZIOAK ---
+import csv
+import time
 
 
 class ZuzenObjektuarenganaino(Node):
@@ -33,13 +33,17 @@ class ZuzenObjektuarenganaino(Node):
         self.desbideratzeak_zuzendu = self.get_parameter('desbideratzeak_zuzendu').value
         self.get_logger().info(f"desbideratzeak_zuzendu: {self.desbideratzeak_zuzendu}")
         self.desbideratzeak_zuzendu = True
+        self.get_logger().info(f"desbideratzeak_zuzendu: {self.desbideratzeak_zuzendu}")
 
         self.declare_parameter('kp', 5.31)
         self.kp = self.get_parameter('kp').value
+        self.get_logger().info(f"kp: {self.kp}")
 
-        self.declare_parameter('seinalea_gorde', "False")
+        self.declare_parameter('seinalea_gorde', False)
         self.seinalea_gorde = self.get_parameter('seinalea_gorde').value 
-        self.seinalea_gorde = True
+        # bool_value
+        self.get_logger().info(f"seinalea_gorde: {self.seinalea_gorde}")
+        #self.seinalea_gorde = True
 
         if self.seinalea_gorde:
             self.csv_file = f"registro_kp_{self.kp}_gen.csv"
@@ -61,6 +65,12 @@ class ZuzenObjektuarenganaino(Node):
         self.biraketa_sentsorea_entzulea = self.create_subscription(Int32,'yaw_angelua',self.biraketa_sentsorea_callback,10,callback_group=self.callback_group)
         self.ultrasoinu_sentsorea_entzulea = self.create_subscription(Range,'distantzia',self.ultrasoinu_sentsorea_callback,10,callback_group=self.callback_group)
 
+    def datuak_gorde(self, error):
+        ts = time.time()
+        with open(self.csv_file, mode="a", newline="") as f:
+            writer = csv.writer(f)
+            writer.writerow([ts, self.offset, self.yaw_angelua, error])
+    
     def biraketa_sentsorea_callback(self, mezua: Int32):
         try:
             self.yaw_angelua = mezua.data
@@ -85,12 +95,9 @@ class ZuzenObjektuarenganaino(Node):
 
         # Guardar en CSV si está activado
         if self.seinalea_gorde:
-            ts = time.time()
-            with open(self.csv_file, mode="a", newline="") as f:
-                writer = csv.writer(f)
-                writer.writerow([ts, self.offset, self.yaw_angelua, error])
+            self.datuak_gorde(error)
 
-        self.get_logger().info(f"Current: {self.yaw_angelua}") 
+        self.get_logger().info(f"Oraingo yaw: {self.yaw_angelua}") 
         self.get_logger().info(f"Error: {error}") 
         self.get_logger().info(f"Error pct: {error_percent}") 
         

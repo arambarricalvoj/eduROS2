@@ -55,6 +55,17 @@ def generate_launch_description():
     )
     params_file = LaunchConfiguration('params_file')
 
+    params_file_arg2 = DeclareLaunchArgument(
+        'params_file',
+        default_value=PathJoinSubstitution([
+            FindPackageShare('gen_opt'),
+            'config',
+            'params.yaml'
+        ]),
+        description='Ruta al archivo de parámetros YAML'
+    )
+    params_file2 = LaunchConfiguration('params_file')
+
     rsp = Node(
         package='robot_state_publisher',
         executable='robot_state_publisher',
@@ -107,11 +118,11 @@ def generate_launch_description():
     )
 
     zuzen_objektuarenganaino = Node(
-        package='eduros2_lego',      
-        executable='zuzen_objektuarenganaino',  
-        name='zuzen_objektuarenganaino',
+        package='gen_opt',      
+        executable='pid_gen_opt',  
+        name='pid_gen_opt',
         output='screen',
-        parameters=[params_file]
+        parameters=[params_file2],
     )
 
     return LaunchDescription([

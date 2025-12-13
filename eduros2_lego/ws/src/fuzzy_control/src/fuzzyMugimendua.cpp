@@ -24,18 +24,18 @@ public:
         this->declare_parameter<double>("abiadura", 25.0);
         this->declare_parameter<double>("eten_distantzia", 0.15);
         this->declare_parameter<std::string>("kontrol_mota", "abiadura"); 
-        this->declare_parameter<std::string>("ikas_modua", "False"); 
+        this->declare_parameter<bool>("ikas_modua", false); 
         this->declare_parameter<bool>("seinalea_gorde", true);
 
         abiadura_ = this->get_parameter("abiadura").as_double();
         eten_distantzia_ = this->get_parameter("eten_distantzia").as_double();
         kontrol_mota_ = this->get_parameter("kontrol_mota").as_string();
-        ikas_modua_ = this->get_parameter("ikas_modua").as_string();
+        ikas_modua_ = this->get_parameter("ikas_modua").as_bool();
         seinalea_gorde_ = this->get_parameter("seinalea_gorde").as_bool();
 
         // Suscripciones comunes
         sub_encoders_ = this->create_subscription<mezuak::msg::MugimenduKodetzaileak>(
-            "/kodetzaileak", 10,
+            "kodetzaileak", 10,
             std::bind(&FuzzyControlNode::encoder_callback, this, _1));
 
         sub_range_ = this->create_subscription<sensor_msgs::msg::Range>(
@@ -178,7 +178,7 @@ private:
         }
 
         // Publicar datos de entrenamiento si aplica
-        if (kontrol_mota_ == "nbs" && ikas_modua_ == "True"){
+        if (kontrol_mota_ == "nbs" && ikas_modua_){
             auto sample = mezuak::msg::IkasDatuak();
             sample.pos_izq = msg->graduak[0];
             sample.pos_der = msg->graduak[1];
@@ -206,7 +206,8 @@ private:
     // Parámetros y estado
     double abiadura_;
     double eten_distantzia_;
-    std::string kontrol_mota_, ikas_modua_;
+    std::string kontrol_mota_;
+    bool ikas_modua_;
     std::optional<double> ultrasoinu_distantzia_;
 
     // Yaw sensor
