@@ -2,7 +2,7 @@
 # Técnicas de control inteligente aplicadas al robot educativo Lego Mindstorms EV3
 Esta rama corresponde al proyecto final de la asignatura de Control Inteligente del Máster en Ingeniería de Sistemas y Control de la Universidad Complutense de Madrid y la UNED, curso académico 2025/2026.
 
-En ``articulo.pdf`` se encuentra la memoria descriptiva del proyecto y en ``presentacion.mp4`` un video donde se muestra el funcionamiento del proyecto y se puntualizan varios aspectos del artículo. Las siguientes secciones de este readme exlpican cómo ejecutarlo.
+En ``articulo.pdf`` se encuentra la memoria descriptiva del proyecto y [aquí](https://drive.google.com/file/d/1cDwL0gnpTgnsMeLs3YfVrFsEtq_1VRPi/view?usp=sharing) un video donde se muestra el funcionamiento del proyecto. Las siguientes secciones de este readme exlpican cómo ejecutarlo.
 
 El directorio ``matlab/`` contiene los ficheros ``.m`` y ``.csv`` con los que se han construído las gráficas del artículo.
 
