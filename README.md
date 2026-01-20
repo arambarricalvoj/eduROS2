@@ -1,8 +1,8 @@
 # eduROS2: robótica educativa Lego con ROS2
-# Técnicas de control inteligente aplicadas al robot educativo Lego Mindstorms EV3
+# SIME 2026: Técnicas de control inteligente aplicadas al robot educativo Lego Mindstorms EV3
 Esta rama corresponde al proyecto final de la asignatura de Control Inteligente del Máster en Ingeniería de Sistemas y Control de la Universidad Complutense de Madrid y la UNED, curso académico 2025/2026.
 
-En ``articulo.pdf`` se encuentra la memoria descriptiva del proyecto y [aquí](https://drive.google.com/file/d/1cDwL0gnpTgnsMeLs3YfVrFsEtq_1VRPi/view?usp=sharing) un video donde se muestra el funcionamiento del proyecto. Las siguientes secciones de este readme exlpican cómo ejecutarlo.
+En ``comunicacion_revista.pdf`` se encuentra el artículo presentado en el [II. Simposio CEA de Ingeniería de Control, de Modelado, Simulación y Optimización y de Educación en Automática](https://simposiocea-ic-mso-ea-2026.i3a.es/). Las siguientes secciones de este readme exlpican cómo ejecutarlo.
 
 El directorio ``matlab/`` contiene los ficheros ``.m`` y ``.csv`` con los que se han construído las gráficas del artículo.
 
@@ -28,8 +28,6 @@ En ``fuzzy_control/include/fuzzy_control`` hay los siguiente ficheros:
 En ``fuzzy_control/src`` hay los siguiente ficheros:
 - **fuzzyEngine.cpp**: definición del motor de inferencia *fuzzy*.
 - **fuzzyMugimendua.cpp**: nodo ROS2 que ejecuta el controlador borroso.
-- **fuzzyNNMugimendua.cpp**: nodo ROS2 que ejecuta el controlador neuronal.
-- **ikasDatuenBiltegitzea.cpp**: nodo ROS2 que lee y genera el *dataset* a partir del controlador borroso para entrenar el controlador neuronal.
 
 En ``gen_opt/gen_opt/`` hay un ejecutable:
 - **zuzen_objektuarenganaino**: nodo ROS2 que implementa la optimización *online* del parámetro *Kp* del controlador proporcional clásico.
@@ -52,9 +50,6 @@ Una vez compilado el proyecto, para evitar recompilar al modificar los parámetr
   - ``nag``: modelo geométrico según la velocidad de los motores (norabide abiadura geometrikoa)
   - ``npg``: modelo geométrico según la posición de los motores (norabide posizio geometrikoa)
   - ``nbs``: modelo según el sensor de giro (norabide biraketa sentsorea)
-
-- **ikas_modua**: (bool) generar datos para crear *dataset*.
-- **modeloa**: (str) ruta al modelo neuronal.
 
 
 ## Arrancar ROS2 en Docker
@@ -144,20 +139,7 @@ Al mismo tiempo, si queremos guardar los datos para generar el *dataset* para en
 ros2 run fuzzy_control ikasDatuenBiltegitzea
 ```
 
-### 2. Controlador neuronal
-En ``train_nn/`` hay varios ficheros:
--  ``dataset.csv``: que es el conjunto de datos con los que se han entrenado el modelo
--  ``train.py``: script de entrenamiento del modelo en local, *offline*
--  ``test.py``: script para comprobar que *PyTorch* utiliza la GPU del host.
--  ``model.pt``: el modelo entrenado preparado para importar y hacer inferencias.
-
-Ejecutar el sistema:
-```bash
-ros2 launch eduros2_lego fuzzy_nn_zuzen.py
-```
-
-
-### 3. Optimización con algoritmos genéticos
+### 2. Optimización con algoritmos genéticos
 #### Ejecutar optimización online
 Ejecutar el sistema:
 ```bash
