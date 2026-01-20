@@ -13,12 +13,14 @@ docker run -e DISPLAY=$DISPLAY \
            -p 5002:5002/udp \
            -p 5003:5003/udp \
            -p 5004:5004/udp \
+           -p 12345:12345/tcp \
            --device /dev/input:/dev/input \
            -u $(id -u):$(id -g) \
            -it \
            --rm \
            --gpus all \
            --runtime=nvidia \
+           --network host \
            --name eduros2_control_inteligente \
            arambarricalvoj/eduros2_ev3:control_inteligente
 

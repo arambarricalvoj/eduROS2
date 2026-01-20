@@ -90,29 +90,13 @@ def motores_movimiento_receptor_udp():
 # ---------- Publicación encoders: emisor UDP ----------
 def encoders_emisor_udp():
     udp_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    destino = ("192.168.1.138", 5000)  # Cambia IP y puerto
+    destino = ("10.42.0.1", 5000)  # Cambia IP y puerto
     print("Encoders: emisor UDP en el puerto 5000")
     while True:
         # Aquí iría la lectura real de encoders:
         encoder_a = motIzq.position
         encoder_d = motDer.position
-        speed_a = motIzq.speed
-        speed_d = motDer.speed
-
-        # Conversión a grados/s
-        """speed_a_deg = (speed_a / motIzq.count_per_rot) * 360.0
-        speed_d_deg = (speed_d / motDer.count_per_rot) * 360.0
-
-        print("")
-        print(motIzq.count_per_rot)
-        print(motDer.count_per_rot)
-        print("")
-        print(speed_a)
-        print(speed_a_deg)
-        print(speed_d)
-        print(speed_d_deg)"""        
-
-        mensaje = "{},{},{},{}".format(encoder_a, encoder_d, speed_a, speed_d)
+        mensaje = "{},{}".format(encoder_a, encoder_d)
         udp_socket.sendto(mensaje.encode(), destino)
         #print("Enviado por UDP: {}".format(mensaje))
         time.sleep(0.02)
@@ -120,7 +104,7 @@ def encoders_emisor_udp():
 # ---------- Publicación ultrasonidos: emisor UDP ----------
 def ultrasonidos_emisor_udp():
     udp_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    destino = ("192.168.1.138", 5001)  # Cambia IP y puerto
+    destino = ("10.42.0.1", 5001)  # Cambia IP y puerto
     print("Sensor de ultrasonidos: emisor UDP en el puerto 5001")
     while True:
         mensaje = str(ultrasonic.distance_centimeters)
@@ -130,7 +114,7 @@ def ultrasonidos_emisor_udp():
 # ---------- Publicación sensor de giro: emisor UDP ----------
 def giro_emisor_udp():
     udp_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    destino = ("192.168.1.138", 5002)  # Cambia IP y puerto
+    destino = ("10.42.0.1", 5002)  # Cambia IP y puerto
     print("Sensor de giro: emisor UDP en el puerto 5002")
     while True:
         mensaje = str(gyro.angle)
@@ -140,7 +124,7 @@ def giro_emisor_udp():
 # ---------- Publicación ultrasonidos: emisor UDP ----------
 def colores_emisor_udp():
     udp_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    destino = ("192.168.1.138", 5003)  # Cambia IP y puerto
+    destino = ("10.42.0.1", 5003)  # Cambia IP y puerto
     print("Sensores de color: emisor UDP en el puerto 5003")
     while True:
         csIZQ_value = csIZQ.reflected_light_intensity
@@ -151,7 +135,7 @@ def colores_emisor_udp():
 
 if __name__ == "__main__":
     print("Lego Mindstorms EV3 - IP direction: {}".format(ip))
-    print("Connect to IP: 192.168.1.138\n")
+    print("Connect to IP: 10.42.0.1\n")
     
     hilo_ultrasonicos_udp = threading.Thread(target=ultrasonidos_emisor_udp, daemon=True)
     hilo_ultrasonicos_udp.start()

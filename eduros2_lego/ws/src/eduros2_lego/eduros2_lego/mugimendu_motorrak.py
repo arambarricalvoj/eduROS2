@@ -43,9 +43,9 @@ class MugimenduMotorrak(Node):
         # TCP klase aldagaiak motorrak kontrolatzeko
         self.bezero_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         try:
-            self.bezero_socket.connect(("192.168.1.140", 12345))
+            self.bezero_socket.connect(("10.42.0.40", 12345))
             self.bezero_socket.setblocking(False)  # Mandar paquete sin esperar respuesta
-            self.get_logger().info("TCP konexioa ezarrita 192.168.1.140:12345 helbidearekin, /cmd_vel topikoaren informazioa bidaltzen.\n")
+            self.get_logger().info("TCP konexioa ezarrita 10.42.0.40:12345 helbidearekin, /cmd_vel topikoaren informazioa bidaltzen.\n")
         except Exception as e:
             self.get_logger().error(f"Ezin izan da TCP bidez konektatu: {e}")
 
@@ -53,7 +53,7 @@ class MugimenduMotorrak(Node):
         self.udp_mugimendua_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         try:
             self.udp_mugimendua_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-            self.udp_destino = ("192.168.1.140", 5004)  # Cambia IP y puerto
+            self.udp_destino = ("10.42.0.40", 5004)  # Cambia IP y puerto
         except Exception as e:
             self.get_logger().error(f"Ezin izan da UDP ataka sortu: {e}")
         
@@ -116,8 +116,8 @@ class MugimenduMotorrak(Node):
                 else:
                     self.udp_mugimendua_socket.sendto('tank_drive.off()\n'.encode(), self.udp_destino) # UDP
             else:
-                #self.get_logger().info(f"vel izq: {vel_izq}")
-                #self.get_logger().info(f"vel der: {vel_der}")
+                self.get_logger().info(f"vel izq: {vel_izq}")
+                self.get_logger().info(f"vel der: {vel_der}")
                 cmd = f'tank_drive.on(SpeedPercent({vel_izq}),SpeedPercent({vel_der}))\n'
                 if self.kontrol_mota:
                     self.bezero_socket.send(cmd.encode()) # TCP
@@ -145,15 +145,13 @@ class MugimenduMotorrak(Node):
 
                 # Procesar el mensaje
                 partes = mezua.split(',')
-                if len(partes) != 4:
+                if len(partes) != 2:
                     self.get_logger().warn("Formato inválido, se esperaban dos valores separados por coma")
                     continue
 
                 try:
                     left_deg = float(partes[0])
                     right_deg = float(partes[1])
-                    left_speed = float(partes[2])
-                    right_speed = float(partes[3])
                 except ValueError:
                     self.get_logger().warn("No se pudieron convertir los valores a float")
                     continue
@@ -165,8 +163,6 @@ class MugimenduMotorrak(Node):
                 mk = MugimenduKodetzaileak()
                 mk.graduak[0] = left_deg
                 mk.graduak[1] = right_deg
-                mk.abiadurak[0] = left_speed
-                mk.abiadurak[1] = right_speed
                 self.kodetzaileak_pub.publish(mk)
 
             except Exception as e:
